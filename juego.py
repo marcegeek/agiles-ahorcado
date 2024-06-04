@@ -11,3 +11,9 @@ class Juego:
 
     def intentos_disponibles(self):
         pass
+
+    def acierta(self):
+        pass
+
+    def pierde(self):
+        pass
