@@ -1,39 +1,44 @@
 class Juego:
-    MAX_INTENTOS = 6
-    INTENTOS_LETRA = 1
-    INTENTOS_PALABRA = 2
+    # configuracion
+    maxIntentos = 6
+    intentosLetra = 1
+    intentosPalabra = 2
 
+    # inicializar el juego con una palabra
     def __init__(self, palabra):
         self.palabra = palabra.lower()
         self.acerto = False
-        self.intentos_usados = 0
-        self.letras_adivinadas = set()
+        self.intentosUsados = 0
+        self.letrasUsadas = []
+        
+    def informacionPartida(self):
+        print("Intentos restantes: ", (self.maxIntentos-self.intentosUsados) )
+        
+        print("Letras usadas: ")
+        for i in self.letrasUsadas:
+            print(i)
 
-    def arriesgar_letra(self, letra):
+    def arriesgarLetra(self, letra):
         if letra.isalpha() and len(letra) == 1:
             letra = letra.lower()
-            if letra in self.letras_adivinadas:
+            if letra in self.letrasUsadas:
                 return "letra ya usada"
-            self.letras_adivinadas.add(letra)
+            self.letrasUsadas.append(letra)
             if letra in self.palabra:
                 return "letra se encuentra"
             else:
+                self.intentosUsados += self.intentosLetra
                 return "letra no se encuentra"
         else:
             return "letra invalida"
 
-    def arriesgar_palabra(self, palabra):
-        if self.intentos_disponibles() == 0:
-            raise Exception('Intentos agotados')
-        self.intentos_usados += self.INTENTOS_PALABRA
+    def arriesgarPalabra(self, palabra):
+        if self.intentosDisponibles() == 0:
+            return "perdiste"
+        self.intentosUsados += self.intentosPalabra
         if palabra.lower() == self.palabra:
-           self.acerto = True
+            return "ganaste"
 
-    def intentos_disponibles(self):
-        return max(self.MAX_INTENTOS - self.intentos_usados, 0)
+    def intentosDisponibles(self):
+        return max(self.maxIntentos - self.intentosUsados, 0)
 
-    def acierta(self):
-        return self.acerto
-
-    def pierde(self):
-        return self.intentos_usados() == 0 and not self.acierta()
