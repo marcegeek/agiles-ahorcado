@@ -7,9 +7,20 @@ class Juego:
         self.palabra = palabra.lower()
         self.acerto = False
         self.intentos_usados = 0
+        self.letras_adivinadas = set()
 
     def arriesgar_letra(self, letra):
-        pass
+        if letra.isalpha() and len(letra) == 1:
+            letra = letra.lower()
+            if letra in self.letras_adivinadas:
+                return "letra ya usada"
+            self.letras_adivinadas.add(letra)
+            if letra in self.palabra:
+                return "letra se encuentra"
+            else:
+                return "letra no se encuentra"
+        else:
+            return "letra invalida"
 
     def arriesgar_palabra(self, palabra):
         if self.intentos_disponibles() == 0:
