@@ -12,11 +12,8 @@ class Juego:
         self.letrasUsadas = []
         
     def informacionPartida(self):
-        print("Intentos restantes: ", (self.maxIntentos-self.intentosUsados) )
-        
-        print("Letras usadas: ")
-        for i in self.letrasUsadas:
-            print(i)
+        print("Intentos restantes: ", self.intentosDisponibles())
+        print("Letras usadas: ", ' '.join(self.letrasUsadas))
 
     def arriesgarLetra(self, letra):
         if letra.isalpha() and len(letra) == 1:
@@ -25,10 +22,16 @@ class Juego:
                 return "letra ya usada"
             self.letrasUsadas.append(letra)
             if letra in self.palabra:
+                if '_' not in self.mostrarAvance():
+                    self.acerto = True
+                    return "ganaste"
                 return "letra se encuentra"
             else:
-                self.intentosUsados += self.intentosLetra
-                return "letra no se encuentra"
+                if self.intentosDisponibles()<=0:
+                    return "pierde"
+                else:
+                    self.intentosUsados += self.intentosLetra
+                    return "letra no se encuentra"
         else:
             return "letra invalida"
 
@@ -37,8 +40,22 @@ class Juego:
             return "perdiste"
         self.intentosUsados += self.intentosPalabra
         if palabra.lower() == self.palabra:
+            for i in palabra:
+                self.letrasUsadas.append(i)
             return "ganaste"
 
     def intentosDisponibles(self):
         return max(self.maxIntentos - self.intentosUsados, 0)
-
+    
+    def mostrarAvance(self):
+        avance = ''
+        for i in self.palabra:
+            if i in self.letrasUsadas:
+                avance = avance + i
+            elif i == ' ':
+                avance = avance + ' '
+            else:
+                avance = avance + '_'
+                
+        return avance
+            
