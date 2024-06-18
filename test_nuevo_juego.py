@@ -10,5 +10,5 @@ def test_reiniciar_juego():
     assert j.palabra == "nuevo"
     assert j.intentosUsados == 0
     assert j.letrasUsadas == []
-    assert j.mostrarAvance() == '_____'
+    assert j.mostrarProgresoPalabra() == '_____'
     

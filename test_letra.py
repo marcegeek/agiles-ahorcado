@@ -7,7 +7,7 @@ def test_letra_invalida():
     resultado = j.arriesgarLetra(" ")
     
     assert j.intentosDisponibles() == j.maxIntentos
-    assert j.mostrarAvance() == '_______'
+    assert j.mostrarProgresoPalabra() == '_______'
     assert resultado == "letra invalida"
     
 def test_letra_ya_usada():
@@ -16,13 +16,13 @@ def test_letra_ya_usada():
     resultado = j.arriesgarLetra("h")
     resultado = j.arriesgarLetra("H")
     assert j.intentosDisponibles() == j.maxIntentos-1
-    assert j.mostrarAvance() == '_______'
+    assert j.mostrarProgresoPalabra() == '_______'
     assert resultado == "letra ya usada"
     
     resultado = j.arriesgarLetra("a")
     resultado = j.arriesgarLetra("A")
     assert j.intentosDisponibles() == j.maxIntentos-1
-    assert j.mostrarAvance() == '_a_a__a'
+    assert j.mostrarProgresoPalabra() == '_a_a__a'
     assert resultado == "letra ya usada"
     
 def test_letra_no_esta():
@@ -30,7 +30,7 @@ def test_letra_no_esta():
     j = Juego("palabra")
     resultado = j.arriesgarLetra("x")
     assert j.intentosDisponibles() == j.maxIntentos-1
-    assert j.mostrarAvance() == '_______'
+    assert j.mostrarProgresoPalabra() == '_______'
     assert resultado == "letra no se encuentra"
     
 def test_letra_esta():
@@ -38,7 +38,7 @@ def test_letra_esta():
     j = Juego("palabra")
     resultado = j.arriesgarLetra('b')
     assert j.intentosDisponibles() == j.maxIntentos
-    assert j.mostrarAvance() == '____b__'
+    assert j.mostrarProgresoPalabra() == '____b__'
     assert resultado == "letra se encuentra"
     
 def test_letra_pierde():
