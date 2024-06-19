@@ -6,6 +6,8 @@ class Juego:
 
     # inicializar el juego con una palabra
     def __init__(self, palabra):
+        if not palabra.replace(' ', '').isalpha():
+            raise ValueError("Palabra invalida: debe contener solo letras o espacios")
         self.palabra = palabra.lower()
         self.acerto = False
         self.intentosUsados = 0
@@ -57,6 +59,7 @@ class Juego:
         if palabra.lower() == self.palabra:
             for i in palabra:
                 self.letrasUsadas.append(i)
+            self.acerto = True
             return "ganaste"
         self.intentosUsados += self.intentosPalabra
         if self.intentosDisponibles() == 0:
@@ -78,10 +81,3 @@ class Juego:
                 avance = avance + '_'
                 
         return avance
-
-
-
-
-j = Juego("nacho")
-
-j.iniciarJuego()
