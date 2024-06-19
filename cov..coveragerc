@@ -1,0 +1,14 @@
+[coverage]
+# Defina el umbral mínimo de cobertura
+branch = 100
+lines = 100
+
+# Especifique qué archivos incluir o excluir de la cobertura
+# (Personalice esto según la estructura de su proyecto)
+include =
+    src/*
+
+# Especifique archivos para excluir de la cobertura
+exclude =
+    tests/*
+    .venv/*
