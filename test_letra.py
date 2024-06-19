@@ -116,3 +116,15 @@ def test_letra_gana_progreso():
     j.arriesgarLetra('u')        
     assert j.mostrarProgresoPalabra() == "celu"
     
+# Letras usadas
+def test_letras_usadas():
+    j = Juego("palabra")
+    j.arriesgarLetra('a')
+    j.arriesgarLetra('b')
+    j.arriesgarLetra('c')
+    j.arriesgarLetra('d')
+    j.arriesgarLetra('e')
+    j.arriesgarLetra('l')
+    assert j.letrasUsadas == ["a","b","c","d","e","l"]
+    
+    
