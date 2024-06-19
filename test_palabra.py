@@ -1,13 +1,20 @@
 from juego import Juego
 
-
-def test_palabra_acierta():
+# Palabra acierta
+def test_palabra_acierta_mensaje():
+    # Si adivina la palabra el mensaje es "ganaste".
     j = Juego('hola')
     resultado = j.arriesgarPalabra('hola')
     assert resultado == "ganaste"
+
+def test_palabra_acierta_progreso():
+    # Si adivina la palabra el progreso esta completo.
+    j = Juego('hola')
+    j.arriesgarPalabra('hola')
     assert j.mostrarProgresoPalabra() == "hola"
 
-def test_palabra_descontar_intento():
+# Palabra incorrecta
+def test_palabra_incorrecta_mensaje():
     j = Juego('hola')
     resultado = j.arriesgarPalabra('chau')
     assert resultado == "palabra incorrecta"
