@@ -106,6 +106,7 @@ def test_letra_gana_mensaje():
     resultado = ''
     resultado = j.arriesgarLetra('u')        
     assert resultado == "ganaste" 
+    assert j.acerto
     
 def test_letra_gana_progreso():
     # Si adivina la palabra el progreso esta completo
