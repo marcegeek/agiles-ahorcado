@@ -2,10 +2,10 @@ from juego import Juego
 
 # Palabra acierta
 def test_palabra_acierta_mensaje():
-    # Si adivina la palabra el mensaje es "ganaste".
+    # Si adivina la palabra el mensaje es "palabra correcta" y acerto=True.
     j = Juego('hola')
     resultado = j.arriesgarPalabra('hola')
-    assert resultado == "ganaste"
+    assert resultado == "palabra correcta"
     assert j.acerto
 
 def test_palabra_acierta_progreso():
@@ -35,11 +35,11 @@ def test_palabra_incorrecta_intentos():
 
 # Palabra pierde
 def test_palabra_pierde_mensaje():
-    # Si arriesga palabra y se queda sin intentos el mensaje es "perdiste".
+    # Si arriesga palabra y se queda sin intentos el mensaje es "palabra incorrecta".
     j = Juego('hola')
     j.intentosUsados = j.maxIntentos
     resultado = j.arriesgarPalabra('chau')
-    assert resultado == 'perdiste'
+    assert resultado == 'palabra incorrecta'
 
 def test_palabra_pierde_intentos():
     # Si arriesga palabra y pierde los intentos disponibles son 0.
