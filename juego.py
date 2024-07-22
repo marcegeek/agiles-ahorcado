@@ -1,3 +1,4 @@
+import os
 class Juego:
     # configuracion
     maxIntentos = 6
@@ -5,39 +6,16 @@ class Juego:
     intentosPalabra = 2
 
     # Se inicializa el juego con una palabra.
-    def __init__(self, palabra):
-        if not palabra.replace(' ', '').isalpha():
-            raise ValueError("Palabra invalida: debe contener solo letras o espacios")
-        self.palabra = palabra.lower()
-        self.acerto = False
-        self.intentosUsados = 0
-        self.letrasUsadas = []
-        
-    # Flujo del juego. El juego no terminara hasta ganar o quedarse sin intentos.
-    # Muestra el mensaje final, junto con el puntaje(intentos que sobrantes).
-    def iniciarJuego(self):
-        while(self.intentosDisponibles() > 0):
-            self.informacionJuego()
-            print("Ingrese letra o palabra a arriesgar")
-            i = input()
-            
-            if len(i) == 1:
-                resultado = self.arriesgarLetra(i)
-                print(resultado.upper())
-                if self.acerto:
-                    break
-            else:
-                resultado = self.arriesgarPalabra(i)
-                print(resultado.upper())
-                if self.acerto:
-                    break
-        
-        if self.acerto:
-            print("GANASTE!")
+    def __init__(self, palabra=None, data=None):
+        if data:
+            self.__dict__.update(data)
         else:
-            print("PERDISTE!")  
-        print(f"El puntaje fue de: {self.intentosDisponibles()}")
-        return self.intentosDisponibles()
+            if not palabra.replace(' ', '').isalpha():
+                raise ValueError("Palabra invalida: debe contener solo letras o espacios")
+            self.palabra = palabra.lower()
+            self.acerto = False
+            self.intentosUsados = 0
+            self.letrasUsadas = []
 
     # Dada una letra, devuelve 4 posibles valores. (letra ya usada, letra se encuentra, letra no se encuetra, letra invalida).
     def arriesgarLetra(self, letra):
@@ -70,12 +48,6 @@ class Juego:
     def intentosDisponibles(self):
         return max(self.maxIntentos - self.intentosUsados, 0)
     
-    # Muestra la informacion del juego actual. Intentos restantes, letra usadas y el progreso de la palabra.
-    def informacionJuego(self):
-        print("Intentos restantes: ", self.intentosDisponibles())
-        print("Letras usadas: ", ' '.join(self.letrasUsadas))
-        print(self.mostrarProgresoPalabra())
-    
     # Retorna el progreso de la palabra.
     def mostrarProgresoPalabra(self):
         avance = ''
@@ -87,6 +59,14 @@ class Juego:
             else:
                 avance = avance + '_'      
         return avance
+
+    def informacionJuego(self):
+        return {
+            "intentos_restantes": self.intentosDisponibles(),
+            "letras_usadas": ' '.join(self.letrasUsadas),
+            "progreso_palabra": self.mostrarProgresoPalabra(),
+            "acerto": self.acerto
+        }
     
-#j = Juego("palabra")
-#j.iniciarJuego()
+    def to_dict(self):
+        return self.__dict__.copy()
