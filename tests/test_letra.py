@@ -82,12 +82,12 @@ def test_letra_esta_intentos():
 
 # Letra pierde
 def test_letra_pierde_mensaje():
-    # Si arriesga maxIntentos veces y pierde el mensaje debe ser "pierde"
+    # Si arriesga maxIntentos veces y pierde el mensaje debe ser "letra no se encuentra"
     j = Juego("palabra")
     resultado = ' '
     j.intentosUsados = j.maxIntentos
     resultado = j.arriesgarLetra('x')
-    assert resultado == 'pierde'
+    assert resultado == 'letra no se encuentra'
 
 def test_letra_pierde_intentos():
     # Si arriesga maxIntentos veces y el nro de intentos debe ser 0.
@@ -98,14 +98,14 @@ def test_letra_pierde_intentos():
 
 # Letra gana  
 def test_letra_gana_mensaje():
-    # Si adivina la palabra el mensaje debe ser "ganaste".
+    # Si adivina la palabra el mensaje debe ser "letra se encuentra" y acerto=True.
     j = Juego("celu")
     j.arriesgarLetra('c')
     j.arriesgarLetra('e')
     j.arriesgarLetra('l')
     resultado = ''
     resultado = j.arriesgarLetra('u')        
-    assert resultado == "ganaste" 
+    assert resultado == "letra se encuentra" 
     assert j.acerto
     
 def test_letra_gana_progreso():
