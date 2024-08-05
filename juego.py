@@ -1,4 +1,3 @@
-import os
 class Juego:
     # configuracion
     maxIntentos = 6
@@ -70,3 +69,16 @@ class Juego:
     
     def to_dict(self):
         return self.__dict__.copy()
+
+
+class Partida:
+    def __init__(self):
+        self.rondas = [0, 0]
+        self.idJugadorActual = 0
+        self.finalizo = False
+
+    def puntos(self):
+        return [0, 0]
+
+    def puntosJugador(self, idJugador):
+        return 0
