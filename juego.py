@@ -74,10 +74,16 @@ class Juego:
 class Partida:
     def __init__(self):
         self.rondas = [0, 0]
-        self.idJugadorActual = 0
+        self.idJugadorActual = None
         self.finalizo = False
 
     def comenzarRonda(self, palabra):
+        if self.idJugadorActual is None:
+            self.idJugadorActual = 0
+        elif self.idJugadorActual == 0:
+            self.idJugadorActual = 1
+        else:
+            self.idJugadorActual = 0
         self.rondas[self.idJugadorActual] += 1
 
     def puntos(self):

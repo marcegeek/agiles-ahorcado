@@ -5,9 +5,9 @@ def test_inicializar_partida_rondas():
     j = Partida()
     assert j.rondas == [0, 0]
 
-def test_inicializar_partida_primer_jugador():
+def test_inicializar_partida_jugador():
     j = Partida()
-    assert j.idJugadorActual == 0
+    assert j.idJugadorActual is None
 
 def test_inicializar_partida_finalizo():
     j = Partida()
