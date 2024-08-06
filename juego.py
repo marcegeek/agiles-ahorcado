@@ -66,7 +66,7 @@ class Juego:
             "progreso_palabra": self.mostrarProgresoPalabra(),
             "acerto": self.acerto
         }
-    
+
     def to_dict(self):
         return self.__dict__.copy()
 
@@ -76,6 +76,9 @@ class Partida:
         self.rondas = [0, 0]
         self.idJugadorActual = 0
         self.finalizo = False
+
+    def comenzarRonda(self, palabra):
+        self.rondas[self.idJugadorActual] += 1
 
     def puntos(self):
         return [0, 0]
