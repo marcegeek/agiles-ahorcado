@@ -64,18 +64,30 @@ class Juego:
             "intentos_restantes": self.intentosDisponibles(),
             "letras_usadas": ' '.join(self.letrasUsadas),
             "progreso_palabra": self.mostrarProgresoPalabra(),
-            "acerto": self.acerto
+            "acerto": self.acerto,
+            "perdio": self.perdio(),
+            "finalizo": self.finalizo(),
         }
+
+    def perdio(self):
+        return not self.acerto and self.intentosDisponibles() == 0
+
+    def finalizo(self):
+        return self.acerto or self.perdio()
 
     def to_dict(self):
         return self.__dict__.copy()
 
 
 class Partida:
+    numRondas = 6  # rondas por cada jugador
+    puntosAcierto = 100
+
     def __init__(self):
         self.rondas = [0, 0]
         self.idJugadorActual = None
-        self.finalizo = False
+        self.juego = None
+        self.aciertos = [0, 0]
 
     def comenzarRonda(self, palabra):
         if self.idJugadorActual is None:
@@ -85,9 +97,20 @@ class Partida:
         else:
             self.idJugadorActual = 0
         self.rondas[self.idJugadorActual] += 1
+        self.juego = Juego(palabra)
+
+    def actualizarAciertos(self):
+        if self.juego.acerto:
+            self.aciertos[self.idJugadorActual] += 1
+
+    def rondaFinalizo(self):
+        return self.juego is not None and self.juego.finalizo()
+
+    def finalizo(self):
+        return self.rondaFinalizo() and self.rondas[1] == self.numRondas
 
     def puntos(self):
-        return [0, 0]
+        return [self.puntosJugador(i) for i in range(2)]
 
     def puntosJugador(self, idJugador):
-        return 0
+        return self.aciertos[idJugador] * self.puntosAcierto
