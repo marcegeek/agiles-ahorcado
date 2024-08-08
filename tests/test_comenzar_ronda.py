@@ -1,6 +1,3 @@
-from .util import partida
-
-
 # Comenzar ronda
 def test_comenzar_ronda_1(partida):
     partida.comenzarRonda("palabra")

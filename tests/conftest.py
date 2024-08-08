@@ -31,12 +31,16 @@ def partida():
     return Partida()
 
 
-# Simular una ronda completa, ganando o perdiendo la misma
-def ronda_completa(partida, gana):
-    partida.comenzarRonda("palabra")
-    # reemplazamos el juego por un mock con el comportamiento a simular
-    if gana:
-        partida.juego = mock_juego_gana()
-    else:
-        partida.juego = mock_juego_pierde()
-    partida.actualizarAciertos()
+@pytest.fixture
+def ronda_completa(partida):
+    # Simular una ronda completa, ganando o perdiendo la misma
+    def _ronda_completa(gana):
+        partida.comenzarRonda("palabra")
+        # reemplazamos el juego por un mock con el comportamiento a simular
+        if gana:
+            partida.juego = mock_juego_gana()
+        else:
+            partida.juego = mock_juego_pierde()
+        partida.actualizarAciertos()
+    # devuelve la función para efectuar la ronda
+    return _ronda_completa
