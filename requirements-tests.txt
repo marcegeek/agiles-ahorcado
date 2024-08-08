@@ -4,3 +4,6 @@
 # unit testing y coverage
 pytest
 pytest-cov
+
+# analisis estático
+ruff
