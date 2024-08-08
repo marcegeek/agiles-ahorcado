@@ -9,7 +9,8 @@ def test_partida_finaliza_dos_rondas(partida, ronda_completa):
     assert not partida.finalizo()
 
 
-def test_partida_finaliza_dos_rondas(partida, ronda_completa):
+def test_partida_finaliza_tres_rondas(partida, ronda_completa):
+    ronda_completa(False)
     ronda_completa(False)
     ronda_completa(False)
     assert not partida.finalizo()
