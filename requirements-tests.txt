@@ -1,0 +1,6 @@
+# incluir también las dependencias comunes
+-r requirements.txt
+
+# unit testing y coverage
+pytest
+pytest-cov
