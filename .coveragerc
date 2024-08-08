@@ -1,0 +1,12 @@
+[run]
+# Medir cobertura de ramas
+branch = True
+# Incluir todo automáticamente
+source = .
+
+# Especifica archivos o directorios para excluir de la cobertura
+omit =
+#    app.py
+    tests/*
+    venv/*
+    .venv/*
