@@ -20,6 +20,6 @@ def test_inicializar_partida_ronda_finalizo(partida):
     assert not partida.rondaFinalizo()
 
 def test_inicializar_partida_puntos(partida):
-    assert partida.puntos() == [0, 0]
+    assert partida.puntos == [0, 0]
     assert partida.puntosJugador(0) == 0
     assert partida.puntosJugador(1) == 0

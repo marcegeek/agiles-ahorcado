@@ -40,3 +40,7 @@ def test_inicializacion_juego_letras_usadas():
 def test_inicializacion_juego_bool_acerto():
     j = Juego("palabra")
     assert not j.acerto
+
+def test_inicializacion_juego_puntaje():
+    j = Juego("palabra")
+    assert j.puntaje() == 0

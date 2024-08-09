@@ -81,6 +81,20 @@ def test_letra_esta_intentos():
     assert j.intentosDisponibles() == j.maxIntentos
 
 # Letra pierde
+def test_letra_pierde_perdio():
+    # Si arriesga maxIntentos veces y pierde perdio() debe ser True
+    j = Juego("palabra")
+    j.intentosUsados = j.maxIntentos
+    resultado = j.arriesgarLetra('x')
+    assert j.perdio()
+
+def test_letra_pierde_finalizo():
+    # Si arriesga maxIntentos veces y pierde finalizo() debe ser True
+    j = Juego("palabra")
+    j.intentosUsados = j.maxIntentos
+    resultado = j.arriesgarLetra('x')
+    assert j.finalizo()
+
 def test_letra_pierde_mensaje():
     # Si arriesga maxIntentos veces y pierde el mensaje debe ser "letra no se encuentra"
     j = Juego("palabra")
@@ -90,13 +104,28 @@ def test_letra_pierde_mensaje():
     assert resultado == 'letra no se encuentra'
 
 def test_letra_pierde_intentos():
-    # Si arriesga maxIntentos veces y el nro de intentos debe ser 0.
+    # Si arriesga maxIntentos veces el nro de intentos debe ser 0.
     j = Juego("palabra")
     j.intentosUsados = j.maxIntentos
     j.arriesgarLetra('x')
     assert j.intentosDisponibles() == 0
 
-# Letra gana  
+def test_letra_pierde_puntaje():
+    j = Juego("palabra")
+    j.intentosUsados = j.maxIntentos
+    j.arriesgarLetra('x')
+    assert j.finalizo() and j.puntaje() == 0
+
+# Letra gana
+def test_letra_gana_finalizo():
+    # Si adivina la palabra finalizo() debe ser True
+    j = Juego("celu")
+    j.arriesgarLetra('c')
+    j.arriesgarLetra('e')
+    j.arriesgarLetra('l')
+    j.arriesgarLetra('u')
+    assert j.finalizo()
+
 def test_letra_gana_mensaje():
     # Si adivina la palabra el mensaje debe ser "letra se encuentra" y acerto=True.
     j = Juego("celu")
@@ -107,7 +136,7 @@ def test_letra_gana_mensaje():
     resultado = j.arriesgarLetra('u')        
     assert resultado == "letra se encuentra" 
     assert j.acerto
-    
+
 def test_letra_gana_progreso():
     # Si adivina la palabra el progreso esta completo
     j = Juego("celu")
@@ -116,7 +145,43 @@ def test_letra_gana_progreso():
     j.arriesgarLetra('l')
     j.arriesgarLetra('u')        
     assert j.mostrarProgresoPalabra() == "celu"
-    
+
+def test_letra_gana_sin_errores_puntaje():
+    j = Juego("celu")
+    j.arriesgarLetra('c')
+    j.arriesgarLetra('e')
+    j.arriesgarLetra('l')
+    j.arriesgarLetra('u')
+    assert j.finalizo() and j.puntaje() == j.maxIntentos
+
+def test_letra_gana_un_error_puntaje():
+    j = Juego("celu")
+    j.arriesgarLetra('x')
+    j.arriesgarLetra('c')
+    j.arriesgarLetra('e')
+    j.arriesgarLetra('l')
+    j.arriesgarLetra('u')
+    assert j.finalizo() and j.puntaje() == j.maxIntentos - 1
+
+def test_letra_gana_dos_errores_puntaje():
+    j = Juego("celu")
+    j.arriesgarLetra('x')
+    j.arriesgarLetra('c')
+    j.arriesgarLetra('e')
+    j.arriesgarLetra('y')
+    j.arriesgarLetra('l')
+    j.arriesgarLetra('u')
+    assert j.finalizo() and j.puntaje() == j.maxIntentos - 2
+
+def test_letra_gana_ultimo_intento_puntaje():
+    j = Juego("celu")
+    j.intentosUsados = j.maxIntentos - 1
+    j.arriesgarLetra('c')
+    j.arriesgarLetra('e')
+    j.arriesgarLetra('l')
+    j.arriesgarLetra('u')
+    assert j.finalizo() and j.puntaje() == 1
+
 # Letras usadas
 def test_letras_usadas():
     j = Juego("palabra")
@@ -127,5 +192,3 @@ def test_letras_usadas():
     j.arriesgarLetra('e')
     j.arriesgarLetra('l')
     assert j.letrasUsadas == ["a","b","c","d","e","l"]
-    
-    

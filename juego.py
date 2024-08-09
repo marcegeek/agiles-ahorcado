@@ -75,19 +75,21 @@ class Juego:
     def finalizo(self):
         return self.acerto or self.perdio()
 
+    def puntaje(self):
+        return 0 if not self.acerto else self.intentosDisponibles()
+
     def to_dict(self):
         return self.__dict__.copy()
 
 
 class Partida:
     numRondas = 6  # rondas por cada jugador
-    puntosAcierto = 100
 
     def __init__(self):
         self.rondas = [0, 0]
         self.idJugadorActual = None
         self.juego = None
-        self.aciertos = [0, 0]
+        self.puntos = [0, 0]
 
     def comenzarRonda(self, palabra):
         if self.idJugadorActual is None:
@@ -99,9 +101,9 @@ class Partida:
         self.rondas[self.idJugadorActual] += 1
         self.juego = Juego(palabra)
 
-    def actualizarAciertos(self):
+    def actualizarPuntos(self):
         if self.juego.acerto:
-            self.aciertos[self.idJugadorActual] += 1
+            self.puntos[self.idJugadorActual] += self.juego.puntaje()
 
     def rondaFinalizo(self):
         return self.juego is not None and self.juego.finalizo()
@@ -109,8 +111,5 @@ class Partida:
     def finalizo(self):
         return self.rondaFinalizo() and self.rondas[1] == self.numRondas
 
-    def puntos(self):
-        return [self.puntosJugador(i) for i in range(2)]
-
     def puntosJugador(self, idJugador):
-        return self.aciertos[idJugador] * self.puntosAcierto
+        return self.puntos[idJugador]
