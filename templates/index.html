@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio del Juego - {% endblock %}
+
+{% block main %}
+    <h1>Bienvenido al Juego del Ahorcado</h1>
+    <form action="{{ url_for('iniciar') }}" method="post">
+        <label for="palabra">Ingrese la palabra para adivinar:</label>
+        <input type="text" id="palabra" name="palabra" pattern="[a-zA-Z ]+" title="Solo letras y espacios están permitidos" required>
+        <button type="submit" class="btn btn-primary">Iniciar Juego</button>
+    </form>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+{% endblock %}

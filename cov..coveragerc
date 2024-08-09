@@ -1,14 +1,16 @@
-[coverage]
-# Defina el umbral mínimo de cobertura
-branch = 100
-lines = 100
+[run]
+# Define el umbral mínimo de cobertura
+branch = True
 
-# Especifique qué archivos incluir o excluir de la cobertura
-# (Personalice esto según la estructura de su proyecto)
+# Especifica qué archivos incluir en la cobertura
 include =
-    src/*
+    juego.py
+    partida.py
+    run.py
+    tests/*
 
-# Especifique archivos para excluir de la cobertura
-exclude =
+# Especifica archivos o directorios para excluir de la cobertura
+omit =
+    app.py
     tests/*
     .venv/*

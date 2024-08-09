@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Juego en Progreso - {% endblock %}
+
+{% block main %}
+    <h1>Juego del Ahorcado</h1>
+    <p>Intentos restantes: {{ juego.intentos_restantes }}</p>
+    <p>Letras usadas: {{ juego.letras_usadas }}</p>
+    <p>Progreso de la palabra: {{ juego.progreso_palabra }}</p>
+
+    <!-- Mostrar imagen según el número de intentos restantes -->
+    <img src="{{ url_for('static', filename='images/intento_' ~ juego.intentos_restantes ~ '.png') }}" alt="Estado del juego" style="width: 200px; height: auto;">
+
+    {% if juego.acerto %}
+        <h2>¡GANASTE!</h2>
+    {% elif juego.intentos_restantes == 0 %}
+        <h2>¡PERDISTE!</h2>
+    {% endif %}
+
+    {% if not juego.acerto and juego.intentos_restantes > 0 %}
+        <form action="{{ url_for('jugar') }}" method="post">
+            <label for="intento">Ingrese letra o palabra:</label>
+            <input type="text" id="intento" name="intento" required>
+            <button type="submit" class="btn btn-primary">Arriesgar</button>
+        </form>
+    {% endif %}
+
+    {% if resultado %}
+        <p>Resultado: {{ resultado }}</p>
+    {% endif %}
+
+    <a href="{{ url_for('index') }}">Volver al inicio</a>
+{% endblock %}
