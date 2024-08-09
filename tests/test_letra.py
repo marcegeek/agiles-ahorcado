@@ -85,14 +85,14 @@ def test_letra_pierde_perdio():
     # Si arriesga maxIntentos veces y pierde perdio() debe ser True
     j = Juego("palabra")
     j.intentosUsados = j.maxIntentos
-    resultado = j.arriesgarLetra('x')
+    j.arriesgarLetra('x')
     assert j.perdio()
 
 def test_letra_pierde_finalizo():
     # Si arriesga maxIntentos veces y pierde finalizo() debe ser True
     j = Juego("palabra")
     j.intentosUsados = j.maxIntentos
-    resultado = j.arriesgarLetra('x')
+    j.arriesgarLetra('x')
     assert j.finalizo()
 
 def test_letra_pierde_mensaje():
@@ -192,3 +192,16 @@ def test_letras_usadas():
     j.arriesgarLetra('e')
     j.arriesgarLetra('l')
     assert j.letrasUsadas == ["a","b","c","d","e","l"]
+
+# Juego en curso
+def test_letra_juego_en_curso_finalizo():
+    j = Juego("hola")
+    j.arriesgarLetra("e")
+    j.arriesgarLetra("a")
+    assert not j.finalizo()
+
+def test_letra_juego_en_curso_puntaje():
+    j = Juego("hola")
+    j.arriesgarLetra("e")
+    j.arriesgarLetra("a")
+    assert j.puntaje() == 0

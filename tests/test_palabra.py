@@ -62,13 +62,13 @@ def test_palabra_incorrecta_intentos():
 def test_palabra_pierde_perdio():
     j = Juego('hola')
     j.intentosUsados = j.maxIntentos
-    resultado = j.arriesgarPalabra('chau')
+    j.arriesgarPalabra('chau')
     assert j.perdio()
 
 def test_palabra_pierde_finalizo():
     j = Juego('hola')
     j.intentosUsados = j.maxIntentos
-    resultado = j.arriesgarPalabra('chau')
+    j.arriesgarPalabra('chau')
     assert j.finalizo()
 
 def test_palabra_pierde_mensaje():
@@ -97,3 +97,14 @@ def test_palabra_con_espacios_progreso():
     j = Juego("hola mundo")
     j.arriesgarLetra('o')
     assert j.mostrarProgresoPalabra() == '_o__ ____o'
+
+# Juego en curso
+def test_palabra_juego_en_curso_finalizo():
+    j = Juego("hola")
+    j.arriesgarPalabra("chau")
+    assert not j.finalizo()
+
+def test_palabra_juego_en_curso_puntaje():
+    j = Juego("hola")
+    j.arriesgarPalabra("chau")
+    assert j.puntaje() == 0
