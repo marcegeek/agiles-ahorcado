@@ -93,7 +93,7 @@ class Partida:
 
     def comenzarRonda(self, palabra):
         if self.idJugadorActual is None:
-            self.idJugadorActual = 0
+            self.idJugadorActual = 1
         elif self.idJugadorActual == 0:
             self.idJugadorActual = 1
         else:
@@ -109,7 +109,7 @@ class Partida:
         return self.juego is not None and self.juego.finalizo()
 
     def finalizo(self):
-        return self.rondaFinalizo() and self.rondas[1] == self.numRondas
+        return self.rondaFinalizo() and self.rondas[0] == self.numRondas
 
     def puntosJugador(self, idJugador):
         return self.puntos[idJugador]
