@@ -87,12 +87,12 @@ def partida():
             partida=partida,
         )
 
-    iniciar_ronda = partida.idJugadorActual is None or partida.rondaFinalizo()
+    hay_que_iniciar_ronda = partida.idJugadorActual is None or partida.rondaFinalizo()
     jugador_palabra = 0 if partida.idJugadorActual is None else partida.idJugadorActual
     jugador_adivina = (jugador_palabra + 1) % 2
     if request.method == "POST":
         if not partida.finalizo():
-            if iniciar_ronda:
+            if hay_que_iniciar_ronda:
                 iniciar_ronda(partida)
             else:
                 arriesgar(partida.juego)
@@ -105,7 +105,7 @@ def partida():
         "partida.html",
         jugadores=jugadores,
         partida=partida,
-        iniciar_ronda=iniciar_ronda,
+        iniciar_ronda=hay_que_iniciar_ronda,
         jugador_palabra=jugador_palabra,
         jugador_adivina=jugador_adivina,
     )
