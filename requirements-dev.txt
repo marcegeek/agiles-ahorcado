@@ -1,0 +1,10 @@
+-r requirements.txt
+pytest
+pytest-cov
+pytest-html
+flake8
+flake8-html
+genbadge[coverage,tests]
+ruff
+mypy[reports]
+coveralls
