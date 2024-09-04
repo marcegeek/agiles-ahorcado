@@ -1,0 +1,34 @@
+{% macro palabra_adivinar(action="", texto_boton="Iniciar Juego") -%}
+    <form action="{{ action }}" method="post">
+        <label for="palabra">Ingresa la palabra para adivinar:</label>
+        <input type="password" id="palabra" name="palabra" pattern="[a-zA-ZñÑ ]+" title="Solo letras y espacios están permitidos" required>
+        <button type="submit" class="btn btn-primary">{{ texto_boton }}</button>
+    </form>
+{%- endmacro %}
+
+{% macro juego(juego, resultado, action="") -%}
+    <p>Intentos restantes: {{ juego.intentos_restantes }}</p>
+    <p>Letras usadas: {{ juego.letras_usadas }}</p>
+    <p>Progreso de la palabra: {{ juego.progreso_palabra }}</p>
+
+    <!-- Mostrar imagen según el número de intentos restantes -->
+    <img src="{{ url_for('static', filename='images/intento_' ~ juego.intentos_restantes ~ '.png') }}" alt="Estado del juego" style="width: 200px; height: auto;">
+
+    {% if juego.acerto %}
+        <h2>¡GANASTE!</h2>
+    {% elif juego.intentos_restantes == 0 %}
+        <h2>¡PERDISTE!</h2>
+    {% endif %}
+
+    {% if not juego.acerto and juego.intentos_restantes > 0 %}
+        <form action="{{ action }}" method="post">
+            <label for="intento">Ingrese letra o palabra:</label>
+            <input type="text" id="intento" name="intento" required>
+            <button type="submit" class="btn btn-primary">Arriesgar</button>
+        </form>
+    {% endif %}
+
+    {% if resultado %}
+        <p>Resultado: {{ resultado }}</p>
+    {% endif %}
+{%- endmacro %}

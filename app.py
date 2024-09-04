@@ -18,26 +18,26 @@ def iniciar():
     except ValueError as e:
         return render_template('index.html', error=str(e))
 
+def arriesgar(juego):
+    intento = request.form['intento']
+    if len(intento) == 1:
+        resultado = juego.arriesgarLetra(intento)
+    else:
+        resultado = juego.arriesgarPalabra(intento)
+    return resultado
+
 @app.route('/jugar', methods=['GET', 'POST'])
 def jugar():
     if 'juego' not in session:
         return redirect(url_for('index'))
 
     juego = Juego(data=session['juego'])
+    resultado = None
 
     if request.method == 'POST':
-        intento = request.form['intento']
-        if len(intento) == 1:
-            resultado = juego.arriesgarLetra(intento)
-        else:
-            resultado = juego.arriesgarPalabra(intento)
+        resultado = arriesgar(juego)
         session['juego'] = juego.to_dict()
-        return render_template('jugar.html', juego=juego.informacionJuego(), resultado=resultado)
-
-    return render_template('jugar.html', juego=juego.informacionJuego())
+    return render_template('jugar.html', juego=juego.informacionJuego(), resultado=resultado)
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
