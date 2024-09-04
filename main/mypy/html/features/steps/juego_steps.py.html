@@ -39,38 +39,50 @@
 <span id="L29" class="lineno"><a class="lineno" href="#L29">29</a></span>
 <span id="L30" class="lineno"><a class="lineno" href="#L30">30</a></span>
 <span id="L31" class="lineno"><a class="lineno" href="#L31">31</a></span>
+<span id="L32" class="lineno"><a class="lineno" href="#L32">32</a></span>
+<span id="L33" class="lineno"><a class="lineno" href="#L33">33</a></span>
+<span id="L34" class="lineno"><a class="lineno" href="#L34">34</a></span>
+<span id="L35" class="lineno"><a class="lineno" href="#L35">35</a></span>
+<span id="L36" class="lineno"><a class="lineno" href="#L36">36</a></span>
+<span id="L37" class="lineno"><a class="lineno" href="#L37">37</a></span>
 </pre></td>
 <td class="table-code"><pre><span class="line-any" title="No Anys on this line!">from behave import given, when, then</span>
 <span class="line-precise" title="No Anys on this line!">from juego import Juego</span>
+<span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-empty" title="No Anys on this line!">@given('I have a valid word "{word}"')</span>
 <span class="line-empty" title="No Anys on this line!">def step_impl(context, word):</span>
 <span class="line-empty" title="No Anys on this line!">    context.juego = Juego(palabra=word)</span>
 <span class="line-empty" title="No Anys on this line!"></span>
-<span class="line-empty" title="No Anys on this line!">@when('I start the game')</span>
+<span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-empty" title="No Anys on this line!">@when("I start the game")</span>
 <span class="line-empty" title="No Anys on this line!">def step_impl(context):</span>
 <span class="line-empty" title="No Anys on this line!">    pass</span>
+<span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-empty" title="No Anys on this line!">@then('I should see the masked word "{expected_progress}"')</span>
 <span class="line-empty" title="No Anys on this line!">def step_impl(context, expected_progress):</span>
 <span class="line-empty" title="No Anys on this line!">    assert context.juego.mostrarProgresoPalabra() == expected_progress</span>
 <span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-empty" title="No Anys on this line!">@when('I guess the letter "{letter}"')</span>
 <span class="line-empty" title="No Anys on this line!">def step_impl(context, letter):</span>
 <span class="line-empty" title="No Anys on this line!">    context.resultado = context.juego.arriesgarLetra(letter)</span>
+<span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-empty" title="No Anys on this line!">@then('I should see "{expected_progress}"')</span>
 <span class="line-empty" title="No Anys on this line!">def step_impl(context, expected_progress):</span>
 <span class="line-empty" title="No Anys on this line!">    assert context.juego.mostrarProgresoPalabra() == expected_progress</span>
 <span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-empty" title="No Anys on this line!">@when('I guess the word "{word}"')</span>
 <span class="line-empty" title="No Anys on this line!">def step_impl(context, word):</span>
 <span class="line-empty" title="No Anys on this line!">    context.resultado = context.juego.arriesgarPalabra(word)</span>
 <span class="line-empty" title="No Anys on this line!"></span>
-<span class="line-precise" title="No Anys on this line!">@then('the remaining attempts should be {expected_attempts:d}')</span>
+<span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-precise" title="No Anys on this line!">@then("the remaining attempts should be {expected_attempts:d}")</span>
 <span class="line-any" title="No Anys on this line!">def step_impl(context, expected_attempts):</span>
 <span class="line-unanalyzed" title="No Anys on this line!">    assert context.juego.intentosDisponibles() == expected_attempts</span>
-<span class="line-empty" title="No Anys on this line!"></span>
 </pre></td>
 </tr></tbody>
 </table>

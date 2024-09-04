@@ -111,35 +111,49 @@
 <span id="L101" class="lineno"><a class="lineno" href="#L101">101</a></span>
 <span id="L102" class="lineno"><a class="lineno" href="#L102">102</a></span>
 <span id="L103" class="lineno"><a class="lineno" href="#L103">103</a></span>
+<span id="L104" class="lineno"><a class="lineno" href="#L104">104</a></span>
+<span id="L105" class="lineno"><a class="lineno" href="#L105">105</a></span>
+<span id="L106" class="lineno"><a class="lineno" href="#L106">106</a></span>
+<span id="L107" class="lineno"><a class="lineno" href="#L107">107</a></span>
+<span id="L108" class="lineno"><a class="lineno" href="#L108">108</a></span>
+<span id="L109" class="lineno"><a class="lineno" href="#L109">109</a></span>
+<span id="L110" class="lineno"><a class="lineno" href="#L110">110</a></span>
+<span id="L111" class="lineno"><a class="lineno" href="#L111">111</a></span>
+<span id="L112" class="lineno"><a class="lineno" href="#L112">112</a></span>
+<span id="L113" class="lineno"><a class="lineno" href="#L113">113</a></span>
+<span id="L114" class="lineno"><a class="lineno" href="#L114">114</a></span>
+<span id="L115" class="lineno"><a class="lineno" href="#L115">115</a></span>
 </pre></td>
-<td class="table-code"><pre><span class="line-precise" title="No Anys on this line!">from flask import Flask, flash, render_template, request, redirect, url_for, session</span>
+<td class="table-code"><pre><span class="line-precise" title="No Anys on this line!">from flask import Flask, flash, redirect, render_template, request, session, url_for</span>
+<span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-precise" title="No Anys on this line!">from juego import Juego, Partida</span>
 <span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-precise" title="No Anys on this line!">app = Flask(__name__)</span>
-<span class="line-precise" title="No Anys on this line!">app.secret_key = 'tu_clave_secreta'</span>
+<span class="line-precise" title="No Anys on this line!">app.secret_key = "tu_clave_secreta"</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-precise" title="Any Types on this line: 
 Omitted Generics (x4)
-Explicit (x1)">@app.route('/')</span>
+Explicit (x1)">@app.route("/")</span>
 <span class="line-any" title="No Anys on this line!">def index():</span>
 <span class="line-any" title="Any Types on this line: 
-Explicit (x1)">    return render_template('index.html')</span>
+Explicit (x1)">    return render_template("index.html")</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-any" title="No Anys on this line!">def iniciar_juego():</span>
-<span class="line-any" title="No Anys on this line!">    palabra = request.form['palabra']</span>
+<span class="line-any" title="No Anys on this line!">    palabra = request.form["palabra"]</span>
 <span class="line-empty" title="No Anys on this line!">    try:</span>
 <span class="line-any" title="Any Types on this line: 
 Unannotated (x2)">        juego = Juego(palabra=palabra)</span>
 <span class="line-any" title="Any Types on this line: 
-Unannotated (x2)">        session['juego'] = juego.to_dict()</span>
+Unannotated (x2)">        session["juego"] = juego.to_dict()</span>
 <span class="line-precise" title="No Anys on this line!">    except ValueError as e:</span>
-<span class="line-any" title="No Anys on this line!">        flash(str(e), category='error')</span>
+<span class="line-any" title="No Anys on this line!">        flash(str(e), category="error")</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-any" title="No Anys on this line!">def arriesgar(juego):</span>
-<span class="line-any" title="No Anys on this line!">    intento = request.form['intento']</span>
+<span class="line-any" title="No Anys on this line!">    intento = request.form["intento"]</span>
 <span class="line-any" title="No Anys on this line!">    if len(intento) == 1:</span>
 <span class="line-any" title="Any Types on this line: 
 Unannotated (x4)">        resultado = juego.arriesgarLetra(intento)</span>
@@ -152,28 +166,28 @@ Unannotated (x1)">    return resultado</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-any" title="Any Types on this line: 
 Omitted Generics (x4)
-Explicit (x1)">@app.route('/juego', methods=['GET', 'POST'])</span>
+Explicit (x1)">@app.route("/juego", methods=["GET", "POST"])</span>
 <span class="line-any" title="No Anys on this line!">def juego():</span>
-<span class="line-any" title="No Anys on this line!">    if 'juego' not in session:</span>
-<span class="line-any" title="No Anys on this line!">        if request.method == 'POST':</span>
+<span class="line-any" title="No Anys on this line!">    if "juego" not in session:</span>
+<span class="line-any" title="No Anys on this line!">        if request.method == "POST":</span>
 <span class="line-any" title="Any Types on this line: 
 Unannotated (x2)">            iniciar_juego()</span>
 <span class="line-any" title="Any Types on this line: 
-Explicit (x1)">            return redirect(url_for('juego'))</span>
+Explicit (x1)">            return redirect(url_for("juego"))</span>
 <span class="line-any" title="Any Types on this line: 
-Explicit (x1)">        return render_template('juego-inicio.html')</span>
+Explicit (x1)">        return render_template("juego-inicio.html")</span>
 <span class="line-any" title="Any Types on this line: 
 Unannotated (x2)
-Error (x1)">    juego = Juego(data=session['juego'])</span>
+Error (x1)">    juego = Juego(data=session["juego"])</span>
 <span class="line-any" title="No Anys on this line!">    resultado = None</span>
-<span class="line-any" title="No Anys on this line!">    if request.method == 'POST':</span>
+<span class="line-any" title="No Anys on this line!">    if request.method == "POST":</span>
 <span class="line-any" title="Any Types on this line: 
 Unannotated (x4)">        resultado = arriesgar(juego)</span>
 <span class="line-any" title="Any Types on this line: 
-Unannotated (x2)">        session['juego'] = juego.to_dict()</span>
+Unannotated (x2)">        session["juego"] = juego.to_dict()</span>
 <span class="line-any" title="Any Types on this line: 
 Explicit (x1)
-Unannotated (x1)">    return render_template('juego.html', juego=juego, resultado=resultado)</span>
+Unannotated (x1)">    return render_template("juego.html", juego=juego, resultado=resultado)</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-any" title="No Anys on this line!">def url_redireccion(fallback=None):</span>
@@ -181,67 +195,71 @@ Unannotated (x1)">    return render_template('juego.html', juego=juego, resultad
 Unannotated (x1)">    if fallback is None:</span>
 <span class="line-any" title="Any Types on this line: 
 Explicit (x1)
-Unannotated (x1)">        fallback = url_for('index')</span>
+Unannotated (x1)">        fallback = url_for("index")</span>
 <span class="line-any" title="Any Types on this line: 
 Omitted Generics (x5)
-Unannotated (x2)">    redirecciones = request.values.get('redirect_to'), request.referrer, fallback</span>
+Unannotated (x2)">    redirecciones = request.values.get("redirect_to"), request.referrer, fallback</span>
 <span class="line-any" title="Any Types on this line: 
 Unannotated (x5)">    return [r for r in redirecciones if r][0]</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-any" title="Any Types on this line: 
 Omitted Generics (x4)
-Explicit (x1)">@app.route('/finalizar', methods=['POST'])</span>
+Explicit (x1)">@app.route("/finalizar", methods=["POST"])</span>
 <span class="line-any" title="No Anys on this line!">def finalizar():</span>
 <span class="line-any" title="Any Types on this line: 
 Error (x8)
-Omitted Generics (x2)">    session.pop('juego', None)</span>
+Omitted Generics (x2)">    session.pop("juego", None)</span>
 <span class="line-any" title="Any Types on this line: 
 Error (x8)
-Omitted Generics (x2)">    session.pop('jugadores', None)</span>
+Omitted Generics (x2)">    session.pop("jugadores", None)</span>
 <span class="line-any" title="Any Types on this line: 
 Error (x8)
-Omitted Generics (x2)">    session.pop('partida', None)</span>
+Omitted Generics (x2)">    session.pop("partida", None)</span>
 <span class="line-any" title="Any Types on this line: 
 Unannotated (x3)">    return redirect(url_redireccion())</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-any" title="No Anys on this line!">def iniciar_partida():</span>
-<span class="line-any" title="No Anys on this line!">    keys = ['jugador1', 'jugador2']</span>
-<span class="line-any" title="No Anys on this line!">    session['jugadores'] = [request.form[k] for k in keys]</span>
+<span class="line-any" title="No Anys on this line!">    keys = ["jugador1", "jugador2"]</span>
+<span class="line-any" title="No Anys on this line!">    session["jugadores"] = [request.form[k] for k in keys]</span>
 <span class="line-precise" title="Any Types on this line: 
 Unannotated (x1)">    p = Partida()</span>
 <span class="line-any" title="Any Types on this line: 
-Unannotated (x2)">    session['partida'] = p.to_dict()</span>
+Unannotated (x2)">    session["partida"] = p.to_dict()</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-any" title="No Anys on this line!">def iniciar_ronda(partida):</span>
-<span class="line-any" title="No Anys on this line!">    palabra = request.form['palabra']</span>
+<span class="line-any" title="No Anys on this line!">    palabra = request.form["palabra"]</span>
 <span class="line-any" title="Any Types on this line: 
 Unannotated (x3)">    partida.comenzarRonda(palabra)</span>
 <span class="line-any" title="Any Types on this line: 
-Unannotated (x3)">    session['partida'] = partida.to_dict()</span>
+Unannotated (x3)">    session["partida"] = partida.to_dict()</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-any" title="Any Types on this line: 
 Omitted Generics (x4)
-Explicit (x1)">@app.route('/partida', methods=['GET', 'POST'])</span>
+Explicit (x1)">@app.route("/partida", methods=["GET", "POST"])</span>
 <span class="line-any" title="No Anys on this line!">def partida():</span>
 <span class="line-any" title="Any Types on this line: 
 Error (x7)
-Omitted Generics (x2)">    jugadores = session.get('jugadores')</span>
+Omitted Generics (x2)">    jugadores = session.get("jugadores")</span>
 <span class="line-any" title="Any Types on this line: 
 Unannotated (x1)
-Error (x1)">    partida = Partida(data=session['partida']) if 'partida' in session else None</span>
+Error (x1)">    partida = Partida(data=session["partida"]) if "partida" in session else None</span>
 <span class="line-precise" title="No Anys on this line!">    if not partida:</span>
-<span class="line-any" title="No Anys on this line!">        if request.method == 'POST':</span>
+<span class="line-any" title="No Anys on this line!">        if request.method == "POST":</span>
 <span class="line-any" title="Any Types on this line: 
 Unannotated (x2)">            iniciar_partida()</span>
 <span class="line-any" title="Any Types on this line: 
-Explicit (x1)">            return redirect(url_for('partida'))</span>
+Explicit (x1)">            return redirect(url_for("partida"))</span>
 <span class="line-any" title="Any Types on this line: 
-Explicit (x1)
-Error (x1)">        return render_template('partida-inicio.html', jugadores=jugadores, partida=partida)</span>
+Explicit (x1)">        return render_template(</span>
+<span class="line-any" title="No Anys on this line!">            "partida-inicio.html",</span>
+<span class="line-imprecise" title="Any Types on this line: 
+Error (x1)">            jugadores=jugadores,</span>
+<span class="line-precise" title="No Anys on this line!">            partida=partida,</span>
+<span class="line-empty" title="No Anys on this line!">        )</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-any" title="Any Types on this line: 
 Unannotated (x5)">    iniciar_ronda = partida.idJugadorActual is None or partida.rondaFinalizo()</span>
@@ -249,7 +267,7 @@ Unannotated (x5)">    iniciar_ronda = partida.idJugadorActual is None or partida
 Unannotated (x3)">    jugador_palabra = 0 if partida.idJugadorActual is None else partida.idJugadorActual</span>
 <span class="line-any" title="Any Types on this line: 
 Unannotated (x4)">    jugador_adivina = (jugador_palabra + 1) % 2</span>
-<span class="line-any" title="No Anys on this line!">    if request.method == 'POST':</span>
+<span class="line-any" title="No Anys on this line!">    if request.method == "POST":</span>
 <span class="line-any" title="Any Types on this line: 
 Unannotated (x2)">        if not partida.finalizo():</span>
 <span class="line-imprecise" title="Any Types on this line: 
@@ -263,20 +281,27 @@ Unannotated (x3)">                arriesgar(partida.juego)</span>
 <span class="line-any" title="Any Types on this line: 
 Unannotated (x2)">                partida.actualizarPuntos()</span>
 <span class="line-any" title="Any Types on this line: 
-Unannotated (x2)">                session['partida'] = partida.to_dict()</span>
+Unannotated (x2)">                session["partida"] = partida.to_dict()</span>
 <span class="line-empty" title="No Anys on this line!">        else:</span>
-<span class="line-any" title="No Anys on this line!">            flash('La partida ya finalizó', category='error')</span>
+<span class="line-any" title="No Anys on this line!">            flash("La partida ya finalizó", category="error")</span>
 <span class="line-any" title="Any Types on this line: 
-Explicit (x1)">        return redirect(url_for('partida'))</span>
+Explicit (x1)">        return redirect(url_for("partida"))</span>
 <span class="line-any" title="Any Types on this line: 
-Explicit (x1)
-Error (x1)
-Unannotated (x1)">    return render_template('partida.html', jugadores=jugadores, partida=partida, iniciar_ronda=iniciar_ronda,</span>
+Explicit (x1)">    return render_template(</span>
+<span class="line-any" title="No Anys on this line!">        "partida.html",</span>
+<span class="line-imprecise" title="Any Types on this line: 
+Error (x1)">        jugadores=jugadores,</span>
+<span class="line-precise" title="No Anys on this line!">        partida=partida,</span>
+<span class="line-imprecise" title="Any Types on this line: 
+Unannotated (x1)">        iniciar_ronda=iniciar_ronda,</span>
 <span class="line-any" title="Any Types on this line: 
-Unannotated (x2)">                           jugador_palabra=jugador_palabra, jugador_adivina=jugador_adivina)</span>
+Unannotated (x1)">        jugador_palabra=jugador_palabra,</span>
+<span class="line-any" title="Any Types on this line: 
+Unannotated (x1)">        jugador_adivina=jugador_adivina,</span>
+<span class="line-empty" title="No Anys on this line!">    )</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-empty" title="No Anys on this line!"></span>
-<span class="line-precise" title="No Anys on this line!">if __name__ == '__main__':</span>
+<span class="line-precise" title="No Anys on this line!">if __name__ == "__main__":</span>
 <span class="line-precise" title="Any Types on this line: 
 Explicit (x1)">    app.run(debug=True)</span>
 </pre></td>

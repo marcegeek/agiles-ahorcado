@@ -1,7 +1,1 @@
-5     E231 missing whitespace after ','
-73    E302 expected 2 blank lines, found 1
-6     F811 redefinition of unused 'step_impl' from line 5
-10    W291 trailing whitespace
-1     W292 no newline at end of file
-7     W293 blank line contains whitespace
-2     W391 blank line at end of file
+6     F811 redefinition of unused 'step_impl' from line 6
