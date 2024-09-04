@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<testsuite errors="0" failures="1" name="mypy" skips="0" tests="1" time="4.178">
-  <testcase classname="mypy" file="mypy" line="1" name="mypy-py3_11-linux" time="4.178">
+<testsuite errors="0" failures="1" name="mypy" skips="0" tests="1" time="4.037">
+  <testcase classname="mypy" file="mypy" line="1" name="mypy-py3_11-linux" time="4.037">
     <failure message="mypy produced messages">juego.py:8: error: Function is missing a type annotation  [no-untyped-def]
         def __init__(self, palabra=None, data=None):
         ^
@@ -226,7 +226,8 @@ app.py:94: error: Call to untyped function "finalizo" in typed context
 [no-untyped-call]
             if not partida.finalizo():
                    ^~~~~~~~~~~~~~~~~~
-app.py:96: error: "Literal[True]" not callable  [misc]
+app.py:96: error: Call to untyped function "iniciar_ronda" in typed context 
+[no-untyped-call]
                     iniciar_ronda(partida)
                     ^~~~~~~~~~~~~~~~~~~~~~
 app.py:98: error: Call to untyped function "arriesgar" in typed context 

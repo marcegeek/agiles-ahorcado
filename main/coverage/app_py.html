@@ -67,7 +67,7 @@
             <a id="nextFileLink" class="nav" href="juego_py.html">&#xbb; next</a>
             &nbsp; &nbsp; &nbsp;
             <a class="nav" href="https://coverage.readthedocs.io/en/7.6.1">coverage.py v7.6.1</a>,
-            created at 2024-09-04 19:48 +0000
+            created at 2024-09-04 20:10 +0000
         </p>
         <aside class="hidden">
             <button type="button" class="button_next_chunk" data-shortcut="j"></button>
@@ -171,12 +171,12 @@
     <p class="pln"><span class="n"><a id="t87" href="#t87">87</a></span><span class="t">            <span class="nam">partida</span><span class="op">=</span><span class="nam">partida</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t88" href="#t88">88</a></span><span class="t">        <span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t89" href="#t89">89</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
-    <p class="mis show_mis"><span class="n"><a id="t90" href="#t90">90</a></span><span class="t">    <span class="nam">iniciar_ronda</span> <span class="op">=</span> <span class="nam">partida</span><span class="op">.</span><span class="nam">idJugadorActual</span> <span class="key">is</span> <span class="key">None</span> <span class="key">or</span> <span class="nam">partida</span><span class="op">.</span><span class="nam">rondaFinalizo</span><span class="op">(</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t90" href="#t90">90</a></span><span class="t">    <span class="nam">hay_que_iniciar_ronda</span> <span class="op">=</span> <span class="nam">partida</span><span class="op">.</span><span class="nam">idJugadorActual</span> <span class="key">is</span> <span class="key">None</span> <span class="key">or</span> <span class="nam">partida</span><span class="op">.</span><span class="nam">rondaFinalizo</span><span class="op">(</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p class="mis show_mis"><span class="n"><a id="t91" href="#t91">91</a></span><span class="t">    <span class="nam">jugador_palabra</span> <span class="op">=</span> <span class="num">0</span> <span class="key">if</span> <span class="nam">partida</span><span class="op">.</span><span class="nam">idJugadorActual</span> <span class="key">is</span> <span class="key">None</span> <span class="key">else</span> <span class="nam">partida</span><span class="op">.</span><span class="nam">idJugadorActual</span>&nbsp;</span><span class="r"></span></p>
     <p class="mis show_mis"><span class="n"><a id="t92" href="#t92">92</a></span><span class="t">    <span class="nam">jugador_adivina</span> <span class="op">=</span> <span class="op">(</span><span class="nam">jugador_palabra</span> <span class="op">+</span> <span class="num">1</span><span class="op">)</span> <span class="op">%</span> <span class="num">2</span>&nbsp;</span><span class="r"></span></p>
     <p class="mis show_mis"><span class="n"><a id="t93" href="#t93">93</a></span><span class="t">    <span class="key">if</span> <span class="nam">request</span><span class="op">.</span><span class="nam">method</span> <span class="op">==</span> <span class="str">"POST"</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
     <p class="mis show_mis"><span class="n"><a id="t94" href="#t94">94</a></span><span class="t">        <span class="key">if</span> <span class="key">not</span> <span class="nam">partida</span><span class="op">.</span><span class="nam">finalizo</span><span class="op">(</span><span class="op">)</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
-    <p class="mis show_mis"><span class="n"><a id="t95" href="#t95">95</a></span><span class="t">            <span class="key">if</span> <span class="nam">iniciar_ronda</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
+    <p class="mis show_mis"><span class="n"><a id="t95" href="#t95">95</a></span><span class="t">            <span class="key">if</span> <span class="nam">hay_que_iniciar_ronda</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
     <p class="mis show_mis"><span class="n"><a id="t96" href="#t96">96</a></span><span class="t">                <span class="nam">iniciar_ronda</span><span class="op">(</span><span class="nam">partida</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t97" href="#t97">97</a></span><span class="t">            <span class="key">else</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
     <p class="mis show_mis"><span class="n"><a id="t98" href="#t98">98</a></span><span class="t">                <span class="nam">arriesgar</span><span class="op">(</span><span class="nam">partida</span><span class="op">.</span><span class="nam">juego</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
@@ -189,7 +189,7 @@
     <p class="pln"><span class="n"><a id="t105" href="#t105">105</a></span><span class="t">        <span class="str">"partida.html"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t106" href="#t106">106</a></span><span class="t">        <span class="nam">jugadores</span><span class="op">=</span><span class="nam">jugadores</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t107" href="#t107">107</a></span><span class="t">        <span class="nam">partida</span><span class="op">=</span><span class="nam">partida</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t108" href="#t108">108</a></span><span class="t">        <span class="nam">iniciar_ronda</span><span class="op">=</span><span class="nam">iniciar_ronda</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t108" href="#t108">108</a></span><span class="t">        <span class="nam">iniciar_ronda</span><span class="op">=</span><span class="nam">hay_que_iniciar_ronda</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t109" href="#t109">109</a></span><span class="t">        <span class="nam">jugador_palabra</span><span class="op">=</span><span class="nam">jugador_palabra</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t110" href="#t110">110</a></span><span class="t">        <span class="nam">jugador_adivina</span><span class="op">=</span><span class="nam">jugador_adivina</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t111" href="#t111">111</a></span><span class="t">    <span class="op">)</span>&nbsp;</span><span class="r"></span></p>
@@ -206,7 +206,7 @@
             <a class="nav" href="juego_py.html">&#xbb; next</a>
             &nbsp; &nbsp; &nbsp;
             <a class="nav" href="https://coverage.readthedocs.io/en/7.6.1">coverage.py v7.6.1</a>,
-            created at 2024-09-04 19:48 +0000
+            created at 2024-09-04 20:10 +0000
         </p>
     </div>
 </footer>

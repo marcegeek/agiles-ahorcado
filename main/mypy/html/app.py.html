@@ -262,7 +262,7 @@ Error (x1)">            jugadores=jugadores,</span>
 <span class="line-empty" title="No Anys on this line!">        )</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-any" title="Any Types on this line: 
-Unannotated (x5)">    iniciar_ronda = partida.idJugadorActual is None or partida.rondaFinalizo()</span>
+Unannotated (x5)">    hay_que_iniciar_ronda = partida.idJugadorActual is None or partida.rondaFinalizo()</span>
 <span class="line-any" title="Any Types on this line: 
 Unannotated (x3)">    jugador_palabra = 0 if partida.idJugadorActual is None else partida.idJugadorActual</span>
 <span class="line-any" title="Any Types on this line: 
@@ -271,10 +271,9 @@ Unannotated (x4)">    jugador_adivina = (jugador_palabra + 1) % 2</span>
 <span class="line-any" title="Any Types on this line: 
 Unannotated (x2)">        if not partida.finalizo():</span>
 <span class="line-imprecise" title="Any Types on this line: 
-Unannotated (x1)">            if iniciar_ronda:</span>
+Unannotated (x1)">            if hay_que_iniciar_ronda:</span>
 <span class="line-any" title="Any Types on this line: 
-Error (x1)
-Unannotated (x1)">                iniciar_ronda(partida)</span>
+Unannotated (x3)">                iniciar_ronda(partida)</span>
 <span class="line-empty" title="No Anys on this line!">            else:</span>
 <span class="line-any" title="Any Types on this line: 
 Unannotated (x3)">                arriesgar(partida.juego)</span>
@@ -293,7 +292,7 @@ Explicit (x1)">    return render_template(</span>
 Error (x1)">        jugadores=jugadores,</span>
 <span class="line-precise" title="No Anys on this line!">        partida=partida,</span>
 <span class="line-imprecise" title="Any Types on this line: 
-Unannotated (x1)">        iniciar_ronda=iniciar_ronda,</span>
+Unannotated (x1)">        iniciar_ronda=hay_que_iniciar_ronda,</span>
 <span class="line-any" title="Any Types on this line: 
 Unannotated (x1)">        jugador_palabra=jugador_palabra,</span>
 <span class="line-any" title="Any Types on this line: 
