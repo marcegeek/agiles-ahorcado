@@ -1,112 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<testsuite errors="0" failures="1" name="mypy" skips="0" tests="1" time="4.023">
-  <testcase classname="mypy" file="mypy" line="1" name="mypy-py3_11-linux" time="4.023">
+<testsuite errors="0" failures="1" name="mypy" skips="0" tests="1" time="4.179">
+  <testcase classname="mypy" file="mypy" line="1" name="mypy-py3_11-linux" time="4.179">
     <failure message="mypy produced messages">juego.py:8: error: Function is missing a type annotation  [no-untyped-def]
         def __init__(self, palabra=None, data=None):
         ^
-juego.py:20: error: Function is missing a type annotation  [no-untyped-def]
+juego.py:22: error: Function is missing a type annotation  [no-untyped-def]
         def arriesgarLetra(self, letra):
         ^
-juego.py:27: error: Call to untyped function "mostrarProgresoPalabra" in typed
+juego.py:29: error: Call to untyped function "mostrarProgresoPalabra" in typed
 context  [no-untyped-call]
-                    if '_' not in self.mostrarProgresoPalabra():
+                    if "_" not in self.mostrarProgresoPalabra():
                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-juego.py:37: error: Function is missing a type annotation  [no-untyped-def]
+juego.py:39: error: Function is missing a type annotation  [no-untyped-def]
         def arriesgarPalabra(self, palabra):
         ^
-juego.py:47: error: Function is missing a return type annotation 
+juego.py:49: error: Function is missing a return type annotation 
 [no-untyped-def]
         def intentosDisponibles(self):
         ^
-juego.py:51: error: Function is missing a return type annotation 
+juego.py:53: error: Function is missing a return type annotation 
 [no-untyped-def]
         def mostrarProgresoPalabra(self):
         ^
-juego.py:62: error: Function is missing a return type annotation 
+juego.py:64: error: Function is missing a return type annotation 
 [no-untyped-def]
         def perdio(self):
         ^
-juego.py:63: error: Call to untyped function "intentosDisponibles" in typed
+juego.py:65: error: Call to untyped function "intentosDisponibles" in typed
 context  [no-untyped-call]
             return not self.acerto and self.intentosDisponibles() == 0
                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~
-juego.py:65: error: Function is missing a return type annotation 
+juego.py:67: error: Function is missing a return type annotation 
 [no-untyped-def]
         def finalizo(self):
         ^
-juego.py:66: error: Call to untyped function "perdio" in typed context 
+juego.py:68: error: Call to untyped function "perdio" in typed context 
 [no-untyped-call]
             return self.acerto or self.perdio()
                                   ^~~~~~~~~~~~~
-juego.py:68: error: Function is missing a return type annotation 
+juego.py:70: error: Function is missing a return type annotation 
 [no-untyped-def]
         def puntaje(self):
         ^
-juego.py:69: error: Call to untyped function "intentosDisponibles" in typed
+juego.py:71: error: Call to untyped function "intentosDisponibles" in typed
 context  [no-untyped-call]
             return 0 if not self.acerto else self.intentosDisponibles()
                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~
-juego.py:71: error: Function is missing a return type annotation 
+juego.py:73: error: Function is missing a return type annotation 
 [no-untyped-def]
         def to_dict(self):
         ^
-juego.py:78: error: Function is missing a type annotation  [no-untyped-def]
+juego.py:80: error: Function is missing a type annotation  [no-untyped-def]
         def __init__(self, data=None):
         ^
-juego.py:81: error: Cannot determine type of "juego"  [has-type]
+juego.py:83: error: Cannot determine type of "juego"  [has-type]
                 if self.juego:
                    ^~~~~~~~~~
-juego.py:82: error: Call to untyped function "Juego" in typed context 
+juego.py:84: error: Call to untyped function "Juego" in typed context 
 [no-untyped-call]
                     self.juego = Juego(data=self.juego)
                                  ^~~~~~~~~~~~~~~~~~~~~~
-juego.py:82: error: Cannot determine type of "juego"  [has-type]
+juego.py:84: error: Cannot determine type of "juego"  [has-type]
                     self.juego = Juego(data=self.juego)
                                             ^~~~~~~~~~
-juego.py:86: error: Incompatible types in assignment (expression has type
+juego.py:88: error: Incompatible types in assignment (expression has type
 "None", variable has type "Juego")  [assignment]
                 self.juego = None
                              ^~~~
-juego.py:89: error: Function is missing a type annotation  [no-untyped-def]
+juego.py:91: error: Function is missing a type annotation  [no-untyped-def]
         def comenzarRonda(self, palabra):
         ^
-juego.py:97: error: Call to untyped function "Juego" in typed context 
+juego.py:99: error: Call to untyped function "Juego" in typed context 
 [no-untyped-call]
             self.juego = Juego(palabra)
                          ^~~~~~~~~~~~~~
-juego.py:99: error: Function is missing a return type annotation 
+juego.py:101: error: Function is missing a return type annotation 
 [no-untyped-def]
         def actualizarPuntos(self):
         ^
-juego.py:99: note: Use "-&gt; None" if function does not return a value
-juego.py:101: error: Invalid index type "Any | None" for "list[int]"; expected
+juego.py:101: note: Use "-&gt; None" if function does not return a value
+juego.py:103: error: Invalid index type "Any | None" for "list[int]"; expected
 type "SupportsIndex"  [index]
                 self.puntos[self.idJugadorActual] += self.juego.puntaje()
                             ^~~~~~~~~~~~~~~~~~~~
-juego.py:101: error: Call to untyped function "puntaje" in typed context 
+juego.py:103: error: Call to untyped function "puntaje" in typed context 
 [no-untyped-call]
                 self.puntos[self.idJugadorActual] += self.juego.puntaje()
                                                      ^~~~~~~~~~~~~~~~~~~~
-juego.py:103: error: Function is missing a return type annotation 
+juego.py:105: error: Function is missing a return type annotation 
 [no-untyped-def]
         def rondaFinalizo(self):
         ^
-juego.py:104: error: Call to untyped function "finalizo" in typed context 
+juego.py:106: error: Call to untyped function "finalizo" in typed context 
 [no-untyped-call]
             return self.juego is not None and self.juego.finalizo()
                                               ^~~~~~~~~~~~~~~~~~~~~
-juego.py:106: error: Function is missing a return type annotation 
+juego.py:108: error: Function is missing a return type annotation 
 [no-untyped-def]
         def finalizo(self):
         ^
-juego.py:107: error: Call to untyped function "rondaFinalizo" in typed context 
+juego.py:109: error: Call to untyped function "rondaFinalizo" in typed context 
 [no-untyped-call]
             return self.rondaFinalizo() and self.rondas[0] == self.numRond...
                    ^~~~~~~~~~~~~~~~~~~~
-juego.py:109: error: Function is missing a type annotation  [no-untyped-def]
+juego.py:111: error: Function is missing a type annotation  [no-untyped-def]
         def puntosJugador(self, idJugador):
         ^
-juego.py:112: error: Function is missing a return type annotation 
+juego.py:114: error: Function is missing a return type annotation 
 [no-untyped-def]
         def to_dict(self):
         ^
@@ -115,29 +115,29 @@ stub for module named "behave"  [import-not-found]
     from behave import given, when, then
     ^
 features/steps/juego_steps.py:1: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
-features/steps/juego_steps.py:8: error: Name "step_impl" already defined on
-line 4  [no-redef]
-    @when('I start the game')
+features/steps/juego_steps.py:10: error: Name "step_impl" already defined on
+line 5  [no-redef]
+    @when("I start the game")
      ^
-features/steps/juego_steps.py:12: error: Name "step_impl" already defined on
-line 4  [no-redef]
+features/steps/juego_steps.py:15: error: Name "step_impl" already defined on
+line 5  [no-redef]
     @then('I should see the masked word "{expected_progress}"')
      ^
-features/steps/juego_steps.py:16: error: Name "step_impl" already defined on
-line 4  [no-redef]
+features/steps/juego_steps.py:20: error: Name "step_impl" already defined on
+line 5  [no-redef]
     @when('I guess the letter "{letter}"')
      ^
-features/steps/juego_steps.py:20: error: Name "step_impl" already defined on
-line 4  [no-redef]
+features/steps/juego_steps.py:25: error: Name "step_impl" already defined on
+line 5  [no-redef]
     @then('I should see "{expected_progress}"')
      ^
-features/steps/juego_steps.py:24: error: Name "step_impl" already defined on
-line 4  [no-redef]
+features/steps/juego_steps.py:30: error: Name "step_impl" already defined on
+line 5  [no-redef]
     @when('I guess the word "{word}"')
      ^
-features/steps/juego_steps.py:28: error: Name "step_impl" already defined on
-line 4  [no-redef]
-    @then('the remaining attempts should be {expected_attempts:d}')
+features/steps/juego_steps.py:35: error: Name "step_impl" already defined on
+line 5  [no-redef]
+    @then("the remaining attempts should be {expected_attempts:d}")
      ^
 app.py:9: error: Function is missing a return type annotation  [no-untyped-def]
     def index():
@@ -153,7 +153,7 @@ app.py:16: error: Call to untyped function "Juego" in typed context
                     ^~~~~~~~~~~~~~~~~~~~~~
 app.py:17: error: Call to untyped function "to_dict" in typed context 
 [no-untyped-call]
-            session['juego'] = juego.to_dict()
+            session["juego"] = juego.to_dict()
                                ^~~~~~~~~~~~~~~
 app.py:22: error: Function is missing a type annotation  [no-untyped-def]
     def arriesgar(juego):
@@ -168,7 +168,7 @@ app.py:35: error: Call to untyped function "iniciar_juego" in typed context
                 ^~~~~~~~~~~~~~~
 app.py:38: error: Call to untyped function "Juego" in typed context 
 [no-untyped-call]
-        juego = Juego(data=session['juego'])
+        juego = Juego(data=session["juego"])
                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
 app.py:41: error: Call to untyped function "arriesgar" in typed context 
 [no-untyped-call]
@@ -176,7 +176,7 @@ app.py:41: error: Call to untyped function "arriesgar" in typed context
                         ^~~~~~~~~~~~~~~~
 app.py:42: error: Call to untyped function "to_dict" in typed context 
 [no-untyped-call]
-            session['juego'] = juego.to_dict()
+            session["juego"] = juego.to_dict()
                                ^~~~~~~~~~~~~~~
 app.py:46: error: Function is missing a type annotation  [no-untyped-def]
     def url_redireccion(fallback=None):
@@ -200,7 +200,7 @@ app.py:64: error: Call to untyped function "Partida" in typed context
             ^~~~~~~~~
 app.py:65: error: Call to untyped function "to_dict" in typed context 
 [no-untyped-call]
-        session['partida'] = p.to_dict()
+        session["partida"] = p.to_dict()
                              ^~~~~~~~~~~
 app.py:68: error: Function is missing a type annotation  [no-untyped-def]
     def iniciar_ronda(partida):
@@ -211,34 +211,34 @@ app.py:75: error: Function is missing a return type annotation
     ^
 app.py:77: error: Call to untyped function "Partida" in typed context 
 [no-untyped-call]
-        partida = Partida(data=session['partida']) if 'partida' in session...
+        partida = Partida(data=session["partida"]) if "partida" in session...
                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 app.py:80: error: Call to untyped function "iniciar_partida" in typed context 
 [no-untyped-call]
                 iniciar_partida()
                 ^~~~~~~~~~~~~~~~~
-app.py:84: error: Call to untyped function "rondaFinalizo" in typed context 
+app.py:86: error: Call to untyped function "rondaFinalizo" in typed context 
 [no-untyped-call]
     ...iciar_ronda = partida.idJugadorActual is None or partida.rondaFinalizo...
                                                         ^~~~~~~~~~~~~~~~~~~~~~~
-app.py:88: error: Call to untyped function "finalizo" in typed context 
+app.py:90: error: Call to untyped function "finalizo" in typed context 
 [no-untyped-call]
             if not partida.finalizo():
                    ^~~~~~~~~~~~~~~~~~
-app.py:90: error: "Literal[True]" not callable  [misc]
+app.py:92: error: "Literal[True]" not callable  [misc]
                     iniciar_ronda(partida)
                     ^~~~~~~~~~~~~~~~~~~~~~
-app.py:92: error: Call to untyped function "arriesgar" in typed context 
+app.py:94: error: Call to untyped function "arriesgar" in typed context 
 [no-untyped-call]
                     arriesgar(partida.juego)
                     ^~~~~~~~~~~~~~~~~~~~~~~~
-app.py:93: error: Call to untyped function "actualizarPuntos" in typed context 
+app.py:95: error: Call to untyped function "actualizarPuntos" in typed context 
 [no-untyped-call]
                     partida.actualizarPuntos()
                     ^~~~~~~~~~~~~~~~~~~~~~~~~~
-app.py:94: error: Call to untyped function "to_dict" in typed context 
+app.py:96: error: Call to untyped function "to_dict" in typed context 
 [no-untyped-call]
-                    session['partida'] = partida.to_dict()
+                    session["partida"] = partida.to_dict()
                                          ^~~~~~~~~~~~~~~~~</failure>
   </testcase>
 </testsuite>

@@ -124,6 +124,8 @@
 <span id="L114" class="lineno"><a class="lineno" href="#L114">114</a></span>
 <span id="L115" class="lineno"><a class="lineno" href="#L115">115</a></span>
 <span id="L116" class="lineno"><a class="lineno" href="#L116">116</a></span>
+<span id="L117" class="lineno"><a class="lineno" href="#L117">117</a></span>
+<span id="L118" class="lineno"><a class="lineno" href="#L118">118</a></span>
 </pre></td>
 <td class="table-code"><pre><span class="line-precise" title="No Anys on this line!">class Juego:</span>
 <span class="line-empty" title="No Anys on this line!">    # configuracion</span>
@@ -140,8 +142,10 @@ Explicit (x6)
 Unannotated (x1)">            self.__dict__.update(data)</span>
 <span class="line-empty" title="No Anys on this line!">        else:</span>
 <span class="line-any" title="Any Types on this line: 
-Unannotated (x5)">            if not palabra.replace(' ', '').isalpha():</span>
-<span class="line-any" title="No Anys on this line!">                raise ValueError("Palabra invalida: debe contener solo letras o espacios")</span>
+Unannotated (x5)">            if not palabra.replace(" ", "").isalpha():</span>
+<span class="line-precise" title="No Anys on this line!">                raise ValueError(</span>
+<span class="line-any" title="No Anys on this line!">                    "Palabra invalida: debe contener solo letras o espacios"</span>
+<span class="line-empty" title="No Anys on this line!">                )</span>
 <span class="line-any" title="Any Types on this line: 
 Unannotated (x4)">            self.palabra = palabra.lower()</span>
 <span class="line-any" title="No Anys on this line!">            self.acerto = False</span>
@@ -162,7 +166,7 @@ Unannotated (x3)">            self.letrasUsadas.append(letra)</span>
 <span class="line-any" title="Any Types on this line: 
 Unannotated (x2)">            if letra in self.palabra:</span>
 <span class="line-any" title="Any Types on this line: 
-Unannotated (x2)">                if '_' not in self.mostrarProgresoPalabra():</span>
+Unannotated (x2)">                if "_" not in self.mostrarProgresoPalabra():</span>
 <span class="line-any" title="No Anys on this line!">                    self.acerto = True</span>
 <span class="line-any" title="No Anys on this line!">                return "letra se encuentra"</span>
 <span class="line-empty" title="No Anys on this line!">            else:</span>
@@ -188,10 +192,10 @@ Unannotated (x3)">                self.letrasUsadas.append(i)</span>
 <span class="line-any" title="No Anys on this line!">    def intentosDisponibles(self):</span>
 <span class="line-any" title="Any Types on this line: 
 Omitted Generics (x23)">        return max(self.maxIntentos - self.intentosUsados, 0)</span>
-<span class="line-empty" title="No Anys on this line!">    </span>
+<span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-empty" title="No Anys on this line!">    # Retorna el progreso de la palabra.</span>
 <span class="line-any" title="No Anys on this line!">    def mostrarProgresoPalabra(self):</span>
-<span class="line-any" title="No Anys on this line!">        avance = ''</span>
+<span class="line-any" title="No Anys on this line!">        avance = ""</span>
 <span class="line-any" title="Any Types on this line: 
 Unannotated (x2)">        for i in self.palabra:</span>
 <span class="line-any" title="Any Types on this line: 
@@ -199,10 +203,10 @@ Unannotated (x2)">            if i in self.letrasUsadas:</span>
 <span class="line-any" title="Any Types on this line: 
 Unannotated (x2)">                avance = avance + i</span>
 <span class="line-any" title="Any Types on this line: 
-Unannotated (x2)">            elif i == ' ':</span>
-<span class="line-any" title="No Anys on this line!">                avance = avance + ' '</span>
+Unannotated (x2)">            elif i == " ":</span>
+<span class="line-any" title="No Anys on this line!">                avance = avance + " "</span>
 <span class="line-empty" title="No Anys on this line!">            else:</span>
-<span class="line-any" title="No Anys on this line!">                avance = avance + '_'      </span>
+<span class="line-any" title="No Anys on this line!">                avance = avance + "_"</span>
 <span class="line-precise" title="No Anys on this line!">        return avance</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-any" title="No Anys on this line!">    def perdio(self):</span>

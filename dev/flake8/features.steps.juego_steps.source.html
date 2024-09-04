@@ -26,99 +26,51 @@
                class="code sev- "><tt><i>3</i> &nbsp;</tt>
             </div>
             <div id="l4"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E302
-                     </span>
-                     Expected 2 blank lines, found 1</li>
-               
-               </ul><tt><i>4</i> <span class="nd">@given</span><span class="p">(</span><span class="s1">&#39;I have a valid word &quot;</span><span class="si">{word}</span><span class="s1">&quot;&#39;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>4</i> &nbsp;</tt>
             </div>
             <div id="l5"
-               class="code sev- "><tt><i>5</i> <span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>5</i> <span class="nd">@given</span><span class="p">(</span><span class="s1">&#39;I have a valid word &quot;</span><span class="si">{word}</span><span class="s1">&quot;&#39;</span><span class="p">)</span></tt>
             </div>
             <div id="l6"
-               class="code sev- "><tt><i>6</i>     <span class="n">context</span><span class="o">.</span><span class="n">juego</span> <span class="o">=</span> <span class="n">Juego</span><span class="p">(</span><span class="n">palabra</span><span class="o">=</span><span class="n">word</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>6</i> <span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span></tt>
             </div>
             <div id="l7"
-               class="code sev- "><tt><i>7</i> &nbsp;</tt>
+               class="code sev- "><tt><i>7</i>     <span class="n">context</span><span class="o">.</span><span class="n">juego</span> <span class="o">=</span> <span class="n">Juego</span><span class="p">(</span><span class="n">palabra</span><span class="o">=</span><span class="n">word</span><span class="p">)</span></tt>
             </div>
             <div id="l8"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E302
-                     </span>
-                     Expected 2 blank lines, found 1</li>
-               
-               </ul><tt><i>8</i> <span class="nd">@when</span><span class="p">(</span><span class="s1">&#39;I start the game&#39;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>8</i> &nbsp;</tt>
             </div>
             <div id="l9"
-               class="code sev-1  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-1">
-                        F811
-                     </span>
-                     Redefinition of unused 'step_impl' from line 5</li>
-               
-               </ul><tt><i>9</i> <span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>9</i> &nbsp;</tt>
             </div>
             <div id="l10"
-               class="code sev- "><tt><i>10</i>     <span class="k">pass</span></tt>
+               class="code sev- "><tt><i>10</i> <span class="nd">@when</span><span class="p">(</span><span class="s2">&quot;I start the game&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l11"
-               class="code sev- "><tt><i>11</i> &nbsp;</tt>
+               class="code sev-1  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-1">
+                        F811
+                     </span>
+                     Redefinition of unused 'step_impl' from line 6</li>
+               
+               </ul><tt><i>11</i> <span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">):</span></tt>
             </div>
             <div id="l12"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E302
-                     </span>
-                     Expected 2 blank lines, found 1</li>
-               
-               </ul><tt><i>12</i> <span class="nd">@then</span><span class="p">(</span><span class="s1">&#39;I should see the masked word &quot;</span><span class="si">{expected_progress}</span><span class="s1">&quot;&#39;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>12</i>     <span class="k">pass</span></tt>
             </div>
             <div id="l13"
-               class="code sev-1  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-1">
-                        F811
-                     </span>
-                     Redefinition of unused 'step_impl' from line 9</li>
-               
-               </ul><tt><i>13</i> <span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">expected_progress</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>13</i> &nbsp;</tt>
             </div>
             <div id="l14"
-               class="code sev- "><tt><i>14</i>     <span class="k">assert</span> <span class="n">context</span><span class="o">.</span><span class="n">juego</span><span class="o">.</span><span class="n">mostrarProgresoPalabra</span><span class="p">()</span> <span class="o">==</span> <span class="n">expected_progress</span></tt>
+               class="code sev- "><tt><i>14</i> &nbsp;</tt>
             </div>
             <div id="l15"
-               class="code sev- "><tt><i>15</i> &nbsp;</tt>
+               class="code sev- "><tt><i>15</i> <span class="nd">@then</span><span class="p">(</span><span class="s1">&#39;I should see the masked word &quot;</span><span class="si">{expected_progress}</span><span class="s1">&quot;&#39;</span><span class="p">)</span></tt>
             </div>
             <div id="l16"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E302
-                     </span>
-                     Expected 2 blank lines, found 1</li>
-               
-               </ul><tt><i>16</i> <span class="nd">@when</span><span class="p">(</span><span class="s1">&#39;I guess the letter &quot;</span><span class="si">{letter}</span><span class="s1">&quot;&#39;</span><span class="p">)</span></tt>
-            </div>
-            <div id="l17"
                class="code sev-1  le">
                <ul class="violations">
                
@@ -126,27 +78,21 @@
                      <span class="count sev-1">
                         F811
                      </span>
-                     Redefinition of unused 'step_impl' from line 13</li>
+                     Redefinition of unused 'step_impl' from line 11</li>
                
-               </ul><tt><i>17</i> <span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">letter</span><span class="p">):</span></tt>
+               </ul><tt><i>16</i> <span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">expected_progress</span><span class="p">):</span></tt>
+            </div>
+            <div id="l17"
+               class="code sev- "><tt><i>17</i>     <span class="k">assert</span> <span class="n">context</span><span class="o">.</span><span class="n">juego</span><span class="o">.</span><span class="n">mostrarProgresoPalabra</span><span class="p">()</span> <span class="o">==</span> <span class="n">expected_progress</span></tt>
             </div>
             <div id="l18"
-               class="code sev- "><tt><i>18</i>     <span class="n">context</span><span class="o">.</span><span class="n">resultado</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">juego</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>18</i> &nbsp;</tt>
             </div>
             <div id="l19"
                class="code sev- "><tt><i>19</i> &nbsp;</tt>
             </div>
             <div id="l20"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E302
-                     </span>
-                     Expected 2 blank lines, found 1</li>
-               
-               </ul><tt><i>20</i> <span class="nd">@then</span><span class="p">(</span><span class="s1">&#39;I should see &quot;</span><span class="si">{expected_progress}</span><span class="s1">&quot;&#39;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>20</i> <span class="nd">@when</span><span class="p">(</span><span class="s1">&#39;I guess the letter &quot;</span><span class="si">{letter}</span><span class="s1">&quot;&#39;</span><span class="p">)</span></tt>
             </div>
             <div id="l21"
                class="code sev-1  le">
@@ -156,29 +102,23 @@
                      <span class="count sev-1">
                         F811
                      </span>
-                     Redefinition of unused 'step_impl' from line 17</li>
+                     Redefinition of unused 'step_impl' from line 16</li>
                
-               </ul><tt><i>21</i> <span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">expected_progress</span><span class="p">):</span></tt>
+               </ul><tt><i>21</i> <span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">letter</span><span class="p">):</span></tt>
             </div>
             <div id="l22"
-               class="code sev- "><tt><i>22</i>     <span class="k">assert</span> <span class="n">context</span><span class="o">.</span><span class="n">juego</span><span class="o">.</span><span class="n">mostrarProgresoPalabra</span><span class="p">()</span> <span class="o">==</span> <span class="n">expected_progress</span></tt>
+               class="code sev- "><tt><i>22</i>     <span class="n">context</span><span class="o">.</span><span class="n">resultado</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">juego</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span></tt>
             </div>
             <div id="l23"
                class="code sev- "><tt><i>23</i> &nbsp;</tt>
             </div>
             <div id="l24"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E302
-                     </span>
-                     Expected 2 blank lines, found 1</li>
-               
-               </ul><tt><i>24</i> <span class="nd">@when</span><span class="p">(</span><span class="s1">&#39;I guess the word &quot;</span><span class="si">{word}</span><span class="s1">&quot;&#39;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>24</i> &nbsp;</tt>
             </div>
             <div id="l25"
+               class="code sev- "><tt><i>25</i> <span class="nd">@then</span><span class="p">(</span><span class="s1">&#39;I should see &quot;</span><span class="si">{expected_progress}</span><span class="s1">&quot;&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l26"
                class="code sev-1  le">
                <ul class="violations">
                
@@ -188,27 +128,21 @@
                      </span>
                      Redefinition of unused 'step_impl' from line 21</li>
                
-               </ul><tt><i>25</i> <span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span></tt>
-            </div>
-            <div id="l26"
-               class="code sev- "><tt><i>26</i>     <span class="n">context</span><span class="o">.</span><span class="n">resultado</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">juego</span><span class="o">.</span><span class="n">arriesgarPalabra</span><span class="p">(</span><span class="n">word</span><span class="p">)</span></tt>
+               </ul><tt><i>26</i> <span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">expected_progress</span><span class="p">):</span></tt>
             </div>
             <div id="l27"
-               class="code sev- "><tt><i>27</i> &nbsp;</tt>
+               class="code sev- "><tt><i>27</i>     <span class="k">assert</span> <span class="n">context</span><span class="o">.</span><span class="n">juego</span><span class="o">.</span><span class="n">mostrarProgresoPalabra</span><span class="p">()</span> <span class="o">==</span> <span class="n">expected_progress</span></tt>
             </div>
             <div id="l28"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E302
-                     </span>
-                     Expected 2 blank lines, found 1</li>
-               
-               </ul><tt><i>28</i> <span class="nd">@then</span><span class="p">(</span><span class="s1">&#39;the remaining attempts should be </span><span class="si">{expected_attempts:d}</span><span class="s1">&#39;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>28</i> &nbsp;</tt>
             </div>
             <div id="l29"
+               class="code sev- "><tt><i>29</i> &nbsp;</tt>
+            </div>
+            <div id="l30"
+               class="code sev- "><tt><i>30</i> <span class="nd">@when</span><span class="p">(</span><span class="s1">&#39;I guess the word &quot;</span><span class="si">{word}</span><span class="s1">&quot;&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l31"
                class="code sev-1  le">
                <ul class="violations">
                
@@ -216,12 +150,36 @@
                      <span class="count sev-1">
                         F811
                      </span>
-                     Redefinition of unused 'step_impl' from line 25</li>
+                     Redefinition of unused 'step_impl' from line 26</li>
                
-               </ul><tt><i>29</i> <span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">expected_attempts</span><span class="p">):</span></tt>
+               </ul><tt><i>31</i> <span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span></tt>
             </div>
-            <div id="l30"
-               class="code sev- "><tt><i>30</i>     <span class="k">assert</span> <span class="n">context</span><span class="o">.</span><span class="n">juego</span><span class="o">.</span><span class="n">intentosDisponibles</span><span class="p">()</span> <span class="o">==</span> <span class="n">expected_attempts</span></tt>
+            <div id="l32"
+               class="code sev- "><tt><i>32</i>     <span class="n">context</span><span class="o">.</span><span class="n">resultado</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">juego</span><span class="o">.</span><span class="n">arriesgarPalabra</span><span class="p">(</span><span class="n">word</span><span class="p">)</span></tt>
+            </div>
+            <div id="l33"
+               class="code sev- "><tt><i>33</i> &nbsp;</tt>
+            </div>
+            <div id="l34"
+               class="code sev- "><tt><i>34</i> &nbsp;</tt>
+            </div>
+            <div id="l35"
+               class="code sev- "><tt><i>35</i> <span class="nd">@then</span><span class="p">(</span><span class="s2">&quot;the remaining attempts should be </span><span class="si">{expected_attempts:d}</span><span class="s2">&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l36"
+               class="code sev-1  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-1">
+                        F811
+                     </span>
+                     Redefinition of unused 'step_impl' from line 31</li>
+               
+               </ul><tt><i>36</i> <span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">expected_attempts</span><span class="p">):</span></tt>
+            </div>
+            <div id="l37"
+               class="code sev- "><tt><i>37</i>     <span class="k">assert</span> <span class="n">context</span><span class="o">.</span><span class="n">juego</span><span class="o">.</span><span class="n">intentosDisponibles</span><span class="p">()</span> <span class="o">==</span> <span class="n">expected_attempts</span></tt>
             </div>
             
          </div>
