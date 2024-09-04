@@ -59,16 +59,6 @@ class Juego:
                 avance = avance + '_'      
         return avance
 
-    def informacionJuego(self):
-        return {
-            "intentos_restantes": self.intentosDisponibles(),
-            "letras_usadas": ' '.join(self.letrasUsadas),
-            "progreso_palabra": self.mostrarProgresoPalabra(),
-            "acerto": self.acerto,
-            "perdio": self.perdio(),
-            "finalizo": self.finalizo(),
-        }
-
     def perdio(self):
         return not self.acerto and self.intentosDisponibles() == 0
 
@@ -85,11 +75,16 @@ class Juego:
 class Partida:
     numRondas = 6  # rondas por cada jugador
 
-    def __init__(self):
-        self.rondas = [0, 0]
-        self.idJugadorActual = None
-        self.juego = None
-        self.puntos = [0, 0]
+    def __init__(self, data=None):
+        if data:
+            self.__dict__.update(data)
+            if self.juego:
+                self.juego = Juego(data=self.juego)
+        else:
+            self.rondas = [0, 0]
+            self.idJugadorActual = None
+            self.juego = None
+            self.puntos = [0, 0]
 
     def comenzarRonda(self, palabra):
         if self.idJugadorActual is None:
@@ -113,3 +108,9 @@ class Partida:
 
     def puntosJugador(self, idJugador):
         return self.puntos[idJugador]
+
+    def to_dict(self):
+        d = self.__dict__.copy()
+        if d["juego"]:
+            d["juego"] = d["juego"].to_dict()
+        return d

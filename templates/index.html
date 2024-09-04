@@ -2,12 +2,10 @@
 
 {% import "macros.html" as macros %}
 
-{% block title %}Inicio del Juego - {% endblock %}
+{% block title %}Inicio - {% endblock %}
 
 {% block main %}
     <h1>Bienvenido al Juego del Ahorcado</h1>
-    {{ macros.palabra_adivinar(url_for('iniciar')) }}
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
-    {% endif %}
+    <a class="btn btn-primary" href="{{ url_for('juego') }}">Iniciar un juego simple</a>
+    <a class="btn btn-primary" href="{{ url_for('partida') }}">Iniciar partida (6 rondas)</a>
 {% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio de la Partida - {% endblock %}
+
+{% block main %}
+    <h1>Binenvenidos a la partida a 6 rondas</h1>
+    <form action="" method="POST">
+        <label for="jugador1">Jugador 1</label>
+        <input type="text" id="jugador1" name="jugador1" required>
+        <label for="jugador2">Jugador 2</label>
+        <input type="text" id="jugador2" name="jugador2" required>
+        <button type="submit" class="btn btn-primary">Iniciar la partida</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% import "macros.html" as macros %}
+
+{% block title %}Inicio del Juego - {% endblock %}
+
+{% block main %}
+    <h1>Bienvenido al Juego del Ahorcado</h1>
+    {{ macros.palabra_adivinar() }}
+{% endblock %}

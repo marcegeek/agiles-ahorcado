@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% import "macros.html" as macros %}
+
+{% block title %}Partida en Progreso - {% endblock %}
+
+{% block main %}
+    <h1>Partida a 6 rondas</h1>
+    <h2>{{ jugadores[0] }} vs. {{ jugadores[1] }}: {{ partida.puntos[0] }}-{{ partida.puntos[1] }}</h2>
+    <p>Rondas iniciadas: {{ partida.rondas[0] }} vs. {{ partida.rondas[1] }}</p>
+    {% if not iniciar_ronda %}
+        <h3>{{ jugadores[partida.idJugadorActual] }}, es tu turno de adivinar</h3>
+        <p>Ronda: {{ partida.rondas[partida.idJugadorActual] }}</p>
+        {{ macros.juego(partida.juego) }}
+    {% else %}
+        {% if partida.juego %}{{ macros.juego(partida.juego) }}{% endif %}
+        <p>{{ jugadores[jugador_palabra] }}, ingresa la palabra para {{ jugadores[jugador_adivina] }}:</p>
+        {{ macros.palabra_adivinar(texto_boton='Ingresar palabra') }}
+    {% endif %}
+    <form action="{{ url_for('finalizar', redirect_to=url_for('partida')) }}" method="POST">
+        <button type="submit" class="btn btn-danger">Finalizar la partida</button>
+    </form>
+{% endblock %}
