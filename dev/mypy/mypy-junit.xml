@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuite errors="0" failures="1" name="mypy" skips="0" tests="1" time="3.884">
+  <testcase classname="mypy" file="mypy" line="1" name="mypy-py3_11-linux" time="3.884">
+    <failure message="mypy produced messages">juego.py:9: error: Function is missing a type annotation  [no-untyped-def]
+        def __init__(self, palabra=None, data=None):
+        ^
+juego.py:21: error: Function is missing a type annotation  [no-untyped-def]
+        def arriesgarLetra(self, letra):
+        ^
+juego.py:28: error: Call to untyped function "mostrarProgresoPalabra" in typed
+context  [no-untyped-call]
+                    if '_' not in self.mostrarProgresoPalabra():
+                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+juego.py:38: error: Function is missing a type annotation  [no-untyped-def]
+        def arriesgarPalabra(self, palabra):
+        ^
+juego.py:48: error: Function is missing a return type annotation 
+[no-untyped-def]
+        def intentosDisponibles(self):
+        ^
+juego.py:52: error: Function is missing a return type annotation 
+[no-untyped-def]
+        def mostrarProgresoPalabra(self):
+        ^
+juego.py:63: error: Function is missing a return type annotation 
+[no-untyped-def]
+        def informacionJuego(self):
+        ^
+juego.py:65: error: Call to untyped function "intentosDisponibles" in typed
+context  [no-untyped-call]
+                "intentos_restantes": self.intentosDisponibles(),
+                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+juego.py:67: error: Call to untyped function "mostrarProgresoPalabra" in typed
+context  [no-untyped-call]
+                "progreso_palabra": self.mostrarProgresoPalabra(),
+                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+juego.py:71: error: Function is missing a return type annotation 
+[no-untyped-def]
+        def to_dict(self):
+        ^
+features/steps/juego_steps.py:1: error: Cannot find implementation or library
+stub for module named "behave"  [import-not-found]
+    from behave import given, when, then
+    ^
+features/steps/juego_steps.py:1: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+features/steps/juego_steps.py:8: error: Name "step_impl" already defined on
+line 4  [no-redef]
+    @when('I start the game')
+     ^
+features/steps/juego_steps.py:12: error: Name "step_impl" already defined on
+line 4  [no-redef]
+    @then('I should see the masked word "{expected_progress}"')
+     ^
+features/steps/juego_steps.py:16: error: Name "step_impl" already defined on
+line 4  [no-redef]
+    @when('I guess the letter "{letter}"')
+     ^
+features/steps/juego_steps.py:20: error: Name "step_impl" already defined on
+line 4  [no-redef]
+    @then('I should see "{expected_progress}"')
+     ^
+features/steps/juego_steps.py:24: error: Name "step_impl" already defined on
+line 4  [no-redef]
+    @when('I guess the word "{word}"')
+     ^
+features/steps/juego_steps.py:28: error: Name "step_impl" already defined on
+line 4  [no-redef]
+    @then('the remaining attempts should be {expected_attempts:d}')
+     ^
+app.py:8: error: Function is missing a return type annotation  [no-untyped-def]
+    def index():
+    ^
+app.py:12: error: Function is missing a return type annotation 
+[no-untyped-def]
+    def iniciar():
+    ^
+app.py:15: error: Call to untyped function "Juego" in typed context 
+[no-untyped-call]
+            juego = Juego(palabra=palabra)
+                    ^~~~~~~~~~~~~~~~~~~~~~
+app.py:16: error: Call to untyped function "to_dict" in typed context 
+[no-untyped-call]
+            session['juego'] = juego.to_dict()
+                               ^~~~~~~~~~~~~~~
+app.py:22: error: Function is missing a return type annotation 
+[no-untyped-def]
+    def jugar():
+    ^
+app.py:26: error: Call to untyped function "Juego" in typed context 
+[no-untyped-call]
+        juego = Juego(data=session['juego'])
+                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+app.py:31: error: Call to untyped function "arriesgarLetra" in typed context 
+[no-untyped-call]
+                resultado = juego.arriesgarLetra(intento)
+                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+app.py:33: error: Call to untyped function "arriesgarPalabra" in typed context 
+[no-untyped-call]
+                resultado = juego.arriesgarPalabra(intento)
+                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+app.py:34: error: Call to untyped function "to_dict" in typed context 
+[no-untyped-call]
+            session['juego'] = juego.to_dict()
+                               ^~~~~~~~~~~~~~~
+app.py:35: error: Call to untyped function "informacionJuego" in typed context 
+[no-untyped-call]
+    ...      return render_template('jugar.html', juego=juego.informacionJueg...
+                                                        ^~~~~~~~~~~~~~~~~~~~~~~~
+app.py:37: error: Call to untyped function "informacionJuego" in typed context 
+[no-untyped-call]
+        return render_template('jugar.html', juego=juego.informacionJuego(...
+                                                   ^~~~~~~~~~~~~~~~~~~~~~~~</failure>
+  </testcase>
+</testsuite>
