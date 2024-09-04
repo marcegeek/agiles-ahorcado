@@ -419,141 +419,120 @@
                      </span>
                      Expected 2 blank lines, found 1</li>
                
-               </ul><tt><i>84</i> <span class="k">def</span> <span class="nf">test_letra_pierde_mensaje</span><span class="p">():</span></tt>
+               </ul><tt><i>84</i> <span class="k">def</span> <span class="nf">test_letra_pierde_perdio</span><span class="p">():</span></tt>
             </div>
             <div id="l85"
-               class="code sev- "><tt><i>85</i>     <span class="c1"># Si arriesga maxIntentos veces y pierde el mensaje debe ser &quot;letra no se encuentra&quot;</span></tt>
+               class="code sev- "><tt><i>85</i>     <span class="c1"># Si arriesga maxIntentos veces y pierde perdio() debe ser True</span></tt>
             </div>
             <div id="l86"
                class="code sev- "><tt><i>86</i>     <span class="n">j</span> <span class="o">=</span> <span class="n">Juego</span><span class="p">(</span><span class="s2">&quot;palabra&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l87"
-               class="code sev- "><tt><i>87</i>     <span class="n">resultado</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span></tt>
+               class="code sev- "><tt><i>87</i>     <span class="n">j</span><span class="o">.</span><span class="n">intentosUsados</span> <span class="o">=</span> <span class="n">j</span><span class="o">.</span><span class="n">maxIntentos</span></tt>
             </div>
             <div id="l88"
-               class="code sev- "><tt><i>88</i>     <span class="n">j</span><span class="o">.</span><span class="n">intentosUsados</span> <span class="o">=</span> <span class="n">j</span><span class="o">.</span><span class="n">maxIntentos</span></tt>
+               class="code sev- "><tt><i>88</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span></tt>
             </div>
             <div id="l89"
-               class="code sev- "><tt><i>89</i>     <span class="n">resultado</span> <span class="o">=</span> <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>89</i>     <span class="k">assert</span> <span class="n">j</span><span class="o">.</span><span class="n">perdio</span><span class="p">()</span></tt>
             </div>
             <div id="l90"
-               class="code sev- "><tt><i>90</i>     <span class="k">assert</span> <span class="n">resultado</span> <span class="o">==</span> <span class="s1">&#39;letra no se encuentra&#39;</span></tt>
+               class="code sev- "><tt><i>90</i> &nbsp;</tt>
             </div>
             <div id="l91"
-               class="code sev- "><tt><i>91</i> &nbsp;</tt>
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E302
+                     </span>
+                     Expected 2 blank lines, found 1</li>
+               
+               </ul><tt><i>91</i> <span class="k">def</span> <span class="nf">test_letra_pierde_finalizo</span><span class="p">():</span></tt>
             </div>
             <div id="l92"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E302
-                     </span>
-                     Expected 2 blank lines, found 1</li>
-               
-               </ul><tt><i>92</i> <span class="k">def</span> <span class="nf">test_letra_pierde_intentos</span><span class="p">():</span></tt>
+               class="code sev- "><tt><i>92</i>     <span class="c1"># Si arriesga maxIntentos veces y pierde finalizo() debe ser True</span></tt>
             </div>
             <div id="l93"
-               class="code sev- "><tt><i>93</i>     <span class="c1"># Si arriesga maxIntentos veces y el nro de intentos debe ser 0.</span></tt>
+               class="code sev- "><tt><i>93</i>     <span class="n">j</span> <span class="o">=</span> <span class="n">Juego</span><span class="p">(</span><span class="s2">&quot;palabra&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l94"
-               class="code sev- "><tt><i>94</i>     <span class="n">j</span> <span class="o">=</span> <span class="n">Juego</span><span class="p">(</span><span class="s2">&quot;palabra&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>94</i>     <span class="n">j</span><span class="o">.</span><span class="n">intentosUsados</span> <span class="o">=</span> <span class="n">j</span><span class="o">.</span><span class="n">maxIntentos</span></tt>
             </div>
             <div id="l95"
-               class="code sev- "><tt><i>95</i>     <span class="n">j</span><span class="o">.</span><span class="n">intentosUsados</span> <span class="o">=</span> <span class="n">j</span><span class="o">.</span><span class="n">maxIntentos</span></tt>
+               class="code sev- "><tt><i>95</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span></tt>
             </div>
             <div id="l96"
-               class="code sev- "><tt><i>96</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>96</i>     <span class="k">assert</span> <span class="n">j</span><span class="o">.</span><span class="n">finalizo</span><span class="p">()</span></tt>
             </div>
             <div id="l97"
-               class="code sev- "><tt><i>97</i>     <span class="k">assert</span> <span class="n">j</span><span class="o">.</span><span class="n">intentosDisponibles</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span></tt>
+               class="code sev- "><tt><i>97</i> &nbsp;</tt>
             </div>
             <div id="l98"
-               class="code sev- "><tt><i>98</i> &nbsp;</tt>
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E302
+                     </span>
+                     Expected 2 blank lines, found 1</li>
+               
+               </ul><tt><i>98</i> <span class="k">def</span> <span class="nf">test_letra_pierde_mensaje</span><span class="p">():</span></tt>
             </div>
             <div id="l99"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        W291
-                     </span>
-                     Trailing whitespace</li>
-               
-               </ul><tt><i>99</i> <span class="c1"># Letra gana  </span></tt>
+               class="code sev- "><tt><i>99</i>     <span class="c1"># Si arriesga maxIntentos veces y pierde el mensaje debe ser &quot;letra no se encuentra&quot;</span></tt>
             </div>
             <div id="l100"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        E302
-                     </span>
-                     Expected 2 blank lines, found 1</li>
-               
-               </ul><tt><i>100</i> <span class="k">def</span> <span class="nf">test_letra_gana_mensaje</span><span class="p">():</span></tt>
+               class="code sev- "><tt><i>100</i>     <span class="n">j</span> <span class="o">=</span> <span class="n">Juego</span><span class="p">(</span><span class="s2">&quot;palabra&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l101"
-               class="code sev- "><tt><i>101</i>     <span class="c1"># Si adivina la palabra el mensaje debe ser &quot;letra se encuentra&quot; y acerto=True.</span></tt>
+               class="code sev- "><tt><i>101</i>     <span class="n">resultado</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span></tt>
             </div>
             <div id="l102"
-               class="code sev- "><tt><i>102</i>     <span class="n">j</span> <span class="o">=</span> <span class="n">Juego</span><span class="p">(</span><span class="s2">&quot;celu&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>102</i>     <span class="n">j</span><span class="o">.</span><span class="n">intentosUsados</span> <span class="o">=</span> <span class="n">j</span><span class="o">.</span><span class="n">maxIntentos</span></tt>
             </div>
             <div id="l103"
-               class="code sev- "><tt><i>103</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>103</i>     <span class="n">resultado</span> <span class="o">=</span> <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span></tt>
             </div>
             <div id="l104"
-               class="code sev- "><tt><i>104</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;e&#39;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>104</i>     <span class="k">assert</span> <span class="n">resultado</span> <span class="o">==</span> <span class="s1">&#39;letra no se encuentra&#39;</span></tt>
             </div>
             <div id="l105"
-               class="code sev- "><tt><i>105</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>105</i> &nbsp;</tt>
             </div>
             <div id="l106"
-               class="code sev- "><tt><i>106</i>     <span class="n">resultado</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span></tt>
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E302
+                     </span>
+                     Expected 2 blank lines, found 1</li>
+               
+               </ul><tt><i>106</i> <span class="k">def</span> <span class="nf">test_letra_pierde_intentos</span><span class="p">():</span></tt>
             </div>
             <div id="l107"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        W291
-                     </span>
-                     Trailing whitespace</li>
-               
-               </ul><tt><i>107</i>     <span class="n">resultado</span> <span class="o">=</span> <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">)</span>        </tt>
+               class="code sev- "><tt><i>107</i>     <span class="c1"># Si arriesga maxIntentos veces el nro de intentos debe ser 0.</span></tt>
             </div>
             <div id="l108"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        W291
-                     </span>
-                     Trailing whitespace</li>
-               
-               </ul><tt><i>108</i>     <span class="k">assert</span> <span class="n">resultado</span> <span class="o">==</span> <span class="s2">&quot;letra se encuentra&quot;</span> </tt>
+               class="code sev- "><tt><i>108</i>     <span class="n">j</span> <span class="o">=</span> <span class="n">Juego</span><span class="p">(</span><span class="s2">&quot;palabra&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l109"
-               class="code sev- "><tt><i>109</i>     <span class="k">assert</span> <span class="n">j</span><span class="o">.</span><span class="n">acerto</span></tt>
+               class="code sev- "><tt><i>109</i>     <span class="n">j</span><span class="o">.</span><span class="n">intentosUsados</span> <span class="o">=</span> <span class="n">j</span><span class="o">.</span><span class="n">maxIntentos</span></tt>
             </div>
             <div id="l110"
-               class="code sev-2  le">
-               <ul class="violations">
-               
-                  <li>
-                     <span class="count sev-2">
-                        W293
-                     </span>
-                     Blank line contains whitespace</li>
-               
-               </ul><tt><i>110</i>     </tt>
+               class="code sev- "><tt><i>110</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span></tt>
             </div>
             <div id="l111"
+               class="code sev- "><tt><i>111</i>     <span class="k">assert</span> <span class="n">j</span><span class="o">.</span><span class="n">intentosDisponibles</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span></tt>
+            </div>
+            <div id="l112"
+               class="code sev- "><tt><i>112</i> &nbsp;</tt>
+            </div>
+            <div id="l113"
                class="code sev-2  le">
                <ul class="violations">
                
@@ -563,24 +542,93 @@
                      </span>
                      Expected 2 blank lines, found 1</li>
                
-               </ul><tt><i>111</i> <span class="k">def</span> <span class="nf">test_letra_gana_progreso</span><span class="p">():</span></tt>
-            </div>
-            <div id="l112"
-               class="code sev- "><tt><i>112</i>     <span class="c1"># Si adivina la palabra el progreso esta completo</span></tt>
-            </div>
-            <div id="l113"
-               class="code sev- "><tt><i>113</i>     <span class="n">j</span> <span class="o">=</span> <span class="n">Juego</span><span class="p">(</span><span class="s2">&quot;celu&quot;</span><span class="p">)</span></tt>
+               </ul><tt><i>113</i> <span class="k">def</span> <span class="nf">test_letra_pierde_puntaje</span><span class="p">():</span></tt>
             </div>
             <div id="l114"
-               class="code sev- "><tt><i>114</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>114</i>     <span class="n">j</span> <span class="o">=</span> <span class="n">Juego</span><span class="p">(</span><span class="s2">&quot;palabra&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l115"
-               class="code sev- "><tt><i>115</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;e&#39;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>115</i>     <span class="n">j</span><span class="o">.</span><span class="n">intentosUsados</span> <span class="o">=</span> <span class="n">j</span><span class="o">.</span><span class="n">maxIntentos</span></tt>
             </div>
             <div id="l116"
-               class="code sev- "><tt><i>116</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>116</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span></tt>
             </div>
             <div id="l117"
+               class="code sev- "><tt><i>117</i>     <span class="k">assert</span> <span class="n">j</span><span class="o">.</span><span class="n">finalizo</span><span class="p">()</span> <span class="ow">and</span> <span class="n">j</span><span class="o">.</span><span class="n">puntaje</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span></tt>
+            </div>
+            <div id="l118"
+               class="code sev- "><tt><i>118</i> &nbsp;</tt>
+            </div>
+            <div id="l119"
+               class="code sev- "><tt><i>119</i> <span class="c1"># Letra gana</span></tt>
+            </div>
+            <div id="l120"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E302
+                     </span>
+                     Expected 2 blank lines, found 1</li>
+               
+               </ul><tt><i>120</i> <span class="k">def</span> <span class="nf">test_letra_gana_finalizo</span><span class="p">():</span></tt>
+            </div>
+            <div id="l121"
+               class="code sev- "><tt><i>121</i>     <span class="c1"># Si adivina la palabra finalizo() debe ser True</span></tt>
+            </div>
+            <div id="l122"
+               class="code sev- "><tt><i>122</i>     <span class="n">j</span> <span class="o">=</span> <span class="n">Juego</span><span class="p">(</span><span class="s2">&quot;celu&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l123"
+               class="code sev- "><tt><i>123</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l124"
+               class="code sev- "><tt><i>124</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;e&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l125"
+               class="code sev- "><tt><i>125</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l126"
+               class="code sev- "><tt><i>126</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l127"
+               class="code sev- "><tt><i>127</i>     <span class="k">assert</span> <span class="n">j</span><span class="o">.</span><span class="n">finalizo</span><span class="p">()</span></tt>
+            </div>
+            <div id="l128"
+               class="code sev- "><tt><i>128</i> &nbsp;</tt>
+            </div>
+            <div id="l129"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E302
+                     </span>
+                     Expected 2 blank lines, found 1</li>
+               
+               </ul><tt><i>129</i> <span class="k">def</span> <span class="nf">test_letra_gana_mensaje</span><span class="p">():</span></tt>
+            </div>
+            <div id="l130"
+               class="code sev- "><tt><i>130</i>     <span class="c1"># Si adivina la palabra el mensaje debe ser &quot;letra se encuentra&quot; y acerto=True.</span></tt>
+            </div>
+            <div id="l131"
+               class="code sev- "><tt><i>131</i>     <span class="n">j</span> <span class="o">=</span> <span class="n">Juego</span><span class="p">(</span><span class="s2">&quot;celu&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l132"
+               class="code sev- "><tt><i>132</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l133"
+               class="code sev- "><tt><i>133</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;e&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l134"
+               class="code sev- "><tt><i>134</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l135"
+               class="code sev- "><tt><i>135</i>     <span class="n">resultado</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span></tt>
+            </div>
+            <div id="l136"
                class="code sev-2  le">
                <ul class="violations">
                
@@ -590,27 +638,27 @@
                      </span>
                      Trailing whitespace</li>
                
-               </ul><tt><i>117</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">)</span>        </tt>
+               </ul><tt><i>136</i>     <span class="n">resultado</span> <span class="o">=</span> <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">)</span>        </tt>
             </div>
-            <div id="l118"
-               class="code sev- "><tt><i>118</i>     <span class="k">assert</span> <span class="n">j</span><span class="o">.</span><span class="n">mostrarProgresoPalabra</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;celu&quot;</span></tt>
-            </div>
-            <div id="l119"
+            <div id="l137"
                class="code sev-2  le">
                <ul class="violations">
                
                   <li>
                      <span class="count sev-2">
-                        W293
+                        W291
                      </span>
-                     Blank line contains whitespace</li>
+                     Trailing whitespace</li>
                
-               </ul><tt><i>119</i>     </tt>
+               </ul><tt><i>137</i>     <span class="k">assert</span> <span class="n">resultado</span> <span class="o">==</span> <span class="s2">&quot;letra se encuentra&quot;</span> </tt>
             </div>
-            <div id="l120"
-               class="code sev- "><tt><i>120</i> <span class="c1"># Letras usadas</span></tt>
+            <div id="l138"
+               class="code sev- "><tt><i>138</i>     <span class="k">assert</span> <span class="n">j</span><span class="o">.</span><span class="n">acerto</span></tt>
             </div>
-            <div id="l121"
+            <div id="l139"
+               class="code sev- "><tt><i>139</i> &nbsp;</tt>
+            </div>
+            <div id="l140"
                class="code sev-2  le">
                <ul class="violations">
                
@@ -620,30 +668,222 @@
                      </span>
                      Expected 2 blank lines, found 1</li>
                
-               </ul><tt><i>121</i> <span class="k">def</span> <span class="nf">test_letras_usadas</span><span class="p">():</span></tt>
+               </ul><tt><i>140</i> <span class="k">def</span> <span class="nf">test_letra_gana_progreso</span><span class="p">():</span></tt>
             </div>
-            <div id="l122"
-               class="code sev- "><tt><i>122</i>     <span class="n">j</span> <span class="o">=</span> <span class="n">Juego</span><span class="p">(</span><span class="s2">&quot;palabra&quot;</span><span class="p">)</span></tt>
+            <div id="l141"
+               class="code sev- "><tt><i>141</i>     <span class="c1"># Si adivina la palabra el progreso esta completo</span></tt>
             </div>
-            <div id="l123"
-               class="code sev- "><tt><i>123</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span></tt>
+            <div id="l142"
+               class="code sev- "><tt><i>142</i>     <span class="n">j</span> <span class="o">=</span> <span class="n">Juego</span><span class="p">(</span><span class="s2">&quot;celu&quot;</span><span class="p">)</span></tt>
             </div>
-            <div id="l124"
-               class="code sev- "><tt><i>124</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span></tt>
+            <div id="l143"
+               class="code sev- "><tt><i>143</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span></tt>
             </div>
-            <div id="l125"
-               class="code sev- "><tt><i>125</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span></tt>
+            <div id="l144"
+               class="code sev- "><tt><i>144</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;e&#39;</span><span class="p">)</span></tt>
             </div>
-            <div id="l126"
-               class="code sev- "><tt><i>126</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">)</span></tt>
+            <div id="l145"
+               class="code sev- "><tt><i>145</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">)</span></tt>
             </div>
-            <div id="l127"
-               class="code sev- "><tt><i>127</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;e&#39;</span><span class="p">)</span></tt>
+            <div id="l146"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        W291
+                     </span>
+                     Trailing whitespace</li>
+               
+               </ul><tt><i>146</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">)</span>        </tt>
             </div>
-            <div id="l128"
-               class="code sev- "><tt><i>128</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">)</span></tt>
+            <div id="l147"
+               class="code sev- "><tt><i>147</i>     <span class="k">assert</span> <span class="n">j</span><span class="o">.</span><span class="n">mostrarProgresoPalabra</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;celu&quot;</span></tt>
             </div>
-            <div id="l129"
+            <div id="l148"
+               class="code sev- "><tt><i>148</i> &nbsp;</tt>
+            </div>
+            <div id="l149"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E302
+                     </span>
+                     Expected 2 blank lines, found 1</li>
+               
+               </ul><tt><i>149</i> <span class="k">def</span> <span class="nf">test_letra_gana_sin_errores_puntaje</span><span class="p">():</span></tt>
+            </div>
+            <div id="l150"
+               class="code sev- "><tt><i>150</i>     <span class="n">j</span> <span class="o">=</span> <span class="n">Juego</span><span class="p">(</span><span class="s2">&quot;celu&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l151"
+               class="code sev- "><tt><i>151</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l152"
+               class="code sev- "><tt><i>152</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;e&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l153"
+               class="code sev- "><tt><i>153</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l154"
+               class="code sev- "><tt><i>154</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l155"
+               class="code sev- "><tt><i>155</i>     <span class="k">assert</span> <span class="n">j</span><span class="o">.</span><span class="n">finalizo</span><span class="p">()</span> <span class="ow">and</span> <span class="n">j</span><span class="o">.</span><span class="n">puntaje</span><span class="p">()</span> <span class="o">==</span> <span class="n">j</span><span class="o">.</span><span class="n">maxIntentos</span></tt>
+            </div>
+            <div id="l156"
+               class="code sev- "><tt><i>156</i> &nbsp;</tt>
+            </div>
+            <div id="l157"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E302
+                     </span>
+                     Expected 2 blank lines, found 1</li>
+               
+               </ul><tt><i>157</i> <span class="k">def</span> <span class="nf">test_letra_gana_un_error_puntaje</span><span class="p">():</span></tt>
+            </div>
+            <div id="l158"
+               class="code sev- "><tt><i>158</i>     <span class="n">j</span> <span class="o">=</span> <span class="n">Juego</span><span class="p">(</span><span class="s2">&quot;celu&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l159"
+               class="code sev- "><tt><i>159</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l160"
+               class="code sev- "><tt><i>160</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l161"
+               class="code sev- "><tt><i>161</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;e&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l162"
+               class="code sev- "><tt><i>162</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l163"
+               class="code sev- "><tt><i>163</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l164"
+               class="code sev- "><tt><i>164</i>     <span class="k">assert</span> <span class="n">j</span><span class="o">.</span><span class="n">finalizo</span><span class="p">()</span> <span class="ow">and</span> <span class="n">j</span><span class="o">.</span><span class="n">puntaje</span><span class="p">()</span> <span class="o">==</span> <span class="n">j</span><span class="o">.</span><span class="n">maxIntentos</span> <span class="o">-</span> <span class="mi">1</span></tt>
+            </div>
+            <div id="l165"
+               class="code sev- "><tt><i>165</i> &nbsp;</tt>
+            </div>
+            <div id="l166"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E302
+                     </span>
+                     Expected 2 blank lines, found 1</li>
+               
+               </ul><tt><i>166</i> <span class="k">def</span> <span class="nf">test_letra_gana_dos_errores_puntaje</span><span class="p">():</span></tt>
+            </div>
+            <div id="l167"
+               class="code sev- "><tt><i>167</i>     <span class="n">j</span> <span class="o">=</span> <span class="n">Juego</span><span class="p">(</span><span class="s2">&quot;celu&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l168"
+               class="code sev- "><tt><i>168</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l169"
+               class="code sev- "><tt><i>169</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l170"
+               class="code sev- "><tt><i>170</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;e&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l171"
+               class="code sev- "><tt><i>171</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l172"
+               class="code sev- "><tt><i>172</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l173"
+               class="code sev- "><tt><i>173</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l174"
+               class="code sev- "><tt><i>174</i>     <span class="k">assert</span> <span class="n">j</span><span class="o">.</span><span class="n">finalizo</span><span class="p">()</span> <span class="ow">and</span> <span class="n">j</span><span class="o">.</span><span class="n">puntaje</span><span class="p">()</span> <span class="o">==</span> <span class="n">j</span><span class="o">.</span><span class="n">maxIntentos</span> <span class="o">-</span> <span class="mi">2</span></tt>
+            </div>
+            <div id="l175"
+               class="code sev- "><tt><i>175</i> &nbsp;</tt>
+            </div>
+            <div id="l176"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E302
+                     </span>
+                     Expected 2 blank lines, found 1</li>
+               
+               </ul><tt><i>176</i> <span class="k">def</span> <span class="nf">test_letra_gana_ultimo_intento_puntaje</span><span class="p">():</span></tt>
+            </div>
+            <div id="l177"
+               class="code sev- "><tt><i>177</i>     <span class="n">j</span> <span class="o">=</span> <span class="n">Juego</span><span class="p">(</span><span class="s2">&quot;celu&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l178"
+               class="code sev- "><tt><i>178</i>     <span class="n">j</span><span class="o">.</span><span class="n">intentosUsados</span> <span class="o">=</span> <span class="n">j</span><span class="o">.</span><span class="n">maxIntentos</span> <span class="o">-</span> <span class="mi">1</span></tt>
+            </div>
+            <div id="l179"
+               class="code sev- "><tt><i>179</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l180"
+               class="code sev- "><tt><i>180</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;e&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l181"
+               class="code sev- "><tt><i>181</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l182"
+               class="code sev- "><tt><i>182</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l183"
+               class="code sev- "><tt><i>183</i>     <span class="k">assert</span> <span class="n">j</span><span class="o">.</span><span class="n">finalizo</span><span class="p">()</span> <span class="ow">and</span> <span class="n">j</span><span class="o">.</span><span class="n">puntaje</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span></tt>
+            </div>
+            <div id="l184"
+               class="code sev- "><tt><i>184</i> &nbsp;</tt>
+            </div>
+            <div id="l185"
+               class="code sev- "><tt><i>185</i> <span class="c1"># Letras usadas</span></tt>
+            </div>
+            <div id="l186"
+               class="code sev-2  le">
+               <ul class="violations">
+               
+                  <li>
+                     <span class="count sev-2">
+                        E302
+                     </span>
+                     Expected 2 blank lines, found 1</li>
+               
+               </ul><tt><i>186</i> <span class="k">def</span> <span class="nf">test_letras_usadas</span><span class="p">():</span></tt>
+            </div>
+            <div id="l187"
+               class="code sev- "><tt><i>187</i>     <span class="n">j</span> <span class="o">=</span> <span class="n">Juego</span><span class="p">(</span><span class="s2">&quot;palabra&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l188"
+               class="code sev- "><tt><i>188</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l189"
+               class="code sev- "><tt><i>189</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l190"
+               class="code sev- "><tt><i>190</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l191"
+               class="code sev- "><tt><i>191</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l192"
+               class="code sev- "><tt><i>192</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;e&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l193"
+               class="code sev- "><tt><i>193</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l194"
                class="code sev-2  le">
                <ul class="violations">
                
@@ -653,37 +893,64 @@
                      </span>
                      Missing whitespace after ',' (in 5 places)</li>
                
-               </ul><tt><i>129</i>     <span class="k">assert</span> <span class="n">j</span><span class="o">.</span><span class="n">letrasUsadas</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">,</span><span class="s2">&quot;e&quot;</span><span class="p">,</span><span class="s2">&quot;l&quot;</span><span class="p">]</span></tt>
+               </ul><tt><i>194</i>     <span class="k">assert</span> <span class="n">j</span><span class="o">.</span><span class="n">letrasUsadas</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="s2">&quot;d&quot;</span><span class="p">,</span><span class="s2">&quot;e&quot;</span><span class="p">,</span><span class="s2">&quot;l&quot;</span><span class="p">]</span></tt>
             </div>
-            <div id="l130"
+            <div id="l195"
+               class="code sev- "><tt><i>195</i> &nbsp;</tt>
+            </div>
+            <div id="l196"
+               class="code sev- "><tt><i>196</i> <span class="c1"># Juego en curso</span></tt>
+            </div>
+            <div id="l197"
                class="code sev-2  le">
                <ul class="violations">
                
                   <li>
                      <span class="count sev-2">
-                        W293
+                        E302
                      </span>
-                     Blank line contains whitespace</li>
+                     Expected 2 blank lines, found 1</li>
                
-               </ul><tt><i>130</i>     </tt>
+               </ul><tt><i>197</i> <span class="k">def</span> <span class="nf">test_letra_juego_en_curso_finalizo</span><span class="p">():</span></tt>
             </div>
-            <div id="l131"
+            <div id="l198"
+               class="code sev- "><tt><i>198</i>     <span class="n">j</span> <span class="o">=</span> <span class="n">Juego</span><span class="p">(</span><span class="s2">&quot;hola&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l199"
+               class="code sev- "><tt><i>199</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s2">&quot;e&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l200"
+               class="code sev- "><tt><i>200</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l201"
+               class="code sev- "><tt><i>201</i>     <span class="k">assert</span> <span class="ow">not</span> <span class="n">j</span><span class="o">.</span><span class="n">finalizo</span><span class="p">()</span></tt>
+            </div>
+            <div id="l202"
+               class="code sev- "><tt><i>202</i> &nbsp;</tt>
+            </div>
+            <div id="l203"
                class="code sev-2  le">
                <ul class="violations">
                
                   <li>
                      <span class="count sev-2">
-                        W293
+                        E302
                      </span>
-                     Blank line contains whitespace</li>
+                     Expected 2 blank lines, found 1</li>
                
-                  <li>
-                     <span class="count sev-2">
-                        W292
-                     </span>
-                     No newline at end of file</li>
-               
-               </ul><tt><i>131</i>     </tt>
+               </ul><tt><i>203</i> <span class="k">def</span> <span class="nf">test_letra_juego_en_curso_puntaje</span><span class="p">():</span></tt>
+            </div>
+            <div id="l204"
+               class="code sev- "><tt><i>204</i>     <span class="n">j</span> <span class="o">=</span> <span class="n">Juego</span><span class="p">(</span><span class="s2">&quot;hola&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l205"
+               class="code sev- "><tt><i>205</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s2">&quot;e&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l206"
+               class="code sev- "><tt><i>206</i>     <span class="n">j</span><span class="o">.</span><span class="n">arriesgarLetra</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l207"
+               class="code sev- "><tt><i>207</i>     <span class="k">assert</span> <span class="n">j</span><span class="o">.</span><span class="n">puntaje</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span></tt>
             </div>
             
          </div>

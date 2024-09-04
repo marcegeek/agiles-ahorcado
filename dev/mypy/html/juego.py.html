@@ -80,9 +80,52 @@
 <span id="L70" class="lineno"><a class="lineno" href="#L70">70</a></span>
 <span id="L71" class="lineno"><a class="lineno" href="#L71">71</a></span>
 <span id="L72" class="lineno"><a class="lineno" href="#L72">72</a></span>
+<span id="L73" class="lineno"><a class="lineno" href="#L73">73</a></span>
+<span id="L74" class="lineno"><a class="lineno" href="#L74">74</a></span>
+<span id="L75" class="lineno"><a class="lineno" href="#L75">75</a></span>
+<span id="L76" class="lineno"><a class="lineno" href="#L76">76</a></span>
+<span id="L77" class="lineno"><a class="lineno" href="#L77">77</a></span>
+<span id="L78" class="lineno"><a class="lineno" href="#L78">78</a></span>
+<span id="L79" class="lineno"><a class="lineno" href="#L79">79</a></span>
+<span id="L80" class="lineno"><a class="lineno" href="#L80">80</a></span>
+<span id="L81" class="lineno"><a class="lineno" href="#L81">81</a></span>
+<span id="L82" class="lineno"><a class="lineno" href="#L82">82</a></span>
+<span id="L83" class="lineno"><a class="lineno" href="#L83">83</a></span>
+<span id="L84" class="lineno"><a class="lineno" href="#L84">84</a></span>
+<span id="L85" class="lineno"><a class="lineno" href="#L85">85</a></span>
+<span id="L86" class="lineno"><a class="lineno" href="#L86">86</a></span>
+<span id="L87" class="lineno"><a class="lineno" href="#L87">87</a></span>
+<span id="L88" class="lineno"><a class="lineno" href="#L88">88</a></span>
+<span id="L89" class="lineno"><a class="lineno" href="#L89">89</a></span>
+<span id="L90" class="lineno"><a class="lineno" href="#L90">90</a></span>
+<span id="L91" class="lineno"><a class="lineno" href="#L91">91</a></span>
+<span id="L92" class="lineno"><a class="lineno" href="#L92">92</a></span>
+<span id="L93" class="lineno"><a class="lineno" href="#L93">93</a></span>
+<span id="L94" class="lineno"><a class="lineno" href="#L94">94</a></span>
+<span id="L95" class="lineno"><a class="lineno" href="#L95">95</a></span>
+<span id="L96" class="lineno"><a class="lineno" href="#L96">96</a></span>
+<span id="L97" class="lineno"><a class="lineno" href="#L97">97</a></span>
+<span id="L98" class="lineno"><a class="lineno" href="#L98">98</a></span>
+<span id="L99" class="lineno"><a class="lineno" href="#L99">99</a></span>
+<span id="L100" class="lineno"><a class="lineno" href="#L100">100</a></span>
+<span id="L101" class="lineno"><a class="lineno" href="#L101">101</a></span>
+<span id="L102" class="lineno"><a class="lineno" href="#L102">102</a></span>
+<span id="L103" class="lineno"><a class="lineno" href="#L103">103</a></span>
+<span id="L104" class="lineno"><a class="lineno" href="#L104">104</a></span>
+<span id="L105" class="lineno"><a class="lineno" href="#L105">105</a></span>
+<span id="L106" class="lineno"><a class="lineno" href="#L106">106</a></span>
+<span id="L107" class="lineno"><a class="lineno" href="#L107">107</a></span>
+<span id="L108" class="lineno"><a class="lineno" href="#L108">108</a></span>
+<span id="L109" class="lineno"><a class="lineno" href="#L109">109</a></span>
+<span id="L110" class="lineno"><a class="lineno" href="#L110">110</a></span>
+<span id="L111" class="lineno"><a class="lineno" href="#L111">111</a></span>
+<span id="L112" class="lineno"><a class="lineno" href="#L112">112</a></span>
+<span id="L113" class="lineno"><a class="lineno" href="#L113">113</a></span>
+<span id="L114" class="lineno"><a class="lineno" href="#L114">114</a></span>
+<span id="L115" class="lineno"><a class="lineno" href="#L115">115</a></span>
+<span id="L116" class="lineno"><a class="lineno" href="#L116">116</a></span>
 </pre></td>
-<td class="table-code"><pre><span class="line-precise" title="No Anys on this line!">import os</span>
-<span class="line-precise" title="No Anys on this line!">class Juego:</span>
+<td class="table-code"><pre><span class="line-precise" title="No Anys on this line!">class Juego:</span>
 <span class="line-empty" title="No Anys on this line!">    # configuracion</span>
 <span class="line-precise" title="No Anys on this line!">    maxIntentos = 6</span>
 <span class="line-precise" title="No Anys on this line!">    intentosLetra = 1</span>
@@ -162,20 +205,84 @@ Unannotated (x2)">            elif i == ' ':</span>
 <span class="line-any" title="No Anys on this line!">                avance = avance + '_'      </span>
 <span class="line-precise" title="No Anys on this line!">        return avance</span>
 <span class="line-empty" title="No Anys on this line!"></span>
-<span class="line-any" title="No Anys on this line!">    def informacionJuego(self):</span>
-<span class="line-empty" title="No Anys on this line!">        return {</span>
+<span class="line-any" title="No Anys on this line!">    def perdio(self):</span>
 <span class="line-any" title="Any Types on this line: 
-Unannotated (x2)">            "intentos_restantes": self.intentosDisponibles(),</span>
+Unannotated (x4)">        return not self.acerto and self.intentosDisponibles() == 0</span>
+<span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-any" title="No Anys on this line!">    def finalizo(self):</span>
 <span class="line-any" title="Any Types on this line: 
-Unannotated (x1)">            "letras_usadas": ' '.join(self.letrasUsadas),</span>
+Unannotated (x3)">        return self.acerto or self.perdio()</span>
+<span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-any" title="No Anys on this line!">    def puntaje(self):</span>
 <span class="line-any" title="Any Types on this line: 
-Unannotated (x2)">            "progreso_palabra": self.mostrarProgresoPalabra(),</span>
-<span class="line-any" title="No Anys on this line!">            "acerto": self.acerto</span>
-<span class="line-empty" title="No Anys on this line!">        }</span>
-<span class="line-empty" title="No Anys on this line!">    </span>
+Unannotated (x2)">        return 0 if not self.acerto else self.intentosDisponibles()</span>
+<span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-any" title="No Anys on this line!">    def to_dict(self):</span>
 <span class="line-imprecise" title="Any Types on this line: 
 Explicit (x3)">        return self.__dict__.copy()</span>
+<span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-precise" title="No Anys on this line!">class Partida:</span>
+<span class="line-precise" title="No Anys on this line!">    numRondas = 6  # rondas por cada jugador</span>
+<span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-any" title="No Anys on this line!">    def __init__(self, data=None):</span>
+<span class="line-any" title="Any Types on this line: 
+Unannotated (x1)">        if data:</span>
+<span class="line-any" title="Any Types on this line: 
+Explicit (x6)
+Unannotated (x1)">            self.__dict__.update(data)</span>
+<span class="line-precise" title="No Anys on this line!">            if self.juego:</span>
+<span class="line-any" title="Any Types on this line: 
+Unannotated (x2)">                self.juego = Juego(data=self.juego)</span>
+<span class="line-empty" title="No Anys on this line!">        else:</span>
+<span class="line-any" title="No Anys on this line!">            self.rondas = [0, 0]</span>
+<span class="line-any" title="No Anys on this line!">            self.idJugadorActual = None</span>
+<span class="line-any" title="No Anys on this line!">            self.juego = None</span>
+<span class="line-any" title="No Anys on this line!">            self.puntos = [0, 0]</span>
+<span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-any" title="No Anys on this line!">    def comenzarRonda(self, palabra):</span>
+<span class="line-any" title="Any Types on this line: 
+Unannotated (x1)">        if self.idJugadorActual is None:</span>
+<span class="line-any" title="Any Types on this line: 
+Unannotated (x1)">            self.idJugadorActual = 1</span>
+<span class="line-any" title="Any Types on this line: 
+Unannotated (x2)">        elif self.idJugadorActual == 0:</span>
+<span class="line-any" title="Any Types on this line: 
+Unannotated (x1)">            self.idJugadorActual = 1</span>
+<span class="line-empty" title="No Anys on this line!">        else:</span>
+<span class="line-any" title="Any Types on this line: 
+Unannotated (x1)">            self.idJugadorActual = 0</span>
+<span class="line-any" title="Any Types on this line: 
+Unannotated (x1)">        self.rondas[self.idJugadorActual] += 1</span>
+<span class="line-any" title="Any Types on this line: 
+Unannotated (x3)">        self.juego = Juego(palabra)</span>
+<span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-any" title="No Anys on this line!">    def actualizarPuntos(self):</span>
+<span class="line-precise" title="No Anys on this line!">        if self.juego.acerto:</span>
+<span class="line-any" title="Any Types on this line: 
+Unannotated (x3)">            self.puntos[self.idJugadorActual] += self.juego.puntaje()</span>
+<span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-any" title="No Anys on this line!">    def rondaFinalizo(self):</span>
+<span class="line-any" title="Any Types on this line: 
+Unannotated (x3)">        return self.juego is not None and self.juego.finalizo()</span>
+<span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-any" title="No Anys on this line!">    def finalizo(self):</span>
+<span class="line-any" title="Any Types on this line: 
+Unannotated (x3)">        return self.rondaFinalizo() and self.rondas[0] == self.numRondas</span>
+<span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-any" title="No Anys on this line!">    def puntosJugador(self, idJugador):</span>
+<span class="line-any" title="Any Types on this line: 
+Unannotated (x1)">        return self.puntos[idJugador]</span>
+<span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-any" title="No Anys on this line!">    def to_dict(self):</span>
+<span class="line-imprecise" title="Any Types on this line: 
+Explicit (x4)">        d = self.__dict__.copy()</span>
+<span class="line-any" title="Any Types on this line: 
+Explicit (x2)">        if d["juego"]:</span>
+<span class="line-any" title="Any Types on this line: 
+Explicit (x5)">            d["juego"] = d["juego"].to_dict()</span>
+<span class="line-imprecise" title="Any Types on this line: 
+Explicit (x1)">        return d</span>
 </pre></td>
 </tr></tbody>
 </table>
