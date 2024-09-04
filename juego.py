@@ -9,8 +9,10 @@ class Juego:
         if data:
             self.__dict__.update(data)
         else:
-            if not palabra.replace(' ', '').isalpha():
-                raise ValueError("Palabra invalida: debe contener solo letras o espacios")
+            if not palabra.replace(" ", "").isalpha():
+                raise ValueError(
+                    "Palabra invalida: debe contener solo letras o espacios"
+                )
             self.palabra = palabra.lower()
             self.acerto = False
             self.intentosUsados = 0
@@ -24,7 +26,7 @@ class Juego:
                 return "letra ya usada"
             self.letrasUsadas.append(letra)
             if letra in self.palabra:
-                if '_' not in self.mostrarProgresoPalabra():
+                if "_" not in self.mostrarProgresoPalabra():
                     self.acerto = True
                 return "letra se encuentra"
             else:
@@ -46,17 +48,17 @@ class Juego:
     # Retorna los intentos disponibles.
     def intentosDisponibles(self):
         return max(self.maxIntentos - self.intentosUsados, 0)
-    
+
     # Retorna el progreso de la palabra.
     def mostrarProgresoPalabra(self):
-        avance = ''
+        avance = ""
         for i in self.palabra:
             if i in self.letrasUsadas:
                 avance = avance + i
-            elif i == ' ':
-                avance = avance + ' '
+            elif i == " ":
+                avance = avance + " "
             else:
-                avance = avance + '_'      
+                avance = avance + "_"
         return avance
 
     def perdio(self):

@@ -5,12 +5,14 @@ def test_comenzar_ronda_1(partida):
     assert partida.rondas == [0, 1]
     assert not partida.rondaFinalizo()
 
+
 def test_comenzar_ronda_2(partida):
     partida.comenzarRonda("palabra")
     partida.comenzarRonda("palabra")
     assert partida.idJugadorActual == 0
     assert partida.rondas == [1, 1]
     assert not partida.rondaFinalizo()
+
 
 def test_comenzar_ronda_3(partida):
     partida.comenzarRonda("palabra")
@@ -19,6 +21,7 @@ def test_comenzar_ronda_3(partida):
     assert partida.idJugadorActual == 1
     assert partida.rondas == [1, 2]
     assert not partida.rondaFinalizo()
+
 
 def test_comenzar_ronda_4(partida):
     partida.comenzarRonda("palabra")

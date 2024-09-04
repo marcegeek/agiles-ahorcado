@@ -46,5 +46,6 @@ def ronda_completa(partida):
         else:
             partida.juego = mock_juego_pierde()
         partida.actualizarPuntos()
+
     # devuelve la función para efectuar la ronda
     return _ronda_completa
