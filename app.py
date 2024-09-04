@@ -26,6 +26,17 @@ def arriesgar(juego):
         resultado = juego.arriesgarPalabra(intento)
     return resultado
 
+def url_redireccion(fallback=None):
+    if fallback is None:
+        fallback = url_for('index')
+    redirecciones = request.values.get('redirect_to'), request.referrer, fallback
+    return [r for r in redirecciones if r][0]
+
+@app.route('/finalizar', methods=['POST'])
+def finalizar():
+    session.pop('juego')
+    return redirect(url_redireccion())
+
 @app.route('/jugar', methods=['GET', 'POST'])
 def jugar():
     if 'juego' not in session:
