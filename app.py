@@ -1,10 +1,12 @@
+import os
+
 from flask import Flask, flash, redirect, render_template, request, session, url_for
 
 from juego import Juego, Partida
 
 
 app = Flask(__name__)
-app.secret_key = "tu_clave_secreta"
+app.secret_key = os.environ.get("SECRET_KEY", "default_secret_key")
 
 
 @app.route("/")
