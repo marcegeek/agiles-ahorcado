@@ -12,6 +12,9 @@ flake8-html
 mypy[reports]
 ruff
 
+# BDD/ATDD
+behave
+
 # informes
 coveralls
 genbadge[coverage,tests]
