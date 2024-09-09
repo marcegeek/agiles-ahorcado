@@ -1,3 +1,5 @@
+import pytest
+
 from juego import Juego
 
 
@@ -53,3 +55,13 @@ def test_inicializacion_juego_bool_acerto():
 def test_inicializacion_juego_puntaje():
     j = Juego("palabra")
     assert j.puntaje() == 0
+
+
+def test_inicializacion_juego_data_intentos(juego_data):
+    j = juego_data("palabra")
+    assert j.intentosDisponibles() == j.maxIntentos
+
+
+def test_inicializacion_juego_data_letras_usadas(juego_data):
+    j = juego_data("palabra")
+    assert j.letrasUsadas == []

@@ -87,3 +87,18 @@ def test_puntos_fallo_y_tres_aciertos(partida, ronda_completa):
     assert partida.puntos == [6, 2]
     assert partida.puntosJugador(0) == 6
     assert partida.puntosJugador(1) == 2
+
+
+def test_ronda_gana_finaliza_data(ronda_completa, partida_data):
+    ronda_completa(True, 1)
+    assert partida_data().rondaFinalizo()
+
+
+def test_puntos_fallo_acierto_data(ronda_completa, partida_data):
+    ronda_completa(False)
+    ronda_completa(True, 3)
+    p = partida_data()
+    assert p.rondaFinalizo()
+    assert p.puntos == [3, 0]
+    assert p.puntosJugador(0) == 3
+    assert p.puntosJugador(1) == 0

@@ -28,3 +28,11 @@ def test_inicializar_partida_puntos(partida):
     assert partida.puntos == [0, 0]
     assert partida.puntosJugador(0) == 0
     assert partida.puntosJugador(1) == 0
+
+
+def test_inicializar_partida_data_rondas(partida_data):
+    assert partida_data().rondas == [0, 0]
+
+
+def test_inicializar_partida_data_jugador(partida_data):
+    assert partida_data().idJugadorActual is None
