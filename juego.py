@@ -10,9 +10,7 @@ class Juego:
             self.__dict__.update(data)
         else:
             if not palabra.replace(" ", "").isalpha():
-                raise ValueError(
-                    "Palabra invalida: debe contener solo letras o espacios"
-                )
+                raise ValueError("Palabra invalida: debe contener solo letras o espacios")
             self.palabra = palabra.lower()
             self.acerto = False
             self.intentosUsados = 0

@@ -28,7 +28,7 @@ def step_impl(context):
 def step_impl(context, expected_progress):
     assert context.resp.status_code == 200
     # eliminar comentarios
-    html = re.sub('<!--.*?-->', '', context.resp.text)
+    html = re.sub("<!--.*?-->", "", context.resp.text)
     m = re.search(r"<p\b.*?>Progreso de la palabra: (.+)</p>", html, re.IGNORECASE)
     progress = m.group(1)
     assert progress == expected_progress
@@ -42,7 +42,7 @@ def step_impl(context, letter):
 @then('I should see "{expected_progress}"')
 def step_impl(context, expected_progress):
     assert context.resp.status_code == 200
-    html = re.sub('<!--.*?-->', '', context.resp.text)
+    html = re.sub("<!--.*?-->", "", context.resp.text)
     m = re.search(r"<p\b.*?>Progreso de la palabra: (.+)</p>", html, re.IGNORECASE)
     progress = m.group(1)
     assert progress == expected_progress
@@ -56,7 +56,7 @@ def step_impl(context, word):
 @then("the remaining attempts should be {expected_attempts:d}")
 def step_impl(context, expected_attempts):
     assert context.resp.status_code == 200
-    html = re.sub('<!--.*?-->', '', context.resp.text)
+    html = re.sub("<!--.*?-->", "", context.resp.text)
     m = re.search(r"<p\b.*?>Intentos restantes: (\d+)</p>", html, re.IGNORECASE)
     intentos = int(m.group(1))
     assert intentos == expected_attempts
