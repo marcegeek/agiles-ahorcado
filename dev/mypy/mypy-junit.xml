@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<testsuite errors="0" failures="1" name="mypy" skips="0" tests="1" time="4.106">
-  <testcase classname="mypy" file="mypy" line="1" name="mypy-py3_11-linux" time="4.106">
+<testsuite errors="0" failures="1" name="mypy" skips="0" tests="1" time="4.053">
+  <testcase classname="mypy" file="mypy" line="1" name="mypy-py3_11-linux" time="4.053">
     <failure message="mypy produced messages">juego.py:8: error: Function is missing a type annotation  [no-untyped-def]
         def __init__(self, palabra=None, data=None):
         ^
@@ -110,35 +110,6 @@ juego.py:114: error: Function is missing a return type annotation
 [no-untyped-def]
         def to_dict(self):
         ^
-features/steps/juego_steps.py:1: error: Cannot find implementation or library
-stub for module named "behave"  [import-not-found]
-    from behave import given, when, then
-    ^
-features/steps/juego_steps.py:1: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
-features/steps/juego_steps.py:10: error: Name "step_impl" already defined on
-line 5  [no-redef]
-    @when("I start the game")
-     ^
-features/steps/juego_steps.py:15: error: Name "step_impl" already defined on
-line 5  [no-redef]
-    @then('I should see the masked word "{expected_progress}"')
-     ^
-features/steps/juego_steps.py:20: error: Name "step_impl" already defined on
-line 5  [no-redef]
-    @when('I guess the letter "{letter}"')
-     ^
-features/steps/juego_steps.py:25: error: Name "step_impl" already defined on
-line 5  [no-redef]
-    @then('I should see "{expected_progress}"')
-     ^
-features/steps/juego_steps.py:30: error: Name "step_impl" already defined on
-line 5  [no-redef]
-    @when('I guess the word "{word}"')
-     ^
-features/steps/juego_steps.py:35: error: Name "step_impl" already defined on
-line 5  [no-redef]
-    @then("the remaining attempts should be {expected_attempts:d}")
-     ^
 app.py:11: error: Function is missing a return type annotation 
 [no-untyped-def]
     def index():
@@ -226,7 +197,8 @@ app.py:94: error: Call to untyped function "finalizo" in typed context
 [no-untyped-call]
             if not partida.finalizo():
                    ^~~~~~~~~~~~~~~~~~
-app.py:96: error: "Literal[True]" not callable  [misc]
+app.py:96: error: Call to untyped function "iniciar_ronda" in typed context 
+[no-untyped-call]
                     iniciar_ronda(partida)
                     ^~~~~~~~~~~~~~~~~~~~~~
 app.py:98: error: Call to untyped function "arriesgar" in typed context 
@@ -240,6 +212,43 @@ app.py:99: error: Call to untyped function "actualizarPuntos" in typed context
 app.py:100: error: Call to untyped function "to_dict" in typed context 
 [no-untyped-call]
                     session["partida"] = partida.to_dict()
-                                         ^~~~~~~~~~~~~~~~~</failure>
+                                         ^~~~~~~~~~~~~~~~~
+features/steps/juego_steps.py:3: error: Skipping analyzing "behave": module is
+installed, but missing library stubs or py.typed marker  [import-untyped]
+    from behave import given, then, when
+    ^
+features/steps/juego_steps.py:3: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+features/steps/juego_steps.py:8: error: Function is missing a type annotation 
+[no-untyped-def]
+    def get(context, action, params=None):
+    ^
+features/steps/juego_steps.py:12: error: Function is missing a type annotation 
+[no-untyped-def]
+    def post(context, action, data=None):
+    ^
+features/steps/juego_steps.py:22: error: Name "step_impl" already defined on
+line 16  [no-redef]
+    @when("I start the game")
+     ^
+features/steps/juego_steps.py:27: error: Name "step_impl" already defined on
+line 16  [no-redef]
+    @then('I should see the masked word "{expected_progress}"')
+     ^
+features/steps/juego_steps.py:37: error: Name "step_impl" already defined on
+line 16  [no-redef]
+    @when('I guess the letter "{letter}"')
+     ^
+features/steps/juego_steps.py:42: error: Name "step_impl" already defined on
+line 16  [no-redef]
+    @then('I should see "{expected_progress}"')
+     ^
+features/steps/juego_steps.py:51: error: Name "step_impl" already defined on
+line 16  [no-redef]
+    @when('I guess the word "{word}"')
+     ^
+features/steps/juego_steps.py:56: error: Name "step_impl" already defined on
+line 16  [no-redef]
+    @then("the remaining attempts should be {expected_attempts:d}")
+     ^</failure>
   </testcase>
 </testsuite>
