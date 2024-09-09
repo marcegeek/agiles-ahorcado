@@ -6,6 +6,7 @@
 )
 [![Checked with Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![Checked with mypy](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=marcegeek_agiles-ahorcado&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=marcegeek_agiles-ahorcado)
 
 ## Estado de CI
 
