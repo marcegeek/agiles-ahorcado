@@ -103,7 +103,7 @@ Unannotated (x6)">    return context.client.post(action, data=data, follow_redir
 <span class="line-empty" title="No Anys on this line!">def step_impl(context, expected_progress):</span>
 <span class="line-empty" title="No Anys on this line!">    assert context.resp.status_code == 200</span>
 <span class="line-empty" title="No Anys on this line!">    # eliminar comentarios</span>
-<span class="line-empty" title="No Anys on this line!">    html = re.sub('&lt;!--.*?--&gt;', '', context.resp.text)</span>
+<span class="line-empty" title="No Anys on this line!">    html = re.sub("&lt;!--.*?--&gt;", "", context.resp.text)</span>
 <span class="line-empty" title="No Anys on this line!">    m = re.search(r"&lt;p\b.*?&gt;Progreso de la palabra: (.+)&lt;/p&gt;", html, re.IGNORECASE)</span>
 <span class="line-empty" title="No Anys on this line!">    progress = m.group(1)</span>
 <span class="line-empty" title="No Anys on this line!">    assert progress == expected_progress</span>
@@ -117,7 +117,7 @@ Unannotated (x6)">    return context.client.post(action, data=data, follow_redir
 <span class="line-empty" title="No Anys on this line!">@then('I should see "{expected_progress}"')</span>
 <span class="line-empty" title="No Anys on this line!">def step_impl(context, expected_progress):</span>
 <span class="line-empty" title="No Anys on this line!">    assert context.resp.status_code == 200</span>
-<span class="line-empty" title="No Anys on this line!">    html = re.sub('&lt;!--.*?--&gt;', '', context.resp.text)</span>
+<span class="line-empty" title="No Anys on this line!">    html = re.sub("&lt;!--.*?--&gt;", "", context.resp.text)</span>
 <span class="line-empty" title="No Anys on this line!">    m = re.search(r"&lt;p\b.*?&gt;Progreso de la palabra: (.+)&lt;/p&gt;", html, re.IGNORECASE)</span>
 <span class="line-empty" title="No Anys on this line!">    progress = m.group(1)</span>
 <span class="line-empty" title="No Anys on this line!">    assert progress == expected_progress</span>
@@ -131,7 +131,7 @@ Unannotated (x6)">    return context.client.post(action, data=data, follow_redir
 <span class="line-unanalyzed" title="No Anys on this line!">@then("the remaining attempts should be {expected_attempts:d}")</span>
 <span class="line-any" title="No Anys on this line!">def step_impl(context, expected_attempts):</span>
 <span class="line-unanalyzed" title="No Anys on this line!">    assert context.resp.status_code == 200</span>
-<span class="line-unanalyzed" title="No Anys on this line!">    html = re.sub('&lt;!--.*?--&gt;', '', context.resp.text)</span>
+<span class="line-unanalyzed" title="No Anys on this line!">    html = re.sub("&lt;!--.*?--&gt;", "", context.resp.text)</span>
 <span class="line-unanalyzed" title="No Anys on this line!">    m = re.search(r"&lt;p\b.*?&gt;Intentos restantes: (\d+)&lt;/p&gt;", html, re.IGNORECASE)</span>
 <span class="line-unanalyzed" title="No Anys on this line!">    intentos = int(m.group(1))</span>
 <span class="line-unanalyzed" title="No Anys on this line!">    assert intentos == expected_attempts</span>
