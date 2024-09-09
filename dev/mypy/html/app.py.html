@@ -123,14 +123,20 @@
 <span id="L113" class="lineno"><a class="lineno" href="#L113">113</a></span>
 <span id="L114" class="lineno"><a class="lineno" href="#L114">114</a></span>
 <span id="L115" class="lineno"><a class="lineno" href="#L115">115</a></span>
+<span id="L116" class="lineno"><a class="lineno" href="#L116">116</a></span>
+<span id="L117" class="lineno"><a class="lineno" href="#L117">117</a></span>
 </pre></td>
-<td class="table-code"><pre><span class="line-precise" title="No Anys on this line!">from flask import Flask, flash, redirect, render_template, request, session, url_for</span>
+<td class="table-code"><pre><span class="line-precise" title="No Anys on this line!">import os</span>
+<span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-precise" title="No Anys on this line!">from flask import Flask, flash, redirect, render_template, request, session, url_for</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-precise" title="No Anys on this line!">from juego import Juego, Partida</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-precise" title="No Anys on this line!">app = Flask(__name__)</span>
-<span class="line-precise" title="No Anys on this line!">app.secret_key = "tu_clave_secreta"</span>
+<span class="line-imprecise" title="Any Types on this line: 
+Explicit (x1)
+Omitted Generics (x2)">app.secret_key = os.environ.get("SECRET_KEY", "default_secret_key")</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-precise" title="Any Types on this line: 
