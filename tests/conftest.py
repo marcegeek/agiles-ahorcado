@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import Mock
 
-from juego import Juego, Partida
+from ahorcado import Juego, Partida
 
 
 @pytest.fixture

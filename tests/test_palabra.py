@@ -1,4 +1,4 @@
-from juego import Juego
+from ahorcado import Juego
 
 
 # Palabra acierta

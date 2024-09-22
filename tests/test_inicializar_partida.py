@@ -1,5 +1,5 @@
 import pytest
-from juego import Partida
+from ahorcado import Partida
 
 
 @pytest.fixture

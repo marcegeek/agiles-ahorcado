@@ -2,7 +2,7 @@ import os
 
 from flask import Flask, flash, redirect, render_template, request, session, url_for
 
-from juego import Juego, Partida
+from ahorcado import Juego, Partida
 
 
 app = Flask(__name__)

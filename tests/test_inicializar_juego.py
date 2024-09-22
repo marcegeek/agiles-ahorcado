@@ -1,6 +1,6 @@
 import pytest
 
-from juego import Juego
+from ahorcado import Juego
 
 
 # Inicializar juego
