@@ -142,15 +142,17 @@ jobs:
         coverage xml
 
     - name: Upload coverage to coveralls.io
+      if: github.event_name == 'push'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: coveralls
 
     - name: Extract branch name
+      if: github.event_name == 'push'
       run: echo "BRANCH_NAME=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_ENV
 
     - name: Update reports and generate badges
-      if: always()
+      if: github.event_name == 'push'
       run: |
         # generate badges for flake8, coverage and tests
         genbadge flake8 -o reports/flake8/badge.svg
@@ -164,7 +166,7 @@ jobs:
         mv ${BRANCH_NAME} reports
 
     - name: Deploy reports to gh-pages
-      if: always() && github.event_name == 'push'
+      if: github.event_name == 'push'
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
