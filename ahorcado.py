@@ -3,6 +3,7 @@
 La clase Juego implementa la lógica de un único juego, mientras que la clase Partida
 implementa la lógica de una partida entre dos jugadores con 6 rondas intercaladas para cada uno.
 """
+
 from __future__ import annotations
 
 from typing import Any
@@ -16,15 +17,21 @@ class Juego:
     INTENTOS_LETRA = 1
     INTENTOS_PALABRA = 2
 
-    def __init__(self, palabra: str) -> None:
+    def __init__(
+        self,
+        palabra: str,
+        acerto: bool | None = None,
+        intentos_usados: int | None = None,
+        letras_usadas: list[str] | None = None,
+    ) -> None:
         """Inicializa el juego con una palabra."""
         if not palabra.replace(" ", "").isalpha():
             error = "Palabra invalida: debe contener solo letras o espacios"
             raise ValueError(error)
         self.palabra = palabra.lower()
-        self.acerto = False
-        self.intentos_usados = 0
-        self.letras_usadas: list[str] = []
+        self.acerto = acerto if acerto is not None else False
+        self.intentos_usados = intentos_usados if intentos_usados is not None else 0
+        self._letras_usadas = set(letras_usadas) if letras_usadas is not None else set()
 
     def arriesgar_letra(self, letra: str) -> str:
         """Arriesga una letra.
@@ -34,9 +41,9 @@ class Juego:
         """
         if letra.isalpha() and len(letra) == 1:
             letra = letra.lower()
-            if letra in self.letras_usadas:
+            if letra in self._letras_usadas:
                 return "letra ya usada"
-            self.letras_usadas.append(letra)
+            self._letras_usadas.add(letra)
             if letra in self.palabra:
                 if "_" not in self.mostrar_progreso_palabra():
                     self.acerto = True
@@ -51,10 +58,9 @@ class Juego:
         Dada una palabra, devuelve uno de 2 valores posibles:
         "palabra correcta", "palabra incorrecta"
         """
-        if palabra.lower() == self.palabra:
-            for l in palabra:
-                if l not in self.letras_usadas:
-                    self.letras_usadas.append(l)
+        palabra = palabra.lower()
+        if palabra == self.palabra:
+            self._letras_usadas.update(palabra)
             self.acerto = True
             return "palabra correcta"
         self.intentos_usados += self.INTENTOS_PALABRA
@@ -64,11 +70,16 @@ class Juego:
         """Retorna los intentos disponibles."""
         return max(self.MAX_INTENTOS - self.intentos_usados, 0)
 
+    @property
+    def letras_usadas(self) -> list[str]:
+        """Devuelve las letras usadas, ordenadas y sin repeticiones."""
+        return sorted(self._letras_usadas)
+
     def mostrar_progreso_palabra(self) -> str:
         """Retorna el progreso de la palabra."""
         avance = ""
         for i in self.palabra:
-            if i in self.letras_usadas:
+            if i in self._letras_usadas:
                 avance = avance + i
             elif i == " ":
                 avance = avance + " "
@@ -90,15 +101,21 @@ class Juego:
 
     def to_dict(self) -> dict[str, Any]:
         """Retorna el juego serializado en un diccionario."""
-        return self.__dict__.copy()
+        return {
+            "palabra": self.palabra,
+            "acerto": self.acerto,
+            "intentos_usados": self.intentos_usados,
+            "letras_usadas": self.letras_usadas,
+        }
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> Juego:
         """Crea un juego a partir de los datos serializados."""
         palabra = data["palabra"]
-        obj = cls(palabra)
-        obj.__dict__.update(data)
-        return obj
+        acerto = data["acerto"]
+        intentos_usados = data["intentos_usados"]
+        letras_usadas = data["letras_usadas"]
+        return cls(palabra, acerto=acerto, intentos_usados=intentos_usados, letras_usadas=letras_usadas)
 
 
 class Partida:
@@ -107,13 +124,20 @@ class Partida:
     # constantes de la clase
     NUM_RONDAS = 6  # rondas por cada jugador
 
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        rondas: list[int] | None = None,
+        id_jugador_actual: int | None = None,
+        juego: Juego | None = None,
+        puntos: list[int] | None = None,
+        puntos_actualizados: bool | None = None,
+    ) -> None:
         """Inicializa la partida."""
-        self.rondas = [0, 0]
-        self.id_jugador_actual: int | None = None
-        self.juego: Juego | None = None
-        self.puntos = [0, 0]
-        self.puntos_actualizados = False
+        self.rondas = rondas if rondas is not None else [0, 0]
+        self.id_jugador_actual = id_jugador_actual
+        self.juego = juego
+        self.puntos = puntos if puntos is not None else [0, 0]
+        self.puntos_actualizados = bool(puntos_actualizados)
 
     def comenzar_ronda(self, palabra: str) -> None:
         """Comienza una nueva ronda con la palabra a adivinar."""
@@ -150,16 +174,26 @@ class Partida:
 
     def to_dict(self) -> dict[str, Any]:
         """Retorna la partida serializada en un diccionario."""
-        d = self.__dict__.copy()
-        if d["juego"]:
-            d["juego"] = d["juego"].to_dict()
-        return d
+        return {
+            "rondas": self.rondas,
+            "id_jugador_actual": self.id_jugador_actual,
+            "juego": self.juego.to_dict() if self.juego else None,
+            "puntos": self.puntos,
+            "puntos_actualizados": self.puntos_actualizados,
+        }
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> Partida:
         """Crea una partida a partir de los datos serializados."""
-        obj = cls()
-        obj.__dict__.update(data)
-        if isinstance(obj.juego, dict):
-            obj.juego = Juego.from_dict(obj.juego)
-        return obj
+        rondas = data["rondas"]
+        id_jugador_actual = data["id_jugador_actual"]
+        juego = Juego.from_dict(data["juego"]) if data["juego"] else None
+        puntos = data["puntos"]
+        puntos_actualizados = data["puntos_actualizados"]
+        return cls(
+            rondas=rondas,
+            id_jugador_actual=id_jugador_actual,
+            juego=juego,
+            puntos=puntos,
+            puntos_actualizados=puntos_actualizados,
+        )

@@ -9,13 +9,7 @@ from ahorcado import Juego, Partida
 def juego_data():
     # Recrear un juego a partir de su serialización, empleando los datos suministrados
     def _juego_data(palabra, acerto=False, intentos_usados=0, letras_usadas=None):
-        j = Juego(palabra)
-        j.acerto = acerto
-        j.intentos_usados = intentos_usados
-        if letras_usadas:
-            j.letras_usadas = letras_usadas
-        else:
-            j.letras_usadas = []
+        j = Juego(palabra, acerto=acerto, intentos_usados=intentos_usados, letras_usadas=letras_usadas)
         return Juego.from_dict(j.to_dict())
 
     return _juego_data
