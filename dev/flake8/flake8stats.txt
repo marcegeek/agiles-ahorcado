@@ -1,3 +1,2 @@
-1     E501 line too long (126 > 100 characters)
-1     F401 'pytest' imported but unused
+6     E252 missing whitespace around parameter equals
 6     F811 redefinition of unused 'step_impl' from line 17
