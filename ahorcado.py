@@ -9,6 +9,14 @@ from __future__ import annotations
 from typing import Any
 
 
+class AhorcadoError(Exception):
+    """Clase custom para errores del juego del ahorcado."""
+
+    def __init__(self, mensaje: str) -> None:
+        """Inicializa la excepción con un mensaje."""
+        super().__init__(mensaje)
+
+
 class Juego:
     """Lógica básica del juego del ahorcado."""
 
@@ -27,7 +35,7 @@ class Juego:
         """Inicializa el juego con una palabra."""
         if not palabra.replace(" ", "").isalpha():
             error = "Palabra invalida: debe contener solo letras o espacios"
-            raise ValueError(error)
+            raise AhorcadoError(error)
         self.palabra = palabra.lower()
         self.acerto = acerto if acerto is not None else False
         self.intentos_usados = intentos_usados if intentos_usados is not None else 0
@@ -155,7 +163,7 @@ class Partida:
             return
         if not self.juego or self.id_jugador_actual is None:
             error = "No se puede actualizar puntos si no se inició ninguna ronda"
-            raise Exception(error)
+            raise AhorcadoError(error)
         if self.juego.acerto:
             self.puntos[self.id_jugador_actual] += self.juego.puntaje()
         self.puntos_actualizados = True

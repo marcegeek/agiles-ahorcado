@@ -1,6 +1,6 @@
 import pytest
 
-from ahorcado import Partida
+from ahorcado import AhorcadoError, Partida
 
 
 @pytest.fixture
@@ -32,7 +32,7 @@ def test_inicializar_partida_puntos(partida):
 
 
 def test_inicializar_partida_actualizar_puntos(partida):
-    with pytest.raises(Exception, match="No se puede actualizar puntos si no se inició ninguna ronda"):
+    with pytest.raises(AhorcadoError, match="No se puede actualizar puntos si no se inició ninguna ronda"):
         partida.actualizar_puntos()
 
 
