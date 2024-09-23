@@ -27,6 +27,18 @@ directory = "reports/coverage"
 [tool.coverage.xml]
 output = "reports/coverage/coverage.xml"
 
+[tool.flake8]
+exclude = [".git", "venv"]
+per-file-ignores = [
+    "features/steps/*:F811", # redefinition of step_impl functions
+]
+max-line-length = 110
+max-complexity = 10
+count = true
+statistics = true
+format = "html"
+htmldir = "reports/flake8"
+
 [tool.pytest.ini_options]
 addopts = "--html=reports/tests/pytest.html --cov=./ --cov-report=term --cov-report=html --cov-report=xml --junit-xml=reports/tests/pytest.xml"
 
@@ -58,7 +70,7 @@ select = [
     "S311",
     "ANN",
     "D",
-    "F811", # Redefinition of step_impl functions
+    "F811", # redefinition of step_impl functions
 ]
 
 [tool.ruff.lint.pydocstyle]

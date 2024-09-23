@@ -15,7 +15,7 @@ class Juego:
     INTENTOS_LETRA = 1
     INTENTOS_PALABRA = 2
 
-    def __init__(self, palabra: str | None=None, data: dict | None=None) -> None:
+    def __init__(self, palabra: str | None = None, data: dict | None = None) -> None:
         """Inicializa el juego con una palabra."""
         if data:
             self.__dict__.update(data)
@@ -100,7 +100,7 @@ class Partida:
     # constantes de la clase
     NUM_RONDAS = 6  # rondas por cada jugador
 
-    def __init__(self, data: dict | None=None) -> None:
+    def __init__(self, data: dict | None = None) -> None:
         """Inicializa la partida."""
         if data:
             self.__dict__.update(data)

@@ -43,10 +43,10 @@ jobs:
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 . --select=E9,F63,F7,F82 --show-source --format default
         mkdir -p reports/flake8
         # exit-zero treats all errors as warnings
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=110 --statistics --output-file reports/flake8/flake8stats.txt --format=html --htmldir=reports/flake8
+        flake8 . --exit-zero --output-file reports/flake8/flake8stats.txt
 
     - name: Lint with Ruff
       run: |
