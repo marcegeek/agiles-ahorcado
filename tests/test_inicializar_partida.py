@@ -31,6 +31,11 @@ def test_inicializar_partida_puntos(partida):
     assert partida.puntos_jugador(1) == 0
 
 
+def test_inicializar_partida_actualizar_puntos(partida):
+    with pytest.raises(Exception, match="No se puede actualizar puntos si no se inició ninguna ronda"):
+        partida.actualizar_puntos()
+
+
 def test_inicializar_partida_data_rondas(partida_data):
     assert partida_data().rondas == [0, 0]
 

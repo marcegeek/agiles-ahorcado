@@ -16,7 +16,7 @@ def juego_data():
             j.letras_usadas = letras_usadas
         else:
             j.letras_usadas = []
-        return Juego(data=j.to_dict())
+        return Juego.from_dict(j.to_dict())
 
     return _juego_data
 
@@ -72,7 +72,7 @@ def partida():
 def partida_data(partida):
     # Recrear la partida a partir de su serialización
     def _partida_data():
-        return Partida(data=partida.to_dict())
+        return Partida.from_dict(partida.to_dict())
 
     return _partida_data
 

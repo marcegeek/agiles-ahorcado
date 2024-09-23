@@ -89,6 +89,19 @@ def test_puntos_fallo_y_tres_aciertos(partida, ronda_completa):
     assert partida.puntos_jugador(1) == 2
 
 
+def test_puntos_actualizar_otra_vez(partida, ronda_completa):
+    ronda_completa(False)
+    ronda_completa(True, 1)
+    partida.actualizar_puntos()
+    ronda_completa(True, 2)
+    partida.actualizar_puntos()
+    partida.actualizar_puntos()
+    ronda_completa(True, 5)
+    assert partida.puntos == [6, 2]
+    assert partida.puntos_jugador(0) == 6
+    assert partida.puntos_jugador(1) == 2
+
+
 def test_ronda_gana_finaliza_data(ronda_completa, partida_data):
     ronda_completa(True, 1)
     assert partida_data().ronda_finalizo()

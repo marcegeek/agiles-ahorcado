@@ -3,17 +3,21 @@
 from __future__ import annotations
 
 import os
+from typing import TYPE_CHECKING
 
-from flask import Flask, Response, flash, redirect, render_template, request, session, url_for
+from flask import Flask, flash, redirect, render_template, request, session, url_for
 
 from ahorcado import Juego, Partida
+
+if TYPE_CHECKING:
+    from flask.typing import ResponseValue
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "default_secret_key")
 
 
 @app.route("/")
-def index() -> str:
+def index() -> ResponseValue:
     """Devuelve la página principal."""
     return render_template("index.html")
 
@@ -36,14 +40,14 @@ def arriesgar(juego: Juego) -> str:
 
 
 @app.route("/juego", methods=["GET", "POST"])
-def juego() -> str | Response:
+def juego() -> ResponseValue:
     """Permite arriesgar en el juego actual o iniciar uno nuevo y devuelve la vista."""
     if "juego" not in session:
         if request.method == "POST":
             iniciar_juego()
             return redirect(url_for("juego"))
         return render_template("juego-inicio.html")
-    juego = Juego(data=session["juego"])
+    juego = Juego.from_dict(session["juego"])
     resultado = None
     if request.method == "POST":
         resultado = arriesgar(juego)
@@ -60,7 +64,7 @@ def url_redireccion(fallback: str | None = None) -> str:
 
 
 @app.route("/finalizar", methods=["POST"])
-def finalizar() -> Response:
+def finalizar() -> ResponseValue:
     """Finaliza el juego y/o partida actual."""
     session.pop("juego", None)
     session.pop("jugadores", None)
@@ -84,10 +88,10 @@ def iniciar_ronda(partida: Partida) -> None:
 
 
 @app.route("/partida", methods=["GET", "POST"])
-def partida() -> str | Response:
+def partida() -> ResponseValue:
     """Permite arriesgar en la partida actual, iniciar una nueva o iniciar una ronda y devuelve la vista."""
     jugadores = session.get("jugadores")
-    partida = Partida(data=session["partida"]) if "partida" in session else None
+    partida = Partida.from_dict(session["partida"]) if "partida" in session else None
     if not partida:
         if request.method == "POST":
             iniciar_partida()
@@ -106,7 +110,7 @@ def partida() -> str | Response:
             if hay_que_iniciar_ronda:
                 iniciar_ronda(partida)
             else:
-                arriesgar(partida.juego)
+                arriesgar(partida.juego)  # type: ignore[arg-type]
                 partida.actualizar_puntos()
                 session["partida"] = partida.to_dict()
         else:

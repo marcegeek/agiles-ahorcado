@@ -3,8 +3,9 @@
 La clase Juego implementa la lógica de un único juego, mientras que la clase Partida
 implementa la lógica de una partida entre dos jugadores con 6 rondas intercaladas para cada uno.
 """
-
 from __future__ import annotations
+
+from typing import Any
 
 
 class Juego:
@@ -15,18 +16,15 @@ class Juego:
     INTENTOS_LETRA = 1
     INTENTOS_PALABRA = 2
 
-    def __init__(self, palabra: str | None = None, data: dict | None = None) -> None:
+    def __init__(self, palabra: str) -> None:
         """Inicializa el juego con una palabra."""
-        if data:
-            self.__dict__.update(data)
-        else:
-            if not palabra.replace(" ", "").isalpha():
-                error = "Palabra invalida: debe contener solo letras o espacios"
-                raise ValueError(error)
-            self.palabra = palabra.lower()
-            self.acerto = False
-            self.intentos_usados = 0
-            self.letras_usadas = []
+        if not palabra.replace(" ", "").isalpha():
+            error = "Palabra invalida: debe contener solo letras o espacios"
+            raise ValueError(error)
+        self.palabra = palabra.lower()
+        self.acerto = False
+        self.intentos_usados = 0
+        self.letras_usadas: list[str] = []
 
     def arriesgar_letra(self, letra: str) -> str:
         """Arriesga una letra.
@@ -89,9 +87,17 @@ class Juego:
         """Retorna el puntaje del juego."""
         return 0 if not self.acerto else self.intentos_disponibles()
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> dict[str, Any]:
         """Retorna el juego serializado en un diccionario."""
         return self.__dict__.copy()
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> Juego:
+        """Crea un juego a partir de los datos serializados."""
+        palabra = data["palabra"]
+        obj = cls(palabra)
+        obj.__dict__.update(data)
+        return obj
 
 
 class Partida:
@@ -100,17 +106,13 @@ class Partida:
     # constantes de la clase
     NUM_RONDAS = 6  # rondas por cada jugador
 
-    def __init__(self, data: dict | None = None) -> None:
+    def __init__(self) -> None:
         """Inicializa la partida."""
-        if data:
-            self.__dict__.update(data)
-            if self.juego:
-                self.juego = Juego(data=self.juego)
-        else:
-            self.rondas = [0, 0]
-            self.id_jugador_actual = None
-            self.juego = None
-            self.puntos = [0, 0]
+        self.rondas = [0, 0]
+        self.id_jugador_actual: int | None = None
+        self.juego: Juego | None = None
+        self.puntos = [0, 0]
+        self.puntos_actualizados = False
 
     def comenzar_ronda(self, palabra: str) -> None:
         """Comienza una nueva ronda con la palabra a adivinar."""
@@ -120,11 +122,18 @@ class Partida:
             self.id_jugador_actual = 0
         self.rondas[self.id_jugador_actual] += 1
         self.juego = Juego(palabra)
+        self.puntos_actualizados = False
 
     def actualizar_puntos(self) -> None:
         """Actualiza los puntos del jugador actual."""
+        if self.puntos_actualizados:
+            return
+        if not self.juego or self.id_jugador_actual is None:
+            error = "No se puede actualizar puntos si no se inició ninguna ronda"
+            raise Exception(error)
         if self.juego.acerto:
             self.puntos[self.id_jugador_actual] += self.juego.puntaje()
+        self.puntos_actualizados = True
 
     def ronda_finalizo(self) -> bool:
         """Retorna si finalizó la ronda actual."""
@@ -138,9 +147,18 @@ class Partida:
         """Retorna los puntos del jugador indicado."""
         return self.puntos[id_jugador]
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> dict[str, Any]:
         """Retorna la partida serializada en un diccionario."""
         d = self.__dict__.copy()
         if d["juego"]:
             d["juego"] = d["juego"].to_dict()
         return d
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> Partida:
+        """Crea una partida a partir de los datos serializados."""
+        obj = cls()
+        obj.__dict__.update(data)
+        if isinstance(obj.juego, dict):
+            obj.juego = Juego.from_dict(obj.juego)
+        return obj
