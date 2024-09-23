@@ -8,7 +8,7 @@
 
 {% macro juego(juego, resultado, action="") -%}
     <p>Intentos restantes: {{ juego.intentos_disponibles() }}</p>
-    <p>Letras usadas: {{ ' '.join(juego.letras_usadas) }}</p>
+    <p>Letras usadas: {{ ' '.join(sorted(juego.letras_usadas)) }}</p>
     <p>Progreso de la palabra: {{ juego.mostrar_progreso_palabra() }}</p>
 
     <!-- Mostrar imagen según el número de intentos restantes -->

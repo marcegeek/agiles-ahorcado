@@ -52,8 +52,9 @@ class Juego:
         "palabra correcta", "palabra incorrecta"
         """
         if palabra.lower() == self.palabra:
-            for i in palabra:
-                self.letras_usadas.append(i)
+            for l in palabra:
+                if l not in self.letras_usadas:
+                    self.letras_usadas.append(l)
             self.acerto = True
             return "palabra correcta"
         self.intentos_usados += self.INTENTOS_PALABRA
