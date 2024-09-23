@@ -67,7 +67,7 @@ select = [
     "D", # Missing docstrings
 ]
 # ignores for behave features
-"features/steps/*.py" = [
+"features/**.py" = [
     "INP001", # implicit namespace package
     "S101",
     "PLR2004",
