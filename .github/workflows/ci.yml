@@ -105,9 +105,24 @@ jobs:
         include-hidden-files: true
         overwrite: true
 
-  reports:
+  deploy:
     needs: [build, atdd]
+    # only run this job when pushing to main
+    if: github.ref == 'refs/heads/main' and github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Deploy to Render
+      env:
+        deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: curl "$deploy_url"
+
+  reports:
     if: always()
+    needs: [build, atdd]
     runs-on: ubuntu-latest
 
     steps:
