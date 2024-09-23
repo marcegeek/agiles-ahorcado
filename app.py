@@ -31,11 +31,8 @@ def iniciar_juego() -> None:
 def arriesgar(juego: Juego) -> str:
     """Arriesgar letra o palabra en el juego actual."""
     intento = request.form["intento"]
-    if len(intento) == 1:
-        resultado = juego.arriesgar_letra(intento)
-    else:
-        resultado = juego.arriesgar_palabra(intento)
-    return resultado
+    metodo = juego.arriesgar_letra if len(intento) == 1 else juego.arriesgar_palabra
+    return metodo(intento)
 
 
 @app.route("/juego", methods=["GET", "POST"])
@@ -59,7 +56,7 @@ def url_redireccion(fallback: str | None = None) -> str:
     if fallback is None:
         fallback = url_for("index")
     redirecciones = request.values.get("redirect_to"), request.referrer, fallback
-    return [r for r in redirecciones if r][0]
+    return next(r for r in redirecciones if r)
 
 
 @app.route("/finalizar", methods=["POST"])
@@ -126,4 +123,5 @@ def partida() -> str:
 
 
 if __name__ == "__main__":
+    # ruff: noqa: S201: ignorar uso de debug=True
     app.run(debug=True)

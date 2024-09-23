@@ -46,7 +46,7 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         mkdir -p reports/flake8
         # exit-zero treats all errors as warnings
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=100 --statistics --output-file reports/flake8/flake8stats.txt --format=html --htmldir=reports/flake8
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=110 --statistics --output-file reports/flake8/flake8stats.txt --format=html --htmldir=reports/flake8
 
     - name: Lint with Ruff
       run: |

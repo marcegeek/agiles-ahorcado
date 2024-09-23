@@ -31,7 +31,7 @@ output = "reports/coverage/coverage.xml"
 addopts = "--html=reports/tests/pytest.html --cov=./ --cov-report=term --cov-report=html --cov-report=xml --junit-xml=reports/tests/pytest.xml"
 
 [tool.ruff]
-line-length = 100
+line-length = 110
 
 [tool.ruff.lint]
 select = [
@@ -49,6 +49,16 @@ select = [
     "S311", # Standard pseudo-random generators are not suitable for cryptographic purposes
     "ANN", # Don't check missing annotations
     "D", # Missing docstrings
+]
+# ignores for behave features
+"features/steps/*.py" = [
+    "INP001", # implicit namespace package
+    "S101",
+    "PLR2004",
+    "S311",
+    "ANN",
+    "D",
+    "F811", # Redefinition of step_impl functions
 ]
 
 [tool.ruff.lint.pydocstyle]

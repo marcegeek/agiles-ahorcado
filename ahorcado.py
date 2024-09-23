@@ -21,7 +21,8 @@ class Juego:
             self.__dict__.update(data)
         else:
             if not palabra.replace(" ", "").isalpha():
-                raise ValueError("Palabra invalida: debe contener solo letras o espacios")
+                error = "Palabra invalida: debe contener solo letras o espacios"
+                raise ValueError(error)
             self.palabra = palabra.lower()
             self.acerto = False
             self.intentos_usados = 0
@@ -42,11 +43,9 @@ class Juego:
                 if "_" not in self.mostrar_progreso_palabra():
                     self.acerto = True
                 return "letra se encuentra"
-            else:
-                self.intentos_usados += self.INTENTOS_LETRA
-                return "letra no se encuentra"
-        else:
-            return "letra invalida"
+            self.intentos_usados += self.INTENTOS_LETRA
+            return "letra no se encuentra"
+        return "letra invalida"
 
     def arriesgar_palabra(self, palabra: str) -> str:
         """Arriesga una palabra.
@@ -115,9 +114,7 @@ class Partida:
 
     def comenzar_ronda(self, palabra: str) -> None:
         """Comienza una nueva ronda con la palabra a adivinar."""
-        if self.id_jugador_actual is None:
-            self.id_jugador_actual = 1
-        elif self.id_jugador_actual == 0:
+        if not self.id_jugador_actual:
             self.id_jugador_actual = 1
         else:
             self.id_jugador_actual = 0
