@@ -1,8 +1,10 @@
 """Aplicación web Flask del juego del ahorcado."""
 
+from __future__ import annotations
+
 import os
 
-from flask import Flask, flash, redirect, render_template, request, session, url_for
+from flask import Flask, Response, flash, redirect, render_template, request, session, url_for
 
 from ahorcado import Juego, Partida
 
@@ -11,12 +13,12 @@ app.secret_key = os.environ.get("SECRET_KEY", "default_secret_key")
 
 
 @app.route("/")
-def index():
+def index() -> str:
     """Devuelve la página principal."""
     return render_template("index.html")
 
 
-def iniciar_juego():
+def iniciar_juego() -> None:
     """Inicia un juego simple con la palabra ingresada."""
     palabra = request.form["palabra"]
     try:
@@ -26,7 +28,7 @@ def iniciar_juego():
         flash(str(e), category="error")
 
 
-def arriesgar(juego):
+def arriesgar(juego: Juego) -> str:
     """Arriesgar letra o palabra en el juego actual."""
     intento = request.form["intento"]
     if len(intento) == 1:
@@ -37,7 +39,7 @@ def arriesgar(juego):
 
 
 @app.route("/juego", methods=["GET", "POST"])
-def juego():
+def juego() -> str:
     """Permite arriesgar en el juego actual o iniciar uno nuevo y devuelve la vista."""
     if "juego" not in session:
         if request.method == "POST":
@@ -52,7 +54,7 @@ def juego():
     return render_template("juego.html", juego=juego, resultado=resultado)
 
 
-def url_redireccion(fallback=None):
+def url_redireccion(fallback: str | None = None) -> str:
     """Obtiene la URL a la que redirigir."""
     if fallback is None:
         fallback = url_for("index")
@@ -61,7 +63,7 @@ def url_redireccion(fallback=None):
 
 
 @app.route("/finalizar", methods=["POST"])
-def finalizar():
+def finalizar() -> Response:
     """Finaliza el juego y/o partida actual."""
     session.pop("juego", None)
     session.pop("jugadores", None)
@@ -69,7 +71,7 @@ def finalizar():
     return redirect(url_redireccion())
 
 
-def iniciar_partida():
+def iniciar_partida() -> None:
     """Inicia una nueva partida con los jugadores ingresados."""
     keys = ["jugador1", "jugador2"]
     session["jugadores"] = [request.form[k] for k in keys]
@@ -77,7 +79,7 @@ def iniciar_partida():
     session["partida"] = p.to_dict()
 
 
-def iniciar_ronda(partida):
+def iniciar_ronda(partida: Partida) -> None:
     """Inicia una nueva ronda en la partida actual con la palabra ingresada."""
     palabra = request.form["palabra"]
     partida.comenzarRonda(palabra)
@@ -85,7 +87,7 @@ def iniciar_ronda(partida):
 
 
 @app.route("/partida", methods=["GET", "POST"])
-def partida():
+def partida() -> str:
     """Permite arriesgar en la partida actual, iniciar una nueva o iniciar una ronda y devuelve la vista."""
     jugadores = session.get("jugadores")
     partida = Partida(data=session["partida"]) if "partida" in session else None
