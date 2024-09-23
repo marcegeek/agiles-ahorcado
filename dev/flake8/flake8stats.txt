@@ -1,2 +1,0 @@
-6     E252 missing whitespace around parameter equals
-6     F811 redefinition of unused 'step_impl' from line 17

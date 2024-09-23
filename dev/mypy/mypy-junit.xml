@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<testsuite errors="0" failures="1" name="mypy" skips="0" tests="1" time="4.152">
-  <testcase classname="mypy" file="mypy" line="1" name="mypy-py3_11-linux" time="4.152">
+<testsuite errors="0" failures="1" name="mypy" skips="0" tests="1" time="4.059">
+  <testcase classname="mypy" file="mypy" line="1" name="mypy-py3_11-linux" time="4.059">
     <failure message="mypy produced messages">ahorcado.py:18: error: Missing type parameters for generic type "dict" 
 [type-arg]
-    ...f __init__(self, palabra: str | None=None, data: dict | None=None) -&gt; ...
+    ...__init__(self, palabra: str | None = None, data: dict | None = None) -...
                                                         ^
 ahorcado.py:23: error: Item "None" of "str | None" has no attribute "replace" 
 [union-attr]
@@ -23,7 +23,7 @@ ahorcado.py:92: error: Missing type parameters for generic type "dict"
                              ^
 ahorcado.py:103: error: Missing type parameters for generic type "dict" 
 [type-arg]
-        def __init__(self, data: dict | None=None) -&gt; None:
+        def __init__(self, data: dict | None = None) -&gt; None:
                                  ^
 ahorcado.py:107: error: Cannot determine type of "juego"  [has-type]
                 if self.juego:
