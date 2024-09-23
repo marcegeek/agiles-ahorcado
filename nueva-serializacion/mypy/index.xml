@@ -1,0 +1,1 @@
+<?xml-stylesheet type="text/xsl" href="mypy-html.xslt"?><mypy-report-index name="index"><file module="ahorcado" name="ahorcado.py" total="199" any="14" empty="79" imprecise="5" precise="101" unanalyzed="0"/><file module="app" name="app.py" total="131" any="11" empty="43" imprecise="9" precise="68" unanalyzed="0"/></mypy-report-index>
