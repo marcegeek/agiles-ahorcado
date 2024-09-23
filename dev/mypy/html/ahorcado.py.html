@@ -154,6 +154,24 @@
 <span id="L144" class="lineno"><a class="lineno" href="#L144">144</a></span>
 <span id="L145" class="lineno"><a class="lineno" href="#L145">145</a></span>
 <span id="L146" class="lineno"><a class="lineno" href="#L146">146</a></span>
+<span id="L147" class="lineno"><a class="lineno" href="#L147">147</a></span>
+<span id="L148" class="lineno"><a class="lineno" href="#L148">148</a></span>
+<span id="L149" class="lineno"><a class="lineno" href="#L149">149</a></span>
+<span id="L150" class="lineno"><a class="lineno" href="#L150">150</a></span>
+<span id="L151" class="lineno"><a class="lineno" href="#L151">151</a></span>
+<span id="L152" class="lineno"><a class="lineno" href="#L152">152</a></span>
+<span id="L153" class="lineno"><a class="lineno" href="#L153">153</a></span>
+<span id="L154" class="lineno"><a class="lineno" href="#L154">154</a></span>
+<span id="L155" class="lineno"><a class="lineno" href="#L155">155</a></span>
+<span id="L156" class="lineno"><a class="lineno" href="#L156">156</a></span>
+<span id="L157" class="lineno"><a class="lineno" href="#L157">157</a></span>
+<span id="L158" class="lineno"><a class="lineno" href="#L158">158</a></span>
+<span id="L159" class="lineno"><a class="lineno" href="#L159">159</a></span>
+<span id="L160" class="lineno"><a class="lineno" href="#L160">160</a></span>
+<span id="L161" class="lineno"><a class="lineno" href="#L161">161</a></span>
+<span id="L162" class="lineno"><a class="lineno" href="#L162">162</a></span>
+<span id="L163" class="lineno"><a class="lineno" href="#L163">163</a></span>
+<span id="L164" class="lineno"><a class="lineno" href="#L164">164</a></span>
 </pre></td>
 <td class="table-code"><pre><span class="line-empty" title="No Anys on this line!">"""Lógica del juego del ahorcado.</span>
 <span class="line-empty" title="No Anys on this line!"></span>
@@ -162,6 +180,7 @@
 <span class="line-empty" title="No Anys on this line!">"""</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-precise" title="No Anys on this line!">from __future__ import annotations</span>
+<span class="line-precise" title="No Anys on this line!">from typing import Any</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-precise" title="No Anys on this line!">class Juego:</span>
@@ -172,24 +191,15 @@
 <span class="line-precise" title="No Anys on this line!">    INTENTOS_LETRA = 1</span>
 <span class="line-precise" title="No Anys on this line!">    INTENTOS_PALABRA = 2</span>
 <span class="line-empty" title="No Anys on this line!"></span>
-<span class="line-imprecise" title="Any Types on this line: 
-Error (x2)">    def __init__(self, palabra: str | None = None, data: dict | None = None) -&gt; None:</span>
+<span class="line-precise" title="No Anys on this line!">    def __init__(self, palabra: str) -&gt; None:</span>
 <span class="line-empty" title="No Anys on this line!">        """Inicializa el juego con una palabra."""</span>
-<span class="line-imprecise" title="Any Types on this line: 
-Error (x2)">        if data:</span>
-<span class="line-imprecise" title="Any Types on this line: 
-Explicit (x6)
-Error (x2)">            self.__dict__.update(data)</span>
-<span class="line-empty" title="No Anys on this line!">        else:</span>
-<span class="line-imprecise" title="Any Types on this line: 
-Error (x2)">            if not palabra.replace(" ", "").isalpha():</span>
-<span class="line-precise" title="No Anys on this line!">                error = "Palabra invalida: debe contener solo letras o espacios"</span>
-<span class="line-precise" title="No Anys on this line!">                raise ValueError(error)</span>
-<span class="line-imprecise" title="Any Types on this line: 
-Error (x2)">            self.palabra = palabra.lower()</span>
-<span class="line-precise" title="No Anys on this line!">            self.acerto = False</span>
-<span class="line-precise" title="No Anys on this line!">            self.intentos_usados = 0</span>
-<span class="line-precise" title="No Anys on this line!">            self.letras_usadas = []</span>
+<span class="line-precise" title="No Anys on this line!">        if not palabra.replace(" ", "").isalpha():</span>
+<span class="line-precise" title="No Anys on this line!">            error = "Palabra invalida: debe contener solo letras o espacios"</span>
+<span class="line-precise" title="No Anys on this line!">            raise ValueError(error)</span>
+<span class="line-precise" title="No Anys on this line!">        self.palabra = palabra.lower()</span>
+<span class="line-precise" title="No Anys on this line!">        self.acerto = False</span>
+<span class="line-precise" title="No Anys on this line!">        self.intentos_usados = 0</span>
+<span class="line-precise" title="No Anys on this line!">        self.letras_usadas: list[str] = []</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-precise" title="No Anys on this line!">    def arriesgar_letra(self, letra: str) -&gt; str:</span>
 <span class="line-empty" title="No Anys on this line!">        """Arriesga una letra.</span>
@@ -199,13 +209,10 @@ Error (x2)">            self.palabra = palabra.lower()</span>
 <span class="line-empty" title="No Anys on this line!">        """</span>
 <span class="line-precise" title="No Anys on this line!">        if letra.isalpha() and len(letra) == 1:</span>
 <span class="line-precise" title="No Anys on this line!">            letra = letra.lower()</span>
-<span class="line-imprecise" title="Any Types on this line: 
-Unannotated (x1)">            if letra in self.letras_usadas:</span>
+<span class="line-precise" title="No Anys on this line!">            if letra in self.letras_usadas:</span>
 <span class="line-precise" title="No Anys on this line!">                return "letra ya usada"</span>
-<span class="line-any" title="Any Types on this line: 
-Unannotated (x2)">            self.letras_usadas.append(letra)</span>
-<span class="line-imprecise" title="Any Types on this line: 
-Error (x1)">            if letra in self.palabra:</span>
+<span class="line-precise" title="No Anys on this line!">            self.letras_usadas.append(letra)</span>
+<span class="line-precise" title="No Anys on this line!">            if letra in self.palabra:</span>
 <span class="line-precise" title="No Anys on this line!">                if "_" not in self.mostrar_progreso_palabra():</span>
 <span class="line-precise" title="No Anys on this line!">                    self.acerto = True</span>
 <span class="line-precise" title="No Anys on this line!">                return "letra se encuentra"</span>
@@ -219,11 +226,9 @@ Error (x1)">            if letra in self.palabra:</span>
 <span class="line-empty" title="No Anys on this line!">        Dada una palabra, devuelve uno de 2 valores posibles:</span>
 <span class="line-empty" title="No Anys on this line!">        "palabra correcta", "palabra incorrecta"</span>
 <span class="line-empty" title="No Anys on this line!">        """</span>
-<span class="line-imprecise" title="Any Types on this line: 
-Error (x1)">        if palabra.lower() == self.palabra:</span>
+<span class="line-precise" title="No Anys on this line!">        if palabra.lower() == self.palabra:</span>
 <span class="line-precise" title="No Anys on this line!">            for i in palabra:</span>
-<span class="line-any" title="Any Types on this line: 
-Unannotated (x2)">                self.letras_usadas.append(i)</span>
+<span class="line-precise" title="No Anys on this line!">                self.letras_usadas.append(i)</span>
 <span class="line-precise" title="No Anys on this line!">            self.acerto = True</span>
 <span class="line-precise" title="No Anys on this line!">            return "palabra correcta"</span>
 <span class="line-precise" title="No Anys on this line!">        self.intentos_usados += self.INTENTOS_PALABRA</span>
@@ -237,15 +242,10 @@ Omitted Generics (x23)">        return max(self.MAX_INTENTOS - self.intentos_usa
 <span class="line-precise" title="No Anys on this line!">    def mostrar_progreso_palabra(self) -&gt; str:</span>
 <span class="line-empty" title="No Anys on this line!">        """Retorna el progreso de la palabra."""</span>
 <span class="line-precise" title="No Anys on this line!">        avance = ""</span>
-<span class="line-imprecise" title="Any Types on this line: 
-Error (x2)">        for i in self.palabra:</span>
-<span class="line-imprecise" title="Any Types on this line: 
-Error (x1)
-Unannotated (x1)">            if i in self.letras_usadas:</span>
-<span class="line-imprecise" title="Any Types on this line: 
-Error (x1)">                avance = avance + i</span>
-<span class="line-imprecise" title="Any Types on this line: 
-Error (x2)">            elif i == " ":</span>
+<span class="line-precise" title="No Anys on this line!">        for i in self.palabra:</span>
+<span class="line-precise" title="No Anys on this line!">            if i in self.letras_usadas:</span>
+<span class="line-precise" title="No Anys on this line!">                avance = avance + i</span>
+<span class="line-precise" title="No Anys on this line!">            elif i == " ":</span>
 <span class="line-precise" title="No Anys on this line!">                avance = avance + " "</span>
 <span class="line-empty" title="No Anys on this line!">            else:</span>
 <span class="line-precise" title="No Anys on this line!">                avance = avance + "_"</span>
@@ -264,10 +264,22 @@ Error (x2)">            elif i == " ":</span>
 <span class="line-precise" title="No Anys on this line!">        return 0 if not self.acerto else self.intentos_disponibles()</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-imprecise" title="Any Types on this line: 
-Error (x2)">    def to_dict(self) -&gt; dict:</span>
+Explicit (x1)">    def to_dict(self) -&gt; dict[str, Any]:</span>
 <span class="line-empty" title="No Anys on this line!">        """Retorna el juego serializado en un diccionario."""</span>
 <span class="line-imprecise" title="Any Types on this line: 
 Explicit (x3)">        return self.__dict__.copy()</span>
+<span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-empty" title="No Anys on this line!">    @classmethod</span>
+<span class="line-imprecise" title="Any Types on this line: 
+Explicit (x1)">    def from_dict(cls, data: dict[str, Any]) -&gt; Juego:</span>
+<span class="line-empty" title="No Anys on this line!">        """Crea un juego a partir de los datos serializados."""</span>
+<span class="line-any" title="Any Types on this line: 
+Explicit (x3)">        palabra = data["palabra"]</span>
+<span class="line-any" title="Any Types on this line: 
+Explicit (x1)">        obj = cls(palabra)</span>
+<span class="line-imprecise" title="Any Types on this line: 
+Explicit (x7)">        obj.__dict__.update(data)</span>
+<span class="line-precise" title="No Anys on this line!">        return obj</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-precise" title="No Anys on this line!">class Partida:</span>
@@ -276,40 +288,34 @@ Explicit (x3)">        return self.__dict__.copy()</span>
 <span class="line-empty" title="No Anys on this line!">    # constantes de la clase</span>
 <span class="line-precise" title="No Anys on this line!">    NUM_RONDAS = 6  # rondas por cada jugador</span>
 <span class="line-empty" title="No Anys on this line!"></span>
-<span class="line-imprecise" title="Any Types on this line: 
-Error (x2)">    def __init__(self, data: dict | None = None) -&gt; None:</span>
+<span class="line-precise" title="No Anys on this line!">    def __init__(self) -&gt; None:</span>
 <span class="line-empty" title="No Anys on this line!">        """Inicializa la partida."""</span>
-<span class="line-imprecise" title="Any Types on this line: 
-Error (x2)">        if data:</span>
-<span class="line-imprecise" title="Any Types on this line: 
-Explicit (x6)
-Error (x2)">            self.__dict__.update(data)</span>
-<span class="line-precise" title="No Anys on this line!">            if self.juego:</span>
-<span class="line-imprecise" title="Any Types on this line: 
-Error (x2)">                self.juego = Juego(data=self.juego)</span>
-<span class="line-empty" title="No Anys on this line!">        else:</span>
-<span class="line-precise" title="No Anys on this line!">            self.rondas = [0, 0]</span>
-<span class="line-precise" title="No Anys on this line!">            self.id_jugador_actual = None</span>
-<span class="line-precise" title="No Anys on this line!">            self.juego = None</span>
-<span class="line-precise" title="No Anys on this line!">            self.puntos = [0, 0]</span>
+<span class="line-precise" title="No Anys on this line!">        self.rondas = [0, 0]</span>
+<span class="line-precise" title="No Anys on this line!">        self.id_jugador_actual: int | None = None</span>
+<span class="line-precise" title="No Anys on this line!">        self.juego: Juego | None = None</span>
+<span class="line-precise" title="No Anys on this line!">        self.puntos = [0, 0]</span>
+<span class="line-precise" title="No Anys on this line!">        self.puntos_actualizados = False</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-precise" title="No Anys on this line!">    def comenzar_ronda(self, palabra: str) -&gt; None:</span>
 <span class="line-empty" title="No Anys on this line!">        """Comienza una nueva ronda con la palabra a adivinar."""</span>
 <span class="line-precise" title="No Anys on this line!">        if not self.id_jugador_actual:</span>
 <span class="line-precise" title="No Anys on this line!">            self.id_jugador_actual = 1</span>
 <span class="line-empty" title="No Anys on this line!">        else:</span>
-<span class="line-any" title="Any Types on this line: 
-Unannotated (x1)">            self.id_jugador_actual = 0</span>
-<span class="line-any" title="Any Types on this line: 
-Error (x1)">        self.rondas[self.id_jugador_actual] += 1</span>
-<span class="line-precise" title="Any Types on this line: 
-Error (x2)">        self.juego = Juego(palabra)</span>
+<span class="line-precise" title="No Anys on this line!">            self.id_jugador_actual = 0</span>
+<span class="line-precise" title="No Anys on this line!">        self.rondas[self.id_jugador_actual] += 1</span>
+<span class="line-precise" title="No Anys on this line!">        self.juego = Juego(palabra)</span>
+<span class="line-precise" title="No Anys on this line!">        self.puntos_actualizados = False</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-precise" title="No Anys on this line!">    def actualizar_puntos(self) -&gt; None:</span>
 <span class="line-empty" title="No Anys on this line!">        """Actualiza los puntos del jugador actual."""</span>
+<span class="line-precise" title="No Anys on this line!">        if self.puntos_actualizados:</span>
+<span class="line-empty" title="No Anys on this line!">            return</span>
+<span class="line-precise" title="No Anys on this line!">        if not self.juego or self.id_jugador_actual is None:</span>
+<span class="line-precise" title="No Anys on this line!">            error = "No se puede actualizar puntos si no se inició ninguna ronda"</span>
+<span class="line-precise" title="No Anys on this line!">            raise Exception(error)</span>
 <span class="line-precise" title="No Anys on this line!">        if self.juego.acerto:</span>
-<span class="line-any" title="Any Types on this line: 
-Error (x1)">            self.puntos[self.id_jugador_actual] += self.juego.puntaje()</span>
+<span class="line-precise" title="No Anys on this line!">            self.puntos[self.id_jugador_actual] += self.juego.puntaje()</span>
+<span class="line-precise" title="No Anys on this line!">        self.puntos_actualizados = True</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-precise" title="No Anys on this line!">    def ronda_finalizo(self) -&gt; bool:</span>
 <span class="line-empty" title="No Anys on this line!">        """Retorna si finalizó la ronda actual."""</span>
@@ -324,7 +330,7 @@ Error (x1)">            self.puntos[self.id_jugador_actual] += self.juego.puntaj
 <span class="line-precise" title="No Anys on this line!">        return self.puntos[id_jugador]</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-imprecise" title="Any Types on this line: 
-Error (x2)">    def to_dict(self) -&gt; dict:</span>
+Explicit (x1)">    def to_dict(self) -&gt; dict[str, Any]:</span>
 <span class="line-empty" title="No Anys on this line!">        """Retorna la partida serializada en un diccionario."""</span>
 <span class="line-imprecise" title="Any Types on this line: 
 Explicit (x4)">        d = self.__dict__.copy()</span>
@@ -334,6 +340,18 @@ Explicit (x2)">        if d["juego"]:</span>
 Explicit (x5)">            d["juego"] = d["juego"].to_dict()</span>
 <span class="line-imprecise" title="Any Types on this line: 
 Explicit (x1)">        return d</span>
+<span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-empty" title="No Anys on this line!">    @classmethod</span>
+<span class="line-imprecise" title="Any Types on this line: 
+Explicit (x1)">    def from_dict(cls, data: dict[str, Any]) -&gt; Partida:</span>
+<span class="line-empty" title="No Anys on this line!">        """Crea una partida a partir de los datos serializados."""</span>
+<span class="line-precise" title="No Anys on this line!">        obj = cls()</span>
+<span class="line-imprecise" title="Any Types on this line: 
+Explicit (x7)">        obj.__dict__.update(data)</span>
+<span class="line-precise" title="Any Types on this line: 
+Omitted Generics (x18)">        if isinstance(obj.juego, dict):</span>
+<span class="line-unanalyzed" title="No Anys on this line!">            obj.juego = Juego.from_dict(obj.juego)</span>
+<span class="line-precise" title="No Anys on this line!">        return obj</span>
 </pre></td>
 </tr></tbody>
 </table>
