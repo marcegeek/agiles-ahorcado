@@ -36,7 +36,7 @@ def arriesgar(juego: Juego) -> str:
 
 
 @app.route("/juego", methods=["GET", "POST"])
-def juego() -> str:
+def juego() -> str | Response:
     """Permite arriesgar en el juego actual o iniciar uno nuevo y devuelve la vista."""
     if "juego" not in session:
         if request.method == "POST":
@@ -84,7 +84,7 @@ def iniciar_ronda(partida: Partida) -> None:
 
 
 @app.route("/partida", methods=["GET", "POST"])
-def partida() -> str:
+def partida() -> str | Response:
     """Permite arriesgar en la partida actual, iniciar una nueva o iniciar una ronda y devuelve la vista."""
     jugadores = session.get("jugadores")
     partida = Partida(data=session["partida"]) if "partida" in session else None
