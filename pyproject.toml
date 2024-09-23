@@ -16,6 +16,7 @@ source = [
 
 # Especifica archivos o directorios para excluir de la cobertura
 omit = [
+    "features/*",
     "tests/*",
     "venv/*",
     ".venv/*",
@@ -28,7 +29,7 @@ directory = "reports/coverage"
 output = "reports/coverage/coverage.xml"
 
 [tool.flake8]
-exclude = [".git", "venv"]
+exclude = [".git", "venv", ".venv"]
 per-file-ignores = [
     "features/steps/*:F811", # redefinition of step_impl functions
 ]
@@ -40,7 +41,7 @@ format = "html"
 htmldir = "reports/flake8"
 
 [tool.pytest.ini_options]
-addopts = "--html=reports/tests/pytest.html --cov=./ --cov-report=term --cov-report=html --cov-report=xml --junit-xml=reports/tests/pytest.xml"
+addopts = "--html=reports/tests/pytest.html --junit-xml=reports/tests/pytest.xml"
 
 [tool.ruff]
 line-length = 110
