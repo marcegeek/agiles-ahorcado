@@ -1,26 +1,26 @@
 def test_ronda_gana_finaliza(partida, ronda_completa):
     ronda_completa(True, 1)
-    assert partida.rondaFinalizo()
+    assert partida.ronda_finalizo()
 
 
 def test_ronda_pierde_finaliza(partida, ronda_completa):
     ronda_completa(False)
-    assert partida.rondaFinalizo()
+    assert partida.ronda_finalizo()
 
 
 def test_puntos_un_acierto(partida, ronda_completa):
     ronda_completa(True, 1)
-    assert partida.rondaFinalizo()
+    assert partida.ronda_finalizo()
     assert partida.puntos == [0, 1]
 
 
 def test_puntos_fallo_acierto(partida, ronda_completa):
     ronda_completa(False)
     ronda_completa(True, 3)
-    assert partida.rondaFinalizo()
+    assert partida.ronda_finalizo()
     assert partida.puntos == [3, 0]
-    assert partida.puntosJugador(0) == 3
-    assert partida.puntosJugador(1) == 0
+    assert partida.puntos_jugador(0) == 3
+    assert partida.puntos_jugador(1) == 0
 
 
 def test_puntos_fallo_fallo_acierto(partida, ronda_completa):
@@ -28,17 +28,17 @@ def test_puntos_fallo_fallo_acierto(partida, ronda_completa):
     ronda_completa(False)
     ronda_completa(True, 2)
     assert partida.puntos == [0, 2]
-    assert partida.puntosJugador(0) == 0
-    assert partida.puntosJugador(1) == 2
+    assert partida.puntos_jugador(0) == 0
+    assert partida.puntos_jugador(1) == 2
 
 
 def test_puntos_uno_y_uno(partida, ronda_completa):
     ronda_completa(True, 1)
     ronda_completa(True, 1)
-    assert partida.rondaFinalizo()
+    assert partida.ronda_finalizo()
     assert partida.puntos == [1, 1]
-    assert partida.puntosJugador(0) == 1
-    assert partida.puntosJugador(1) == 1
+    assert partida.puntos_jugador(0) == 1
+    assert partida.puntos_jugador(1) == 1
 
 
 def test_puntos_acierto_fallo_acierto(partida, ronda_completa):
@@ -46,8 +46,8 @@ def test_puntos_acierto_fallo_acierto(partida, ronda_completa):
     ronda_completa(False)
     ronda_completa(True, 4)
     assert partida.puntos == [0, 7]
-    assert partida.puntosJugador(0) == 0
-    assert partida.puntosJugador(1) == 7
+    assert partida.puntos_jugador(0) == 0
+    assert partida.puntos_jugador(1) == 7
 
 
 def test_puntos_tres_aciertos(partida, ronda_completa):
@@ -55,8 +55,8 @@ def test_puntos_tres_aciertos(partida, ronda_completa):
     ronda_completa(True, 2)
     ronda_completa(True, 3)
     assert partida.puntos == [2, 4]
-    assert partida.puntosJugador(0) == 2
-    assert partida.puntosJugador(1) == 4
+    assert partida.puntos_jugador(0) == 2
+    assert partida.puntos_jugador(1) == 4
 
 
 def test_puntos_cuatro_aciertos(partida, ronda_completa):
@@ -65,8 +65,8 @@ def test_puntos_cuatro_aciertos(partida, ronda_completa):
     ronda_completa(True, 2)
     ronda_completa(True, 1)
     assert partida.puntos == [2, 6]
-    assert partida.puntosJugador(0) == 2
-    assert partida.puntosJugador(1) == 6
+    assert partida.puntos_jugador(0) == 2
+    assert partida.puntos_jugador(1) == 6
 
 
 def test_puntos_fallo_acierto_fallo_acierto(partida, ronda_completa):
@@ -75,8 +75,8 @@ def test_puntos_fallo_acierto_fallo_acierto(partida, ronda_completa):
     ronda_completa(False)
     ronda_completa(True, 6)
     assert partida.puntos == [7, 0]
-    assert partida.puntosJugador(0) == 7
-    assert partida.puntosJugador(1) == 0
+    assert partida.puntos_jugador(0) == 7
+    assert partida.puntos_jugador(1) == 0
 
 
 def test_puntos_fallo_y_tres_aciertos(partida, ronda_completa):
@@ -85,20 +85,20 @@ def test_puntos_fallo_y_tres_aciertos(partida, ronda_completa):
     ronda_completa(True, 2)
     ronda_completa(True, 5)
     assert partida.puntos == [6, 2]
-    assert partida.puntosJugador(0) == 6
-    assert partida.puntosJugador(1) == 2
+    assert partida.puntos_jugador(0) == 6
+    assert partida.puntos_jugador(1) == 2
 
 
 def test_ronda_gana_finaliza_data(ronda_completa, partida_data):
     ronda_completa(True, 1)
-    assert partida_data().rondaFinalizo()
+    assert partida_data().ronda_finalizo()
 
 
 def test_puntos_fallo_acierto_data(ronda_completa, partida_data):
     ronda_completa(False)
     ronda_completa(True, 3)
     p = partida_data()
-    assert p.rondaFinalizo()
+    assert p.ronda_finalizo()
     assert p.puntos == [3, 0]
-    assert p.puntosJugador(0) == 3
-    assert p.puntosJugador(1) == 0
+    assert p.puntos_jugador(0) == 3
+    assert p.puntos_jugador(1) == 0

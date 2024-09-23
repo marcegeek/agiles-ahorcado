@@ -32,9 +32,9 @@ def arriesgar(juego: Juego) -> str:
     """Arriesgar letra o palabra en el juego actual."""
     intento = request.form["intento"]
     if len(intento) == 1:
-        resultado = juego.arriesgarLetra(intento)
+        resultado = juego.arriesgar_letra(intento)
     else:
-        resultado = juego.arriesgarPalabra(intento)
+        resultado = juego.arriesgar_palabra(intento)
     return resultado
 
 
@@ -82,7 +82,7 @@ def iniciar_partida() -> None:
 def iniciar_ronda(partida: Partida) -> None:
     """Inicia una nueva ronda en la partida actual con la palabra ingresada."""
     palabra = request.form["palabra"]
-    partida.comenzarRonda(palabra)
+    partida.comenzar_ronda(palabra)
     session["partida"] = partida.to_dict()
 
 
@@ -101,8 +101,8 @@ def partida() -> str:
             partida=partida,
         )
 
-    hay_que_iniciar_ronda = partida.idJugadorActual is None or partida.rondaFinalizo()
-    jugador_palabra = 0 if partida.idJugadorActual is None else partida.idJugadorActual
+    hay_que_iniciar_ronda = partida.id_jugador_actual is None or partida.ronda_finalizo()
+    jugador_palabra = 0 if partida.id_jugador_actual is None else partida.id_jugador_actual
     jugador_adivina = (jugador_palabra + 1) % 2
     if request.method == "POST":
         if not partida.finalizo():
@@ -110,7 +110,7 @@ def partida() -> str:
                 iniciar_ronda(partida)
             else:
                 arriesgar(partida.juego)
-                partida.actualizarPuntos()
+                partida.actualizar_puntos()
                 session["partida"] = partida.to_dict()
         else:
             flash("La partida ya finalizó", category="error")

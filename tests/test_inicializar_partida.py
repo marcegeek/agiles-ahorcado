@@ -13,7 +13,7 @@ def test_inicializar_partida_rondas(partida):
 
 
 def test_inicializar_partida_jugador(partida):
-    assert partida.idJugadorActual is None
+    assert partida.id_jugador_actual is None
 
 
 def test_inicializar_partida_finalizo(partida):
@@ -21,13 +21,13 @@ def test_inicializar_partida_finalizo(partida):
 
 
 def test_inicializar_partida_ronda_finalizo(partida):
-    assert not partida.rondaFinalizo()
+    assert not partida.ronda_finalizo()
 
 
 def test_inicializar_partida_puntos(partida):
     assert partida.puntos == [0, 0]
-    assert partida.puntosJugador(0) == 0
-    assert partida.puntosJugador(1) == 0
+    assert partida.puntos_jugador(0) == 0
+    assert partida.puntos_jugador(1) == 0
 
 
 def test_inicializar_partida_data_rondas(partida_data):
@@ -35,4 +35,4 @@ def test_inicializar_partida_data_rondas(partida_data):
 
 
 def test_inicializar_partida_data_jugador(partida_data):
-    assert partida_data().idJugadorActual is None
+    assert partida_data().id_jugador_actual is None

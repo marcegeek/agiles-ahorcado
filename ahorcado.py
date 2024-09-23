@@ -10,10 +10,10 @@ from __future__ import annotations
 class Juego:
     """Lógica básica del juego del ahorcado."""
 
-    # configuracion
-    maxIntentos = 6
-    intentosLetra = 1
-    intentosPalabra = 2
+    # constantes de la clase
+    MAX_INTENTOS = 6
+    INTENTOS_LETRA = 1
+    INTENTOS_PALABRA = 2
 
     def __init__(self, palabra: str | None=None, data: dict | None=None) -> None:
         """Inicializa el juego con una palabra."""
@@ -24,10 +24,10 @@ class Juego:
                 raise ValueError("Palabra invalida: debe contener solo letras o espacios")
             self.palabra = palabra.lower()
             self.acerto = False
-            self.intentosUsados = 0
-            self.letrasUsadas = []
+            self.intentos_usados = 0
+            self.letras_usadas = []
 
-    def arriesgarLetra(self, letra: str) -> str:
+    def arriesgar_letra(self, letra: str) -> str:
         """Arriesga una letra.
 
         Dada una letra, devuelve uno de 4 valores posibles:
@@ -35,20 +35,20 @@ class Juego:
         """
         if letra.isalpha() and len(letra) == 1:
             letra = letra.lower()
-            if letra in self.letrasUsadas:
+            if letra in self.letras_usadas:
                 return "letra ya usada"
-            self.letrasUsadas.append(letra)
+            self.letras_usadas.append(letra)
             if letra in self.palabra:
-                if "_" not in self.mostrarProgresoPalabra():
+                if "_" not in self.mostrar_progreso_palabra():
                     self.acerto = True
                 return "letra se encuentra"
             else:
-                self.intentosUsados += self.intentosLetra
+                self.intentos_usados += self.INTENTOS_LETRA
                 return "letra no se encuentra"
         else:
             return "letra invalida"
 
-    def arriesgarPalabra(self, palabra: str) -> str:
+    def arriesgar_palabra(self, palabra: str) -> str:
         """Arriesga una palabra.
 
         Dada una palabra, devuelve uno de 2 valores posibles:
@@ -56,21 +56,21 @@ class Juego:
         """
         if palabra.lower() == self.palabra:
             for i in palabra:
-                self.letrasUsadas.append(i)
+                self.letras_usadas.append(i)
             self.acerto = True
             return "palabra correcta"
-        self.intentosUsados += self.intentosPalabra
+        self.intentos_usados += self.INTENTOS_PALABRA
         return "palabra incorrecta"
 
-    def intentosDisponibles(self) -> int:
+    def intentos_disponibles(self) -> int:
         """Retorna los intentos disponibles."""
-        return max(self.maxIntentos - self.intentosUsados, 0)
+        return max(self.MAX_INTENTOS - self.intentos_usados, 0)
 
-    def mostrarProgresoPalabra(self) -> str:
+    def mostrar_progreso_palabra(self) -> str:
         """Retorna el progreso de la palabra."""
         avance = ""
         for i in self.palabra:
-            if i in self.letrasUsadas:
+            if i in self.letras_usadas:
                 avance = avance + i
             elif i == " ":
                 avance = avance + " "
@@ -80,7 +80,7 @@ class Juego:
 
     def perdio(self) -> bool:
         """Retorna si se perdió el juego (implica que está finalizado)."""
-        return not self.acerto and self.intentosDisponibles() == 0
+        return not self.acerto and self.intentos_disponibles() == 0
 
     def finalizo(self) -> bool:
         """Retorna si el juego finalizó."""
@@ -88,7 +88,7 @@ class Juego:
 
     def puntaje(self) -> int:
         """Retorna el puntaje del juego."""
-        return 0 if not self.acerto else self.intentosDisponibles()
+        return 0 if not self.acerto else self.intentos_disponibles()
 
     def to_dict(self) -> dict:
         """Retorna el juego serializado en un diccionario."""
@@ -98,7 +98,8 @@ class Juego:
 class Partida:
     """Lógica de una partida a 6 rondas entre dos jugadores."""
 
-    numRondas = 6  # rondas por cada jugador
+    # constantes de la clase
+    NUM_RONDAS = 6  # rondas por cada jugador
 
     def __init__(self, data: dict | None=None) -> None:
         """Inicializa la partida."""
@@ -108,37 +109,37 @@ class Partida:
                 self.juego = Juego(data=self.juego)
         else:
             self.rondas = [0, 0]
-            self.idJugadorActual = None
+            self.id_jugador_actual = None
             self.juego = None
             self.puntos = [0, 0]
 
-    def comenzarRonda(self, palabra: str) -> None:
+    def comenzar_ronda(self, palabra: str) -> None:
         """Comienza una nueva ronda con la palabra a adivinar."""
-        if self.idJugadorActual is None:
-            self.idJugadorActual = 1
-        elif self.idJugadorActual == 0:
-            self.idJugadorActual = 1
+        if self.id_jugador_actual is None:
+            self.id_jugador_actual = 1
+        elif self.id_jugador_actual == 0:
+            self.id_jugador_actual = 1
         else:
-            self.idJugadorActual = 0
-        self.rondas[self.idJugadorActual] += 1
+            self.id_jugador_actual = 0
+        self.rondas[self.id_jugador_actual] += 1
         self.juego = Juego(palabra)
 
-    def actualizarPuntos(self) -> None:
+    def actualizar_puntos(self) -> None:
         """Actualiza los puntos del jugador actual."""
         if self.juego.acerto:
-            self.puntos[self.idJugadorActual] += self.juego.puntaje()
+            self.puntos[self.id_jugador_actual] += self.juego.puntaje()
 
-    def rondaFinalizo(self) -> bool:
+    def ronda_finalizo(self) -> bool:
         """Retorna si finalizó la ronda actual."""
         return self.juego is not None and self.juego.finalizo()
 
     def finalizo(self) -> bool:
         """Retorna si finalizó la partida."""
-        return self.rondaFinalizo() and self.rondas[0] == self.numRondas
+        return self.ronda_finalizo() and self.rondas[0] == self.NUM_RONDAS
 
-    def puntosJugador(self, idJugador: int) -> int:
+    def puntos_jugador(self, id_jugador: int) -> int:
         """Retorna los puntos del jugador indicado."""
-        return self.puntos[idJugador]
+        return self.puntos[id_jugador]
 
     def to_dict(self) -> dict:
         """Retorna la partida serializada en un diccionario."""

@@ -1,5 +1,3 @@
-import pytest
-
 from ahorcado import Juego
 
 
@@ -34,17 +32,17 @@ def test_inicializar_juego_palabra_con_mezcla_de_caracteres():
 
 def test_inicializacion_juego_progreso():
     j = Juego("palabra")
-    assert j.mostrarProgresoPalabra() == "_______"
+    assert j.mostrar_progreso_palabra() == "_______"
 
 
 def test_inicializacion_juego_intentos():
     j = Juego("palabra")
-    assert j.intentosDisponibles() == j.maxIntentos
+    assert j.intentos_disponibles() == Juego.MAX_INTENTOS
 
 
 def test_inicializacion_juego_letras_usadas():
     j = Juego("palabra")
-    assert j.letrasUsadas == []
+    assert j.letras_usadas == []
 
 
 def test_inicializacion_juego_bool_acerto():
@@ -59,9 +57,9 @@ def test_inicializacion_juego_puntaje():
 
 def test_inicializacion_juego_data_intentos(juego_data):
     j = juego_data("palabra")
-    assert j.intentosDisponibles() == j.maxIntentos
+    assert j.intentos_disponibles() == Juego.MAX_INTENTOS
 
 
 def test_inicializacion_juego_data_letras_usadas(juego_data):
     j = juego_data("palabra")
-    assert j.letrasUsadas == []
+    assert j.letras_usadas == []
