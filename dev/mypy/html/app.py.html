@@ -183,7 +183,7 @@ Error (x4)">        session["juego"] = juego.to_dict()</span>
 <span class="line-any" title="Any Types on this line: 
 Omitted Generics (x4)
 Explicit (x1)">@app.route("/juego", methods=["GET", "POST"])</span>
-<span class="line-precise" title="No Anys on this line!">def juego() -&gt; str:</span>
+<span class="line-precise" title="No Anys on this line!">def juego() -&gt; str | Response:</span>
 <span class="line-empty" title="No Anys on this line!">    """Permite arriesgar en el juego actual o iniciar uno nuevo y devuelve la vista."""</span>
 <span class="line-precise" title="No Anys on this line!">    if "juego" not in session:</span>
 <span class="line-precise" title="No Anys on this line!">        if request.method == "POST":</span>
@@ -252,7 +252,7 @@ Error (x4)">    session["partida"] = partida.to_dict()</span>
 <span class="line-any" title="Any Types on this line: 
 Omitted Generics (x4)
 Explicit (x1)">@app.route("/partida", methods=["GET", "POST"])</span>
-<span class="line-precise" title="No Anys on this line!">def partida() -&gt; str:</span>
+<span class="line-precise" title="No Anys on this line!">def partida() -&gt; str | Response:</span>
 <span class="line-empty" title="No Anys on this line!">    """Permite arriesgar en la partida actual, iniciar una nueva o iniciar una ronda y devuelve la vista."""</span>
 <span class="line-imprecise" title="Any Types on this line: 
 Error (x7)

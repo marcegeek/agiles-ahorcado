@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<testsuite errors="0" failures="1" name="mypy" skips="0" tests="1" time="4.026">
-  <testcase classname="mypy" file="mypy" line="1" name="mypy-py3_11-linux" time="4.026">
+<testsuite errors="0" failures="1" name="mypy" skips="0" tests="1" time="4.011">
+  <testcase classname="mypy" file="mypy" line="1" name="mypy-py3_11-linux" time="4.011">
     <failure message="mypy produced messages">ahorcado.py:18: error: Missing type parameters for generic type "dict" 
 [type-arg]
     ...__init__(self, palabra: str | None = None, data: dict | None = None) -...
@@ -69,8 +69,9 @@ ahorcado.py:141: error: Missing type parameters for generic type "dict"
 [type-arg]
         def to_dict(self) -&gt; dict:
                              ^
-app.py:44: error: Incompatible return value type (got "Response", expected
-"str")  [return-value]
+app.py:44: error: Incompatible return value type (got
+"werkzeug.wrappers.response.Response", expected "str | flask.wrappers.Response")
+ [return-value]
                 return redirect(url_for("juego"))
                        ^~~~~~~~~~~~~~~~~~~~~~~~~~
 app.py:68: error: Incompatible return value type (got
@@ -78,12 +79,14 @@ app.py:68: error: Incompatible return value type (got
 [return-value]
         return redirect(url_redireccion())
                ^~~~~~~~~~~~~~~~~~~~~~~~~~~
-app.py:94: error: Incompatible return value type (got "Response", expected
-"str")  [return-value]
+app.py:94: error: Incompatible return value type (got
+"werkzeug.wrappers.response.Response", expected "str | flask.wrappers.Response")
+ [return-value]
                 return redirect(url_for("partida"))
                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
-app.py:114: error: Incompatible return value type (got "Response", expected
-"str")  [return-value]
+app.py:114: error: Incompatible return value type (got
+"werkzeug.wrappers.response.Response", expected "str | flask.wrappers.Response")
+ [return-value]
             return redirect(url_for("partida"))
                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~</failure>
   </testcase>
