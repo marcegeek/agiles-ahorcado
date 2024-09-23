@@ -20,13 +20,15 @@ def test_palabra_acierta_progreso():
     # Si adivina la palabra el progreso esta completo.
     j = Juego("hola")
     j.arriesgar_palabra("hola")
-    assert j.finalizo() and j.mostrar_progreso_palabra() == "hola"
+    assert j.finalizo()
+    assert j.mostrar_progreso_palabra() == "hola"
 
 
 def test_palabra_acierta_sin_errores_puntaje():
     j = Juego("hola")
     j.arriesgar_palabra("hola")
-    assert j.finalizo() and j.puntaje() == Juego.MAX_INTENTOS
+    assert j.finalizo()
+    assert j.puntaje() == Juego.MAX_INTENTOS
 
 
 def test_palabra_acierta_un_error_puntaje():
@@ -34,7 +36,8 @@ def test_palabra_acierta_un_error_puntaje():
     # pierde dos intentos
     j.arriesgar_palabra("hoja")
     j.arriesgar_palabra("hola")
-    assert j.finalizo() and j.puntaje() == Juego.MAX_INTENTOS - 2
+    assert j.finalizo()
+    assert j.puntaje() == Juego.MAX_INTENTOS - 2
 
 
 def test_palabra_acierta_dos_errores_puntaje():
@@ -43,7 +46,8 @@ def test_palabra_acierta_dos_errores_puntaje():
     j.arriesgar_palabra("hoja")
     j.arriesgar_palabra("loza")
     j.arriesgar_palabra("hola")
-    assert j.finalizo() and j.puntaje() == Juego.MAX_INTENTOS - 4
+    assert j.finalizo()
+    assert j.puntaje() == Juego.MAX_INTENTOS - 4
 
 
 # Palabra incorrecta
@@ -104,7 +108,8 @@ def test_palabra_pierde_puntaje():
     j = Juego("hola")
     j.intentos_usados = Juego.MAX_INTENTOS
     j.arriesgar_palabra("chau")
-    assert j.finalizo() and j.puntaje() == 0
+    assert j.finalizo()
+    assert j.puntaje() == 0
 
 
 # Palabra con espacios.

@@ -1,5 +1,6 @@
-import pytest
 from unittest.mock import Mock
+
+import pytest
 
 from ahorcado import Juego, Partida
 
@@ -7,11 +8,14 @@ from ahorcado import Juego, Partida
 @pytest.fixture
 def juego_data():
     # Recrear un juego a partir de su serialización, empleando los datos suministrados
-    def _juego_data(palabra, acerto=False, intentos_usados=0, letras_usadas=[]):
+    def _juego_data(palabra, acerto=False, intentos_usados=0, letras_usadas=None):
         j = Juego(palabra)
         j.acerto = acerto
         j.intentos_usados = intentos_usados
-        j.letras_usadas = letras_usadas
+        if letras_usadas:
+            j.letras_usadas = letras_usadas
+        else:
+            j.letras_usadas = []
         return Juego(data=j.to_dict())
 
     return _juego_data

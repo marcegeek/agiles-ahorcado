@@ -1,33 +1,27 @@
+import pytest
+
 from ahorcado import Juego
 
 
 # Inicializar juego
 def test_inicializar_juego_palabra_vacia():
-    try:
+    with pytest.raises(ValueError, match="Palabra invalida: debe contener solo letras o espacios"):
         Juego("")
-    except ValueError as e:
-        assert str(e) == "Palabra invalida: debe contener solo letras o espacios"
 
 
 def test_inicializar_juego_palabra_con_numeros():
-    try:
+    with pytest.raises(ValueError, match="Palabra invalida: debe contener solo letras o espacios"):
         Juego("palabra123")
-    except ValueError as e:
-        assert str(e) == "Palabra invalida: debe contener solo letras o espacios"
 
 
 def test_inicializar_juego_palabra_con_simbolos():
-    try:
+    with pytest.raises(ValueError, match="Palabra invalida: debe contener solo letras o espacios"):
         Juego("pal@bra")
-    except ValueError as e:
-        assert str(e) == "Palabra invalida: debe contener solo letras o espacios"
 
 
 def test_inicializar_juego_palabra_con_mezcla_de_caracteres():
-    try:
+    with pytest.raises(ValueError, match="Palabra invalida: debe contener solo letras o espacios"):
         Juego("palabra123 con espacios")
-    except ValueError as e:
-        assert str(e) == "Palabra invalida: debe contener solo letras o espacios"
 
 
 def test_inicializacion_juego_progreso():

@@ -130,7 +130,8 @@ def test_letra_pierde_puntaje():
     j = Juego("palabra")
     j.intentos_usados = Juego.MAX_INTENTOS
     j.arriesgar_letra("x")
-    assert j.finalizo() and j.puntaje() == 0
+    assert j.finalizo()
+    assert j.puntaje() == 0
 
 
 # Letra gana
@@ -172,7 +173,8 @@ def test_letra_gana_sin_errores_puntaje():
     j.arriesgar_letra("e")
     j.arriesgar_letra("l")
     j.arriesgar_letra("u")
-    assert j.finalizo() and j.puntaje() == Juego.MAX_INTENTOS
+    assert j.finalizo()
+    assert j.puntaje() == Juego.MAX_INTENTOS
 
 
 def test_letra_gana_un_error_puntaje():
@@ -182,7 +184,8 @@ def test_letra_gana_un_error_puntaje():
     j.arriesgar_letra("e")
     j.arriesgar_letra("l")
     j.arriesgar_letra("u")
-    assert j.finalizo() and j.puntaje() == Juego.MAX_INTENTOS - 1
+    assert j.finalizo()
+    assert j.puntaje() == Juego.MAX_INTENTOS - 1
 
 
 def test_letra_gana_dos_errores_puntaje():
@@ -193,7 +196,8 @@ def test_letra_gana_dos_errores_puntaje():
     j.arriesgar_letra("y")
     j.arriesgar_letra("l")
     j.arriesgar_letra("u")
-    assert j.finalizo() and j.puntaje() == Juego.MAX_INTENTOS - 2
+    assert j.finalizo()
+    assert j.puntaje() == Juego.MAX_INTENTOS - 2
 
 
 def test_letra_gana_ultimo_intento_puntaje():
@@ -203,7 +207,8 @@ def test_letra_gana_ultimo_intento_puntaje():
     j.arriesgar_letra("e")
     j.arriesgar_letra("l")
     j.arriesgar_letra("u")
-    assert j.finalizo() and j.puntaje() == 1
+    assert j.finalizo()
+    assert j.puntaje() == 1
 
 
 # Letras usadas
