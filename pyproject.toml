@@ -1,5 +1,8 @@
 [tool.mypy]
-exclude = "tests"
+exclude = [
+    "features",
+    "tests",
+]
 html_report = "reports/mypy"
 xml_report = "reports/mypy"
 junit_xml = "reports/mypy/mypy-junit.xml"
