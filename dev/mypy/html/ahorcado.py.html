@@ -207,6 +207,14 @@
 <span id="L197" class="lineno"><a class="lineno" href="#L197">197</a></span>
 <span id="L198" class="lineno"><a class="lineno" href="#L198">198</a></span>
 <span id="L199" class="lineno"><a class="lineno" href="#L199">199</a></span>
+<span id="L200" class="lineno"><a class="lineno" href="#L200">200</a></span>
+<span id="L201" class="lineno"><a class="lineno" href="#L201">201</a></span>
+<span id="L202" class="lineno"><a class="lineno" href="#L202">202</a></span>
+<span id="L203" class="lineno"><a class="lineno" href="#L203">203</a></span>
+<span id="L204" class="lineno"><a class="lineno" href="#L204">204</a></span>
+<span id="L205" class="lineno"><a class="lineno" href="#L205">205</a></span>
+<span id="L206" class="lineno"><a class="lineno" href="#L206">206</a></span>
+<span id="L207" class="lineno"><a class="lineno" href="#L207">207</a></span>
 </pre></td>
 <td class="table-code"><pre><span class="line-empty" title="No Anys on this line!">"""Lógica del juego del ahorcado.</span>
 <span class="line-empty" title="No Anys on this line!"></span>
@@ -217,6 +225,14 @@
 <span class="line-precise" title="No Anys on this line!">from __future__ import annotations</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-precise" title="No Anys on this line!">from typing import Any</span>
+<span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-precise" title="No Anys on this line!">class AhorcadoError(Exception):</span>
+<span class="line-empty" title="No Anys on this line!">    """Clase custom para errores del juego del ahorcado."""</span>
+<span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-precise" title="No Anys on this line!">    def __init__(self, mensaje: str) -&gt; None:</span>
+<span class="line-empty" title="No Anys on this line!">        """Inicializa la excepción con un mensaje."""</span>
+<span class="line-precise" title="No Anys on this line!">        super().__init__(mensaje)</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-precise" title="No Anys on this line!">class Juego:</span>
@@ -237,7 +253,7 @@
 <span class="line-empty" title="No Anys on this line!">        """Inicializa el juego con una palabra."""</span>
 <span class="line-precise" title="No Anys on this line!">        if not palabra.replace(" ", "").isalpha():</span>
 <span class="line-precise" title="No Anys on this line!">            error = "Palabra invalida: debe contener solo letras o espacios"</span>
-<span class="line-precise" title="No Anys on this line!">            raise ValueError(error)</span>
+<span class="line-precise" title="No Anys on this line!">            raise AhorcadoError(error)</span>
 <span class="line-precise" title="No Anys on this line!">        self.palabra = palabra.lower()</span>
 <span class="line-precise" title="No Anys on this line!">        self.acerto = acerto if acerto is not None else False</span>
 <span class="line-precise" title="No Anys on this line!">        self.intentos_usados = intentos_usados if intentos_usados is not None else 0</span>
@@ -375,7 +391,7 @@ Explicit (x4)">        return cls(palabra, acerto=acerto, intentos_usados=intent
 <span class="line-empty" title="No Anys on this line!">            return</span>
 <span class="line-precise" title="No Anys on this line!">        if not self.juego or self.id_jugador_actual is None:</span>
 <span class="line-precise" title="No Anys on this line!">            error = "No se puede actualizar puntos si no se inició ninguna ronda"</span>
-<span class="line-precise" title="No Anys on this line!">            raise Exception(error)</span>
+<span class="line-precise" title="No Anys on this line!">            raise AhorcadoError(error)</span>
 <span class="line-precise" title="No Anys on this line!">        if self.juego.acerto:</span>
 <span class="line-precise" title="No Anys on this line!">            self.puntos[self.id_jugador_actual] += self.juego.puntaje()</span>
 <span class="line-precise" title="No Anys on this line!">        self.puntos_actualizados = True</span>
