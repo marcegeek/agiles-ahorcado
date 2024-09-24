@@ -6,6 +6,7 @@ on:
       # run if code, tests, dependencies, settings and/or reports are changed
       - '**.py'
       - 'tests/**'
+      - 'features/**'
       - 'requirements*.txt'
       - 'pyproject.toml'
       - 'pytest.ini'
@@ -27,11 +28,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Extract branch name
-      run: echo "BRANCH_NAME=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_ENV
-
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.11'
 
@@ -43,32 +41,133 @@ jobs:
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 . --select=E9,F63,F7,F82 --show-source --format default
         mkdir -p reports/flake8
         # exit-zero treats all errors as warnings
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=100 --statistics --output-file reports/flake8/flake8stats.txt --format=html --htmldir=reports/flake8
+        flake8 . --exit-zero --output-file reports/flake8/flake8stats.txt
 
     - name: Lint with Ruff
-      run: |
-        ruff check --exit-zero --output-format github
+      run: ruff check --exit-zero --output-format github
 
     - name: Check typing with mypy
-      run: |
-        mypy . || true
+      run: mypy . || true
 
-    - name: Test with pytest
+    - name: Test with pytest and collect coverage
+      run: coverage run -m pytest
+
+    - name: Archive reports
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: reports
+        path: reports
+
+    - name: Archive coverage
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage
+        path: .coverage
+        include-hidden-files: true
+
+  atdd:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
       run: |
-        pytest
+        python -m pip install --upgrade pip
+        pip install -r requirements-dev.txt
+
+    - name: Download archived coverage
+      uses: actions/download-artifact@v4
+      with:
+        name: coverage
+
+    - name: Run Behave, collecting and appending coverage
+      run: coverage run --append -m behave
+
+    - name: Archive combined coverage
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage
+        path: .coverage
+        include-hidden-files: true
+        overwrite: true
+
+  deploy:
+    needs: [build, atdd]
+    # only run this job when pushing to main
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Deploy to Render
+      env:
+        deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+      run: curl "$deploy_url"
+
+  reports:
+    if: always()
+    needs: [build, atdd]
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements-dev.txt
+
+    - name: Download archived reports
+      uses: actions/download-artifact@v4
+      with:
+        name: reports
+        path: reports
+
+    - name: Download archived coverage
+      uses: actions/download-artifact@v4
+      with:
+        name: coverage
+
+    - name: Show coverage and create HTML and XML reports
+      run: |
+        coverage report
+        coverage html
+        coverage xml
 
     - name: Upload coverage to coveralls.io
-      if: always()
+      if: github.event_name == 'push'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        coveralls
+      run: coveralls
+
+    - name: Extract branch name
+      if: github.event_name == 'push'
+      run: echo "BRANCH_NAME=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_ENV
 
     - name: Update reports and generate badges
-      if: always()
+      if: github.event_name == 'push'
       run: |
         # generate badges for flake8, coverage and tests
         genbadge flake8 -o reports/flake8/badge.svg
@@ -82,30 +181,9 @@ jobs:
         mv ${BRANCH_NAME} reports
 
     - name: Deploy reports to gh-pages
-      if: always() && github.event_name == 'push'
+      if: github.event_name == 'push'
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./reports
         keep_files: true
-
-  atdd:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements-dev.txt
-
-    - name: Run Behave
-      run: behave

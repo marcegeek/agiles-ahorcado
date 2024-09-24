@@ -7,20 +7,20 @@
 {%- endmacro %}
 
 {% macro juego(juego, resultado, action="") -%}
-    <p>Intentos restantes: {{ juego.intentosDisponibles() }}</p>
-    <p>Letras usadas: {{ ' '.join(juego.letrasUsadas) }}</p>
-    <p>Progreso de la palabra: {{ juego.mostrarProgresoPalabra() }}</p>
+    <p>Intentos restantes: {{ juego.intentos_disponibles() }}</p>
+    <p>Letras usadas: {{ ' '.join(juego.letras_usadas) }}</p>
+    <p>Progreso de la palabra: {{ juego.mostrar_progreso_palabra() }}</p>
 
     <!-- Mostrar imagen según el número de intentos restantes -->
-    <img src="{{ url_for('static', filename='images/intento_' ~ juego.intentosDisponibles() ~ '.png') }}" alt="Estado del juego" style="width: 200px; height: auto;">
+    <img src="{{ url_for('static', filename='images/intento_' ~ juego.intentos_disponibles() ~ '.png') }}" alt="Estado del juego" style="width: 200px; height: auto;">
 
     {% if juego.acerto %}
         <p>¡ACERTASTE!</p>
-    {% elif juego.intentosDisponibles() == 0 %}
+    {% elif juego.intentos_disponibles() == 0 %}
         <p>¡SE TE ACABARON LOS INTENTOS!</p>
     {% endif %}
 
-    {% if not juego.acerto and juego.intentosDisponibles() > 0 %}
+    {% if not juego.acerto and juego.intentos_disponibles() > 0 %}
         <form action="{{ action }}" method="post">
             <label for="intento">Ingrese letra o palabra:</label>
             <input type="text" id="intento" name="intento" required>

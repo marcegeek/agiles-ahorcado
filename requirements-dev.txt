@@ -9,6 +9,7 @@ pytest-html
 # analisis estático
 flake8
 flake8-html
+Flake8-pyproject
 mypy[reports]
 ruff
 

@@ -1,20 +1,29 @@
+"""Aplicación web Flask del juego del ahorcado."""
+
+from __future__ import annotations
+
 import os
+from typing import TYPE_CHECKING
 
 from flask import Flask, flash, redirect, render_template, request, session, url_for
 
-from juego import Juego, Partida
+from ahorcado import Juego, Partida
 
+if TYPE_CHECKING:
+    from flask.typing import ResponseValue
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "default_secret_key")
 
 
 @app.route("/")
-def index():
+def index() -> ResponseValue:
+    """Devuelve la página principal."""
     return render_template("index.html")
 
 
-def iniciar_juego():
+def iniciar_juego() -> None:
+    """Inicia un juego simple con la palabra ingresada."""
     palabra = request.form["palabra"]
     try:
         juego = Juego(palabra=palabra)
@@ -23,23 +32,22 @@ def iniciar_juego():
         flash(str(e), category="error")
 
 
-def arriesgar(juego):
+def arriesgar(juego: Juego) -> str:
+    """Arriesgar letra o palabra en el juego actual."""
     intento = request.form["intento"]
-    if len(intento) == 1:
-        resultado = juego.arriesgarLetra(intento)
-    else:
-        resultado = juego.arriesgarPalabra(intento)
-    return resultado
+    metodo = juego.arriesgar_letra if len(intento) == 1 else juego.arriesgar_palabra
+    return metodo(intento)
 
 
 @app.route("/juego", methods=["GET", "POST"])
-def juego():
+def juego() -> ResponseValue:
+    """Permite arriesgar en el juego actual o iniciar uno nuevo y devuelve la vista."""
     if "juego" not in session:
         if request.method == "POST":
             iniciar_juego()
             return redirect(url_for("juego"))
         return render_template("juego-inicio.html")
-    juego = Juego(data=session["juego"])
+    juego = Juego.from_dict(session["juego"])
     resultado = None
     if request.method == "POST":
         resultado = arriesgar(juego)
@@ -47,38 +55,43 @@ def juego():
     return render_template("juego.html", juego=juego, resultado=resultado)
 
 
-def url_redireccion(fallback=None):
+def url_redireccion(fallback: str | None = None) -> str:
+    """Obtiene la URL a la que redirigir."""
     if fallback is None:
         fallback = url_for("index")
     redirecciones = request.values.get("redirect_to"), request.referrer, fallback
-    return [r for r in redirecciones if r][0]
+    return next(r for r in redirecciones if r)
 
 
 @app.route("/finalizar", methods=["POST"])
-def finalizar():
+def finalizar() -> ResponseValue:
+    """Finaliza el juego y/o partida actual."""
     session.pop("juego", None)
     session.pop("jugadores", None)
     session.pop("partida", None)
     return redirect(url_redireccion())
 
 
-def iniciar_partida():
+def iniciar_partida() -> None:
+    """Inicia una nueva partida con los jugadores ingresados."""
     keys = ["jugador1", "jugador2"]
     session["jugadores"] = [request.form[k] for k in keys]
     p = Partida()
     session["partida"] = p.to_dict()
 
 
-def iniciar_ronda(partida):
+def iniciar_ronda(partida: Partida) -> None:
+    """Inicia una nueva ronda en la partida actual con la palabra ingresada."""
     palabra = request.form["palabra"]
-    partida.comenzarRonda(palabra)
+    partida.comenzar_ronda(palabra)
     session["partida"] = partida.to_dict()
 
 
 @app.route("/partida", methods=["GET", "POST"])
-def partida():
+def partida() -> ResponseValue:
+    """Permite arriesgar en la partida actual, iniciar una nueva o iniciar una ronda y devuelve la vista."""
     jugadores = session.get("jugadores")
-    partida = Partida(data=session["partida"]) if "partida" in session else None
+    partida = Partida.from_dict(session["partida"]) if "partida" in session else None
     if not partida:
         if request.method == "POST":
             iniciar_partida()
@@ -89,16 +102,16 @@ def partida():
             partida=partida,
         )
 
-    hay_que_iniciar_ronda = partida.idJugadorActual is None or partida.rondaFinalizo()
-    jugador_palabra = 0 if partida.idJugadorActual is None else partida.idJugadorActual
+    hay_que_iniciar_ronda = partida.id_jugador_actual is None or partida.ronda_finalizo()
+    jugador_palabra = 0 if partida.id_jugador_actual is None else partida.id_jugador_actual
     jugador_adivina = (jugador_palabra + 1) % 2
     if request.method == "POST":
         if not partida.finalizo():
             if hay_que_iniciar_ronda:
                 iniciar_ronda(partida)
             else:
-                arriesgar(partida.juego)
-                partida.actualizarPuntos()
+                arriesgar(partida.juego)  # type: ignore[arg-type]
+                partida.actualizar_puntos()
                 session["partida"] = partida.to_dict()
         else:
             flash("La partida ya finalizó", category="error")
@@ -114,4 +127,5 @@ def partida():
 
 
 if __name__ == "__main__":
+    # ruff: noqa: S201: ignorar uso de debug=True
     app.run(debug=True)

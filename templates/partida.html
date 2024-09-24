@@ -9,8 +9,8 @@
     <h2>{{ jugadores[0] }} vs. {{ jugadores[1] }}: {{ partida.puntos[0] }}-{{ partida.puntos[1] }}</h2>
     <p>Rondas iniciadas: {{ partida.rondas[0] }} vs. {{ partida.rondas[1] }}</p>
     {% if not iniciar_ronda %}
-        <h3>{{ jugadores[partida.idJugadorActual] }}, es tu turno de adivinar</h3>
-        <p>Ronda: {{ partida.rondas[partida.idJugadorActual] }}</p>
+        <h3>{{ jugadores[partida.id_jugador_actual] }}, es tu turno de adivinar</h3>
+        <p>Ronda: {{ partida.rondas[partida.id_jugador_actual] }}</p>
         {{ macros.juego(partida.juego) }}
     {% else %}
         {% if partida.juego %}{{ macros.juego(partida.juego) }}{% endif %}
