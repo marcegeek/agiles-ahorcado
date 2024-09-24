@@ -2,7 +2,7 @@ import re
 
 
 def eliminar_comentarios(html):
-     return re.sub(r"<!--.*?-->", "", html, flags=re.DOTALL)
+    return re.sub(r"<!--.*?-->", "", html, flags=re.DOTALL)
 
 
 def get(context, action=None, params=None):
