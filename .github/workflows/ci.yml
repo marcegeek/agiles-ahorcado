@@ -108,7 +108,7 @@ jobs:
   deploy:
     needs: [build, atdd]
     # only run this job when pushing to main
-    if: github.ref == 'refs/heads/main' and github.event_name == 'push'
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
 
     steps:
@@ -118,7 +118,7 @@ jobs:
     - name: Deploy to Render
       env:
         deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
-        run: curl "$deploy_url"
+      run: curl "$deploy_url"
 
   reports:
     if: always()
