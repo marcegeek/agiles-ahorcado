@@ -36,7 +36,7 @@ exclude = [".git", "venv", ".venv"]
 per-file-ignores = [
     "features/steps/*:F811", # redefinition of step_impl functions
 ]
-max-line-length = 110
+max-line-length = 115
 max-complexity = 10
 count = true
 statistics = true
@@ -47,7 +47,7 @@ htmldir = "reports/flake8"
 addopts = "--html=reports/tests/pytest.html --junit-xml=reports/tests/pytest.xml"
 
 [tool.ruff]
-line-length = 110
+line-length = 115
 
 [tool.ruff.lint]
 select = [

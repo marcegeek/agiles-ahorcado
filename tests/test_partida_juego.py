@@ -1,3 +1,6 @@
+from .conftest import mock_juego_gana
+
+
 def test_ronda_gana_finaliza(partida, ronda_completa):
     ronda_completa(True, 1)
     assert partida.ronda_finalizo()
@@ -89,9 +92,11 @@ def test_puntos_fallo_y_tres_aciertos(partida, ronda_completa):
     assert partida.puntos_jugador(1) == 2
 
 
-def test_puntos_actualizar_otra_vez(partida, ronda_completa):
+def test_puntos_actualizar_puntos(partida, ronda_completa):
     ronda_completa(False)
-    ronda_completa(True, 1)
+    ronda_completa(False)
+    partida.juego = mock_juego_gana(1)
+    partida.actualizar_puntos()
     partida.actualizar_puntos()
     ronda_completa(True, 2)
     partida.actualizar_puntos()

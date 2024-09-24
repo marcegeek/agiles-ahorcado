@@ -166,7 +166,7 @@ class Partida:
             raise AhorcadoError(error)
         if self.juego.acerto:
             self.puntos[self.id_jugador_actual] += self.juego.puntaje()
-        self.puntos_actualizados = True
+            self.puntos_actualizados = True
 
     def ronda_finalizo(self) -> bool:
         """Retorna si finalizó la ronda actual."""
