@@ -35,3 +35,8 @@ def step_impl(context, expected_attempts):
     m = re.search(r"<p\b.*?>Intentos restantes: (\d+)</p>", context.html, re.IGNORECASE)
     intentos = int(m.group(1))
     assert intentos == expected_attempts
+
+
+@then('the game result should be "{result}"')
+def step_impl(context, result):
+    assert re.search(rf"\b{result}\b", context.html, re.IGNORECASE)

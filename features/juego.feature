@@ -1,4 +1,4 @@
-Feature: Juego de Ahorcado
+Feature: Juego Simple
 
   Scenario: Iniciar un nuevo juego
     Given I have started the game with a valid word "python"
@@ -18,3 +18,14 @@ Feature: Juego de Ahorcado
     Given I have started the game with a valid word "python"
     When I guess the word "java"
     Then the remaining attempts should be 4
+
+  Scenario: Perder el juego
+    Given I have started the game with a valid word "python"
+    When I guess the letter "a"
+    When I guess the letter "b"
+    When I guess the letter "c"
+    When I guess the letter "d"
+    When I guess the letter "e"
+    When I guess the letter "f"
+    Then the remaining attempts should be 0
+    Then the game result should be "SE TE ACABARON LOS INTENTOS"

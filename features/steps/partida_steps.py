@@ -15,7 +15,7 @@ def step_impl(context, player1, player2):
     post(context, data={"jugador1": player1, "jugador2": player2})
 
 
-@then('the player "{current}" has to start a round for "{oponent}"')
+@then('the player "{current}" should have to start a round for "{oponent}"')
 def step_impl(context, current, oponent):
     m = re.search(r"<p\b.*?>(.+), ingresa la palabra para (.+):</p>", context.html, re.IGNORECASE)
     p1 = m.group(1)
@@ -55,8 +55,3 @@ def step_impl(context, letter):
 @when('the current player tries the word "{word}"')
 def step_impl(context, word):
     arriesgar(context, word)
-
-
-@then('the game result is "{result}"')
-def step_impl(context, result):
-    assert re.search(rf"\b{result}\b", context.html, re.IGNORECASE)
