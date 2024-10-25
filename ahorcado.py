@@ -185,15 +185,17 @@ class Partida:
 
         Devuelve None si la partida aun no finalizó o -1 si hay empate.
         """
+        if not self.finalizo():
+            return None
         if self.puntos[0] > self.puntos[1]:
             return 0
-        elif self.puntos[0] < self.puntos[1]:
+        if self.puntos[0] < self.puntos[1]:
             return 1
         return -1
 
     def empate(self) -> bool | None:
         """Retorna si hay empate or None si la partida aun no finalizó."""
-        return self.ganador() == -1
+        return self.ganador() == -1 if self.finalizo() else None
 
     def to_dict(self) -> dict[str, Any]:
         """Retorna la partida serializada en un diccionario."""
