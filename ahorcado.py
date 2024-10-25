@@ -180,6 +180,21 @@ class Partida:
         """Retorna los puntos del jugador indicado."""
         return self.puntos[id_jugador]
 
+    def ganador(self) -> int | None:
+        """Obtiene el id del ganador.
+
+        Devuelve None si la partida aun no finalizó o -1 si hay empate.
+        """
+        if self.puntos[0] > self.puntos[1]:
+            return 0
+        elif self.puntos[0] < self.puntos[1]:
+            return 1
+        return -1
+
+    def empate(self) -> bool | None:
+        """Retorna si hay empate or None si la partida aun no finalizó."""
+        return self.ganador() == -1
+
     def to_dict(self) -> dict[str, Any]:
         """Retorna la partida serializada en un diccionario."""
         return {
