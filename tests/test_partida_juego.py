@@ -107,6 +107,106 @@ def test_puntos_actualizar_puntos(partida, ronda_completa):
     assert partida.puntos_jugador(1) == 2
 
 
+def test_partida_no_finaliza_ganador(partida, ronda_completa):
+    ronda_completa(False)
+    ronda_completa(True, 1)
+    ronda_completa(True, 2)
+    ronda_completa(True, 5)
+    assert partida.ganador() is None
+
+
+def test_partida_no_finaliza_empate(partida, ronda_completa):
+    ronda_completa(False)
+    ronda_completa(True, 1)
+    ronda_completa(True, 2)
+    ronda_completa(True, 5)
+    assert partida.empate() is None
+
+
+def test_partida_ganador_0(partida, ronda_completa):
+    ronda_completa(False)
+    ronda_completa(True, 1)
+    ronda_completa(True, 2)
+    ronda_completa(True, 5)
+    ronda_completa(False)
+    ronda_completa(False)
+    ronda_completa(True, 1)
+    ronda_completa(True, 1)
+    ronda_completa(True, 1)
+    ronda_completa(False)
+    ronda_completa(False)
+    ronda_completa(False)
+    assert partida.ganador() == 0
+
+
+def test_partida_ganador_0_empate(partida, ronda_completa):
+    ronda_completa(False)
+    ronda_completa(True, 1)
+    ronda_completa(True, 2)
+    ronda_completa(True, 5)
+    ronda_completa(False)
+    ronda_completa(False)
+    ronda_completa(True, 1)
+    ronda_completa(True, 1)
+    ronda_completa(True, 1)
+    ronda_completa(False)
+    ronda_completa(False)
+    ronda_completa(False)
+    assert partida.empate() is not None
+    assert not partida.empate()
+
+
+def test_partida_ganador_1(partida, ronda_completa):
+    ronda_completa(True, 1)
+    ronda_completa(True, 2)
+    ronda_completa(True, 5)
+    ronda_completa(False)
+    ronda_completa(False)
+    ronda_completa(True, 1)
+    ronda_completa(True, 1)
+    ronda_completa(True, 1)
+    ronda_completa(False)
+    ronda_completa(False)
+    ronda_completa(False)
+    ronda_completa(False)
+    assert partida.ganador() == 1
+
+
+def test_partida_ganador_1_empate(partida, ronda_completa):
+    ronda_completa(True, 1)
+    ronda_completa(True, 2)
+    ronda_completa(True, 5)
+    ronda_completa(False)
+    ronda_completa(False)
+    ronda_completa(True, 1)
+    ronda_completa(True, 1)
+    ronda_completa(True, 1)
+    ronda_completa(False)
+    ronda_completa(False)
+    ronda_completa(False)
+    ronda_completa(False)
+    assert partida.empate() is not None
+    assert not partida.empate()
+
+
+def test_partida_ganador_empate(partida, ronda_completa):
+    ronda_completa(True, 3)
+    ronda_completa(True, 1)
+    ronda_completa(True, 2)
+    ronda_completa(True, 5)
+    ronda_completa(False)
+    ronda_completa(False)
+    ronda_completa(True, 1)
+    ronda_completa(True, 1)
+    ronda_completa(True, 1)
+    ronda_completa(False)
+    ronda_completa(False)
+    ronda_completa(False)
+    ronda_completa(False)
+    assert partida.ganador() == -1
+    assert partida.empate()
+
+
 def test_ronda_gana_finaliza_data(ronda_completa, partida_data):
     ronda_completa(True, 1)
     assert partida_data().ronda_finalizo()

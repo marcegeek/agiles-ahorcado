@@ -102,7 +102,7 @@ def partida() -> ResponseValue:
             partida=partida,
         )
 
-    hay_que_iniciar_ronda = partida.id_jugador_actual is None or partida.ronda_finalizo()
+    hay_que_iniciar_ronda = partida.id_jugador_actual is None or not partida.finalizo() and partida.ronda_finalizo()
     jugador_palabra = 0 if partida.id_jugador_actual is None else partida.id_jugador_actual
     jugador_adivina = (jugador_palabra + 1) % 2
     if request.method == "POST":

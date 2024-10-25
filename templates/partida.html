@@ -12,6 +12,13 @@
         <h3>{{ jugadores[partida.id_jugador_actual] }}, es tu turno de adivinar</h3>
         <p>Ronda: {{ partida.rondas[partida.id_jugador_actual] }}</p>
         {{ macros.juego(partida.juego) }}
+        {% if partida.finalizo() %}
+            {% if partida.ganador() >= 0 %}
+                <p>La partida finalizó. El ganador es: {{ jugadores[partida.ganador()] }}</p>
+            {% else %}
+                <p>La partida finalizó con un empate.</p>
+            {% endif %}
+        {% endif %}
     {% else %}
         {% if partida.juego %}{{ macros.juego(partida.juego) }}{% endif %}
         <p>{{ jugadores[jugador_palabra] }}, ingresa la palabra para {{ jugadores[jugador_adivina] }}:</p>
