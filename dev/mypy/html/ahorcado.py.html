@@ -230,6 +230,8 @@
 <span id="L220" class="lineno"><a class="lineno" href="#L220">220</a></span>
 <span id="L221" class="lineno"><a class="lineno" href="#L221">221</a></span>
 <span id="L222" class="lineno"><a class="lineno" href="#L222">222</a></span>
+<span id="L223" class="lineno"><a class="lineno" href="#L223">223</a></span>
+<span id="L224" class="lineno"><a class="lineno" href="#L224">224</a></span>
 </pre></td>
 <td class="table-code"><pre><span class="line-empty" title="No Anys on this line!">"""Lógica del juego del ahorcado.</span>
 <span class="line-empty" title="No Anys on this line!"></span>
@@ -428,15 +430,17 @@ Explicit (x4)">        return cls(palabra, acerto=acerto, intentos_usados=intent
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-empty" title="No Anys on this line!">        Devuelve None si la partida aun no finalizó o -1 si hay empate.</span>
 <span class="line-empty" title="No Anys on this line!">        """</span>
+<span class="line-precise" title="No Anys on this line!">        if not self.finalizo():</span>
+<span class="line-precise" title="No Anys on this line!">            return None</span>
 <span class="line-precise" title="No Anys on this line!">        if self.puntos[0] &gt; self.puntos[1]:</span>
 <span class="line-precise" title="No Anys on this line!">            return 0</span>
-<span class="line-precise" title="No Anys on this line!">        elif self.puntos[0] &lt; self.puntos[1]:</span>
+<span class="line-precise" title="No Anys on this line!">        if self.puntos[0] &lt; self.puntos[1]:</span>
 <span class="line-precise" title="No Anys on this line!">            return 1</span>
 <span class="line-precise" title="No Anys on this line!">        return -1</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-precise" title="No Anys on this line!">    def empate(self) -&gt; bool | None:</span>
 <span class="line-empty" title="No Anys on this line!">        """Retorna si hay empate or None si la partida aun no finalizó."""</span>
-<span class="line-precise" title="No Anys on this line!">        return self.ganador() == -1</span>
+<span class="line-precise" title="No Anys on this line!">        return self.ganador() == -1 if self.finalizo() else None</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-imprecise" title="Any Types on this line: 
 Explicit (x1)">    def to_dict(self) -&gt; dict[str, Any]:</span>
