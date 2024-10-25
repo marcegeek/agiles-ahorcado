@@ -280,7 +280,7 @@ Error (x1)">            jugadores=jugadores,</span>
 <span class="line-precise" title="No Anys on this line!">            partida=partida,</span>
 <span class="line-empty" title="No Anys on this line!">        )</span>
 <span class="line-empty" title="No Anys on this line!"></span>
-<span class="line-precise" title="No Anys on this line!">    hay_que_iniciar_ronda = partida.id_jugador_actual is None or partida.ronda_finalizo()</span>
+<span class="line-precise" title="No Anys on this line!">    hay_que_iniciar_ronda = partida.id_jugador_actual is None or not partida.finalizo() and partida.ronda_finalizo()</span>
 <span class="line-precise" title="No Anys on this line!">    jugador_palabra = 0 if partida.id_jugador_actual is None else partida.id_jugador_actual</span>
 <span class="line-precise" title="No Anys on this line!">    jugador_adivina = (jugador_palabra + 1) % 2</span>
 <span class="line-precise" title="No Anys on this line!">    if request.method == "POST":</span>

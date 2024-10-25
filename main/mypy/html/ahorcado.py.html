@@ -215,6 +215,21 @@
 <span id="L205" class="lineno"><a class="lineno" href="#L205">205</a></span>
 <span id="L206" class="lineno"><a class="lineno" href="#L206">206</a></span>
 <span id="L207" class="lineno"><a class="lineno" href="#L207">207</a></span>
+<span id="L208" class="lineno"><a class="lineno" href="#L208">208</a></span>
+<span id="L209" class="lineno"><a class="lineno" href="#L209">209</a></span>
+<span id="L210" class="lineno"><a class="lineno" href="#L210">210</a></span>
+<span id="L211" class="lineno"><a class="lineno" href="#L211">211</a></span>
+<span id="L212" class="lineno"><a class="lineno" href="#L212">212</a></span>
+<span id="L213" class="lineno"><a class="lineno" href="#L213">213</a></span>
+<span id="L214" class="lineno"><a class="lineno" href="#L214">214</a></span>
+<span id="L215" class="lineno"><a class="lineno" href="#L215">215</a></span>
+<span id="L216" class="lineno"><a class="lineno" href="#L216">216</a></span>
+<span id="L217" class="lineno"><a class="lineno" href="#L217">217</a></span>
+<span id="L218" class="lineno"><a class="lineno" href="#L218">218</a></span>
+<span id="L219" class="lineno"><a class="lineno" href="#L219">219</a></span>
+<span id="L220" class="lineno"><a class="lineno" href="#L220">220</a></span>
+<span id="L221" class="lineno"><a class="lineno" href="#L221">221</a></span>
+<span id="L222" class="lineno"><a class="lineno" href="#L222">222</a></span>
 </pre></td>
 <td class="table-code"><pre><span class="line-empty" title="No Anys on this line!">"""Lógica del juego del ahorcado.</span>
 <span class="line-empty" title="No Anys on this line!"></span>
@@ -407,6 +422,21 @@ Explicit (x4)">        return cls(palabra, acerto=acerto, intentos_usados=intent
 <span class="line-precise" title="No Anys on this line!">    def puntos_jugador(self, id_jugador: int) -&gt; int:</span>
 <span class="line-empty" title="No Anys on this line!">        """Retorna los puntos del jugador indicado."""</span>
 <span class="line-precise" title="No Anys on this line!">        return self.puntos[id_jugador]</span>
+<span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-precise" title="No Anys on this line!">    def ganador(self) -&gt; int | None:</span>
+<span class="line-empty" title="No Anys on this line!">        """Obtiene el id del ganador.</span>
+<span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-empty" title="No Anys on this line!">        Devuelve None si la partida aun no finalizó o -1 si hay empate.</span>
+<span class="line-empty" title="No Anys on this line!">        """</span>
+<span class="line-precise" title="No Anys on this line!">        if self.puntos[0] &gt; self.puntos[1]:</span>
+<span class="line-precise" title="No Anys on this line!">            return 0</span>
+<span class="line-precise" title="No Anys on this line!">        elif self.puntos[0] &lt; self.puntos[1]:</span>
+<span class="line-precise" title="No Anys on this line!">            return 1</span>
+<span class="line-precise" title="No Anys on this line!">        return -1</span>
+<span class="line-empty" title="No Anys on this line!"></span>
+<span class="line-precise" title="No Anys on this line!">    def empate(self) -&gt; bool | None:</span>
+<span class="line-empty" title="No Anys on this line!">        """Retorna si hay empate or None si la partida aun no finalizó."""</span>
+<span class="line-precise" title="No Anys on this line!">        return self.ganador() == -1</span>
 <span class="line-empty" title="No Anys on this line!"></span>
 <span class="line-imprecise" title="Any Types on this line: 
 Explicit (x1)">    def to_dict(self) -&gt; dict[str, Any]:</span>
